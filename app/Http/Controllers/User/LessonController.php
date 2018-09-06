@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use LaravelRocket\Foundation\Http\Requests\PaginationRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\UserServiceInterface;
+use App\Models\Lesson;
 
 
-class IndexController extends Controller
+class LessonController extends Controller
 {
     /** @var LessonRepositoryInterface */
     protected $lessonRepository;
@@ -26,25 +27,21 @@ class IndexController extends Controller
     public function __construct(
         LessonRepositoryInterface $lessonRepository,
         UserServiceInterface $userService
+
     ) {
         $this->lessonRepository         = $lessonRepository;
         $this->userService           = $userService;
 
     }
 
-    
 
-    public function index(Request $request)
+    public function show(Lesson $lesson, Request $request)
     {
-        $models = $this->lessonRepository->lessons();
+        $model = $lesson;
 
-
-
-        return view('pages.user.lessons.index', [
-            'models'          => $models,
+        return view('pages.user.lessons.show', [
+            'model'          => $model,
         ]);
     }
-
-
 
 }

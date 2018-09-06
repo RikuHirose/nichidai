@@ -19,4 +19,7 @@ Route::group([], function () {
     Route::group(['middleware' => ['user.auth']], function () {
         Route::post('signout', 'User\AuthController@postSignOut')->name('signOut.post');
     });
+
+    // Job
+    Route::resource('lessons', 'User\LessonController', ['only' => ['show']]);
 });

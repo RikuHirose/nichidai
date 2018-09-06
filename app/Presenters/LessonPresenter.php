@@ -45,11 +45,23 @@ class LessonPresenter extends BasePresenter
     protected $imageFields = [
     ];
 
-
-
-    public function toString()
+    public function id()
     {
-        return $this->entity->present()->id;
+        return $this->entity->id;
+    }
+
+    public function title()
+    {
+        return $this->entity->title;
+    }
+
+    public function sub_title()
+    {
+      if(isset($this->entity->sub_title)) {
+        $subtitle = $this->entity->sub_title.'/'.$this->entity->subsub_title;
+      }
+
+      return $subtitle;
     }
 
 
