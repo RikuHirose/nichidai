@@ -55,5 +55,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\UserServiceAuthenticationRepositoryInterface::class,
             \App\Repositories\Eloquent\UserServiceAuthenticationRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\LessonRepositoryInterface::class,
+            \App\Repositories\Eloquent\LessonRepository::class
+        );
     }
 }
