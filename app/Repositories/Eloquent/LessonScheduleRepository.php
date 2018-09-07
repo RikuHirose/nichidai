@@ -3,10 +3,10 @@
 namespace App\Repositories\Eloquent;
 
 use LaravelRocket\Foundation\Repositories\Eloquent\SingleKeyModelRepository;
-use App\Repositories\LessonRepositoryInterface;
-use App\Models\Lesson;
+use App\Repositories\LessonScheduleRepositoryInterface;
+use App\Models\LessonSchedule;
 
-class LessonRepository extends SingleKeyModelRepository implements LessonRepositoryInterface
+class LessonScheduleRepository extends SingleKeyModelRepository implements LessonScheduleRepositoryInterface
 {
 
     protected $querySearchTargets = [
@@ -14,7 +14,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
     public function getBlankModel()
     {
-        return new Lesson();
+        return new LessonSchedule();
     }
 
     public function rules()
@@ -36,10 +36,12 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
     }
 
 
-    public function lessons()
-    {
-        $models = $this->getBlankModel()->limit(132)->get();
 
-        return $models;
+    public function getRounds($lesson_id)
+    {
+        $rounds = $this->getBlankModel()->where('lesson_id', $lesson_id)->get();
+
+        return $rounds;
     }
+
 }

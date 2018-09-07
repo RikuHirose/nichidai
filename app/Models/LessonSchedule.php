@@ -53,7 +53,7 @@ class LessonSchedule extends Base
     // Relations
     public function lesson()
     {
-        return $this->belongsTo(\App\Models\Lesson::class, 'lesson_id', 'id');
+        return $this->belongsTo(\App\Models\Lesson::class, 'lesson_id');
     }
 
 

@@ -13,27 +13,17 @@
 @stop
 
 @section('content')
-<div class="container mb-4">
-  <div class="p-jobs">
-    <div class="row">
-      <div class="col col-12 col-md-12">
 
-      </div>
-      <div class="col col-12 col-md-12">
-        <ul class="row my-4 pl-0 list-unstyled">
-          <li class="col-md-4 mb-3">
-            @each('components.user.lessons.card', $models, 'model')
-          </li>
-        </ul>
-      </div>
-    </div>
+<!-- search -->
+<div class="col-xs-12">
+  @include('components.user.lessons.search-form')
+</div>
 
-    {{-- Pagination --}}
-    <div class="row">
-      <div class="col col-12">
-        
-      </div>
-    </div>
+<!-- lessons -->
+<div class="col-xs-12">
+  <h2>{{ $title }}</h2>
+  <div class="row">
+    @each('components.user.lessons.card', $models, 'model')
   </div>
 </div>
 @stop

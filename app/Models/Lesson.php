@@ -29,6 +29,7 @@ class Lesson extends Base
      * @var  array
      */
     protected $fillable = [
+        'id',
         'faculty_id',
         'sub_title',
         'subsub_title',

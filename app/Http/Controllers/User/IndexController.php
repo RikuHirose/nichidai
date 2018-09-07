@@ -41,7 +41,8 @@ class IndexController extends Controller
 
 
         return view('pages.user.lessons.index', [
-            'models'          => $models,
+            'models'   => $models,
+            'title'    => '新着'
         ]);
     }
 

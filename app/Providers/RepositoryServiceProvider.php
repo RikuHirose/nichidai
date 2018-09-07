@@ -60,5 +60,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\LessonRepositoryInterface::class,
             \App\Repositories\Eloquent\LessonRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\LessonScheduleRepositoryInterface::class,
+            \App\Repositories\Eloquent\LessonScheduleRepository::class
+        );
     }
 }

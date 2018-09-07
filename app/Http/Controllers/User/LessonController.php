@@ -3,6 +3,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\LessonRepositoryInterface;
+use App\Repositories\LessonScheduleRepositoryInterface;
 use Illuminate\Http\Request;
 use LaravelRocket\Foundation\Http\Requests\PaginationRequest;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +27,13 @@ class LessonController extends Controller
      */
     public function __construct(
         LessonRepositoryInterface $lessonRepository,
+        LessonScheduleRepositoryInterface $lessonScheduleRepository,
         UserServiceInterface $userService
 
     ) {
         $this->lessonRepository         = $lessonRepository;
-        $this->userService           = $userService;
+        $this->lessonScheduleRepository = $lessonScheduleRepository;
+        $this->userService              = $userService;
 
     }
 
@@ -38,9 +41,12 @@ class LessonController extends Controller
     public function show(Lesson $lesson, Request $request)
     {
         $model = $lesson;
+        $lesson_schedule = $this->lessonScheduleRepository->getRounds($model->id);
+
 
         return view('pages.user.lessons.show', [
-            'model'          => $model,
+            'model'            => $model,
+            'lesson_schedule'  => $lesson_schedule
         ]);
     }
 
