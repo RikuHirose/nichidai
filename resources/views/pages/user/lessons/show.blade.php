@@ -45,16 +45,15 @@
           <div class="card-body">
             <h5 class="card-title">評価方法</h5>
 
-            @if(empty($model))
-              ー
-            @else
+            @if(!empty($model))
+            <?php $model->present()->evaluate_rate_key; ?>
+              <evaluate-chart test="test1"></evaluate-chart>
 <!--             evaluate_exam
             evaluate_report
             evaluate_mintest
             evaluate_apply
             evaluate_others
             evaluate_total -->
-              <!-- @include('components.user.lessons.evaluate', ['model' => $model->present()->evaluate_rate]) -->
             @endif
           </div>
           <div class="card-body">

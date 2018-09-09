@@ -14,6 +14,12 @@
 
 @section('content')
 
+<!-- search breadcrumb -->
+@if(isset($breadcrumb))
+<div class="col-xs-12">
+  @include('shared.user.searchBreadcrumb', ['model' => $breadcrumb, 'num' => count($models)])
+</div>
+@endif
 <!-- search -->
 <div class="col-xs-12">
   @include('components.user.lessons.search-form')
@@ -21,7 +27,9 @@
 
 <!-- lessons -->
 <div class="col-xs-12">
-  <h2>{{ $title }}</h2>
+  @if(!isset($breadcrumb))
+    <h2>{{ $title }}</h2>
+  @endif
   <div class="row">
     @each('components.user.lessons.card', $models, 'model')
   </div>

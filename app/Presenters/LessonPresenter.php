@@ -70,7 +70,12 @@ class LessonPresenter extends BasePresenter
         $subsub_title = $this->entity->subsub_title;
         $lesson_title = $this->entity->lesson_title;
 
-        $breadcrumb = array('トップ', $sub_title, $subsub_title, $lesson_title);
+        if(!$subsub_title == ''){
+            $breadcrumb = array('トップ', $sub_title, $subsub_title, $lesson_title);
+        } else {
+            $breadcrumb = array('トップ', $sub_title, $lesson_title);
+        }
+
 
         return $breadcrumb;
     }
@@ -78,12 +83,34 @@ class LessonPresenter extends BasePresenter
 
     public function evaluate_rate()
     {
-        var_dump($this->entity->evaluate_exam);
-        // $this->entity->evaluate_report;
-        // $this->entity->evaluate_mintest;
-        // $this->entity->evaluate_apply;
-        // $this->entity->evaluate_others;
-        // $this->entity->evaluate_total;
+        $evaluates = array();
+        $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
+
+        $str = '0%';
+        foreach ($ary as $key => $value) {
+            if($value !== $str){
+                array_push($evaluates, array($key => $value));
+            }
+        }
+        return $evaluates;
+    }
+
+
+
+
+
+
+    public function evaluate_rate_key()
+    {
+        $evaluates = array();
+        $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
+
+        foreach ($ary as $key => $value) {
+            if(strpos($value,'0%') === false){
+                array_push($evaluates, $key);
+            }
+        }
+        return $evaluates;
     }
 
 

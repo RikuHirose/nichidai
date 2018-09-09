@@ -22,46 +22,26 @@
           <div class="form-group col-sm-3 col-xs-6">
             <select name="year" id="year" class="form-control">
               <option value="">年度</option>
-              <option value="2017">2017年度</option>
               <option selected="selected" value="2018">2018年度</option>
             </select>
           </div>
-          <div class="form-group col-sm-3 col-xs-6">
-            <select name="campus" id="campus" class="form-control">
-              <option value="">キャンパス</option>
-              <option value="1">池袋</option>
-            </select>
-          </div>
-          <div class="form-group col-sm-3 col-xs-6">
-            <select name="faculty_id" id="faculty_id" class="form-control">
-              <option value="">学部</option>
-              <option value="1">文学部</option>
-            </select>
-          </div>
-          <div class="form-group col-sm-3 col-xs-6">
-            <select name="department_id" id="department_id" class="form-control js-departments_select">
-              <option value="">学部を選択してください</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
           <div class="form-group col-sm-3 col-xs-4">
             <select name="term" id="term" class="form-control">
-              <option value="">学期</option>
-              <option value="1">春学期</option>
-              <option selected="selected" value="2">秋学期</option>
-              <option value="3">通年</option>
+              <option selected="selected" value="">学期</option>
+              <option value="前期">前期</option>
+              <option value="後期">後期</option>
+              <option value="通年">通年</option>
             </select>
           </div>
           <div class="form-group col-sm-3 col-xs-4">
             <select name="day" id="day" class="form-control">
               <option value="">曜日</option>
-              <option value="a">月</option>
-              <option value="b">火</option>
-              <option value="c">水</option>
-              <option value="d">木</option>
-              <option value="e">金</option>
-              <option value="f">土</option>
+              <option value="月">月</option>
+              <option value="火">火</option>
+              <option value="水">水</option>
+              <option value="木">木</option>
+              <option value="金">金</option>
+              <option value="土">土</option>
             </select>
           </div>
           <div class="form-group col-sm-3 col-xs-4">
@@ -75,13 +55,16 @@
               <option value="6">６</option>
             </select>
           </div>
+        </div>
+
+        <div class="row">
           <div class="form-group col-sm-3 col-xs-12">
             <select name="evaluation" id="evaluation" class="form-control">
               <option value="">筆記の割合</option>
-              <option value="100">100%</option>
-              <option value="75">〜75%</option>
-              <option value="50">〜50%</option>
-              <option value="0">0%</option>
+              <option value="100%">100%</option>
+              <option value="75%">〜75%</option>
+              <option value="50%">〜50%</option>
+              <option value="0%">0%</option>
             </select>
           </div>
         </div>

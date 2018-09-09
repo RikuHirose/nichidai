@@ -22,7 +22,7 @@
           <td>{{ $model->lesson_term }}</td>
           <td>{{ $model->lesson_date }}</td>
           <td>{{ $model->lesson_credit }}</td>
-          <td>{{ $model->lesson_professor }}</td>
+          <td><a href="{{ route('index',['q' => $model->lesson_professor]) }}">{{ $model->lesson_professor }}</a></td>
           <td><a href="{{ $model->url }}" target="_blank">シラバスを見る</a></td>
         </tr>
       </tbody>
