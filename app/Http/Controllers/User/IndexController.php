@@ -36,14 +36,34 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-        $models = $this->lessonRepository->lessons();
 
+        $q = \Request::query();
 
+        if(isset($q['q'])) {
+            $q['q'] = htmlspecialchars($q['q'], ENT_QUOTES, "UTF-8" );
+            $models = $this->lessonRepository->lessonsBySearch($q['q']);
 
-        return view('pages.user.lessons.index', [
-            'models'   => $models,
-            'title'    => '新着'
-        ]);
+            view()->share('authUser', $this->userService->getUser());
+
+            // // set SEO information
+            // $title = trans('job.JobIndexRec.title');
+            // \SeoHelper::setJobIndexSeo($title);
+
+            return view('pages.user.lessons.index', [
+                'models'   => $models,
+                'title'    => '新着',
+                'breadcrumb'    => '「'.$q['q'].'」の検索結果'
+            ]);
+        } else {
+
+            $models = $this->lessonRepository->lessons();
+
+            return view('pages.user.lessons.index', [
+                'models'   => $models,
+                'title'    => '新着'
+            ]);
+        }
+
     }
 
 

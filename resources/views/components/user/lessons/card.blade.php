@@ -25,14 +25,13 @@
           <table class="table table-condensed">
             <tbody>
               <tr>
-                <td class="mw60 success text-success">筆記試験</td>
-                <td class="mw60">75%</td>
-                <td class="hidden-sm hidden-md hidden-lg"></td>
-              </tr>
-              <tr>
-                <td class="mw60 success text-success">平常点</td>
-                <td class="mw60">25%</td>
-                <td class="hidden-sm hidden-md hidden-lg">中間レポート(25%)</td>
+                @foreach($model->present()->evaluate_rate as $key => $values)
+                  @foreach($values as $k => $v)
+                    <td class="mw60 success text-success">{{ $k }}</td>
+                    <td class="mw60">{{ $v }}</td>
+                    <td class="hidden-sm hidden-md hidden-lg"></td>
+                  @endforeach
+                @endforeach
               </tr>
             </tbody>
           </table>

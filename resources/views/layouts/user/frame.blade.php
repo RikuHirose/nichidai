@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div id="app" class="wrapper">
     @include('shared.user.header')
     <div class="container">
       <div class="row">

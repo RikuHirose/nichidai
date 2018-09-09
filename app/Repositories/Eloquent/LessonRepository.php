@@ -42,4 +42,11 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
         return $models;
     }
+
+    public function lessonsBySearch($q)
+    {
+        $models = $this->getBlankModel()->where('lesson_professor', 'like', "%{$q}%")->orwhere('sub_title', 'like', "%{$q}%")->orwhere('subsub_title', 'like', "%{$q}%")->get();
+
+        return $models;
+    }
 }
