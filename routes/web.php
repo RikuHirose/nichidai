@@ -22,4 +22,7 @@ Route::group([], function () {
 
     // Job
     Route::resource('lessons', 'User\LessonController', ['only' => ['show']]);
+
+    // search
+    Route::get('/q', 'User\IndexController@searchIndex');
 });

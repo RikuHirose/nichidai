@@ -256,6 +256,6 @@ return [
         'RedirectHelper'   => LaravelRocket\Foundation\Facades\RedirectHelper::class,
         'CountryHelper'    => LaravelRocket\Foundation\Facades\CountryHelper::class,
         'FileHelper'       => LaravelRocket\Foundation\Facades\FileHelper::class,
-    ],
+        ],
 
 ];
