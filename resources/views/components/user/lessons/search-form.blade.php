@@ -8,14 +8,14 @@
           <div class="fl hidden"><p></p></div>
         </div>
       </div>
-      <form action="/lesson/search" accept-charset="UTF-8" method="get">
-        <input name="utf8" type="hidden" value="✓">
+      <form action="/q" accept-charset="UTF-8" method="get">
+        <!-- <input name="utf8" type="hidden" value="✓"> -->
         <div class="row">
           <div class="form-group col-sm-6 col-xs-12">
-            <input type="text" name="name" id="name" placeholder="授業名/教授名" class="form-control">
+            <input type="text" name="lpname" id="name" placeholder="授業名/教授名" class="form-control">
           </div>
           <div class="form-group col-sm-6 col-xs-12">
-            <input type="text" name="content" id="content" placeholder="授業内容" class="form-control">
+            <input type="text" name="lesson_content" id="content" placeholder="授業内容" class="form-control">
           </div>
         </div>
         <div class="row">
@@ -26,7 +26,7 @@
             </select>
           </div>
           <div class="form-group col-sm-3 col-xs-4">
-            <select name="term" id="term" class="form-control">
+            <select name="lesson_term" id="term" class="form-control">
               <option selected="selected" value="">学期</option>
               <option value="前期">前期</option>
               <option value="後期">後期</option>
@@ -34,7 +34,7 @@
             </select>
           </div>
           <div class="form-group col-sm-3 col-xs-4">
-            <select name="day" id="day" class="form-control">
+            <select name="lesson_date" id="day" class="form-control">
               <option value="">曜日</option>
               <option value="月">月</option>
               <option value="火">火</option>
@@ -45,7 +45,7 @@
             </select>
           </div>
           <div class="form-group col-sm-3 col-xs-4">
-            <select name="hour" id="hour" class="form-control">
+            <select name="lesson_hour" id="hour" class="form-control">
               <option value="">時限</option>
               <option value="1">１</option>
               <option value="2">２</option>
@@ -59,16 +59,26 @@
 
         <div class="row">
           <div class="form-group col-sm-3 col-xs-12">
-            <select name="evaluation" id="evaluation" class="form-control">
-              <option value="">筆記の割合</option>
-              <option value="100%">100%</option>
-              <option value="75%">〜75%</option>
-              <option value="50%">〜50%</option>
-              <option value="0%">0%</option>
+            <select name="evaluate_exam" id="evaluation" class="form-control">
+              <option value="">定期試験の割合</option>
+              <option value="100">100%</option>
+              <option value="75">〜75%</option>
+              <option value="50">〜50%</option>
+              <option value="0">0%</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-3 col-xs-12">
+            <select name="evaluate_report" id="evaluation" class="form-control">
+              <option value="">レポートの割合</option>
+              <option value="100">100%</option>
+              <option value="75">〜75%</option>
+              <option value="50">〜50%</option>
+              <option value="0">0%</option>
             </select>
           </div>
         </div>
-        <div class="pull-left">
+
+        <!-- <div class="pull-left">
           <div class="form-group text-right">
             <div class="checkbox">
               <label>
@@ -76,10 +86,10 @@
               </label>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="pull-right">
           <div class="form-group">
-            <input type="submit" name="commit" value="検索" class="btn btn-success btn-go" data-disable-with="送信中..." onclick="gtag('event', 'click', {'event_category': 'lesson', 'event_label': 'search'});">
+            <input type="submit" value="検索" class="btn btn-success btn-go" data-disable-with="送信中...">
           </div>
         </div>
         <div class="clearfix"></div>

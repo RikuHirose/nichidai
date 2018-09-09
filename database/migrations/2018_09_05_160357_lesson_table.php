@@ -39,12 +39,12 @@ class LessonTable extends Migration
             $table->longText('lesson_info')->nullable();
 
             // evaluate
-            $table->string('evaluate_exam')->nullable();
-            $table->string('evaluate_report')->nullable();
-            $table->string('evaluate_mintest')->nullable();
-            $table->string('evaluate_apply')->nullable();
-            $table->string('evaluate_others')->nullable();
-            $table->string('evaluate_total')->nullable();
+            $table->bigInteger('evaluate_exam')->unsigned()->nullable();
+            $table->bigInteger('evaluate_report')->unsigned()->nullable();
+            $table->bigInteger('evaluate_mintest')->unsigned()->nullable();
+            $table->bigInteger('evaluate_apply')->unsigned()->nullable();
+            $table->bigInteger('evaluate_others')->unsigned()->nullable();
+            $table->bigInteger('evaluate_total')->unsigned()->nullable();
 
 
             $table->string('url')->nullable();

@@ -32,7 +32,6 @@ class IndexController extends Controller
 
     }
 
-    
 
     public function index(Request $request)
     {
@@ -64,6 +63,33 @@ class IndexController extends Controller
             ]);
         }
 
+    }
+
+    public function searchIndex(Request $request)
+    {
+        $q = \Request::query();
+
+        if(isset($q)) {
+            // foreach($q as $key => $value) {
+            //   $q[$key] = htmlspecialchars($value, ENT_QUOTES, "UTF-8");
+            // }
+            $models = $this->lessonRepository->lessonsByTopSearch($q);
+
+            view()->share('authUser', $this->userService->getUser());
+
+            $search_result = implode('-', $q);
+
+            // // set SEO information
+            // $title = trans('job.JobIndexRec.title');
+            // \SeoHelper::setJobIndexSeo($title);
+
+        }
+
+        return view('pages.user.lessons.index', [
+            'models'   => $models,
+            'title'    => '新着',
+            'breadcrumb'    => '「'.$search_result.'」の検索結果'
+        ]);
     }
 
 
