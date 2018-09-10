@@ -25,6 +25,7 @@ class LessonTable extends Migration
             $table->string('lesson_title')->nullable();
             $table->string('lesson_term')->nullable();
             $table->string('lesson_date')->nullable();
+            $table->string('lesson_hour')->nullable();
             $table->bigInteger('lesson_credit')->unsigned()->nullable();
 
             $table->string('lesson_professor')->nullable();

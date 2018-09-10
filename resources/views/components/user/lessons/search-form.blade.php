@@ -12,10 +12,10 @@
         <!-- <input name="utf8" type="hidden" value="✓"> -->
         <div class="row">
           <div class="form-group col-sm-6 col-xs-12">
-            <input type="text" name="lpname" id="name" placeholder="授業名/教授名" class="form-control">
+            <input type="text" name="lesson_title" id="name" placeholder="授業名" class="form-control">
           </div>
           <div class="form-group col-sm-6 col-xs-12">
-            <input type="text" name="lesson_content" id="content" placeholder="授業内容" class="form-control">
+            <input type="text" name="lesson_professor" id="content" placeholder="教授名" class="form-control">
           </div>
         </div>
         <div class="row">
@@ -75,6 +75,9 @@
               <option value="50">〜50%</option>
               <option value="0">0%</option>
             </select>
+          </div>
+          <div class="form-group col-sm-6 col-xs-12">
+            <input type="text" name="lesson_content" id="content" placeholder="授業内容" class="form-control">
           </div>
         </div>
 

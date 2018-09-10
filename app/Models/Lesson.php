@@ -36,6 +36,7 @@ class Lesson extends Base
         'lesson_title',
         'lesson_term',
         'lesson_date',
+        'lesson_hour',
         'lesson_credit',
         'lesson_professor',
         'lesson_objectives',

@@ -14,6 +14,7 @@ use LaravelRocket\Foundation\Presenters\BasePresenter;
  * @property  string $lesson_title
  * @property  string $lesson_term
  * @property  string $lesson_date
+ * @property  int $lesson_hour
  * @property  int $lesson_credit
  * @property  string $lesson_professor
  * @property  string $lesson_objectives
