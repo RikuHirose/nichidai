@@ -46,8 +46,9 @@
             <h5 class="card-title">評価方法</h5>
 
             @if(!empty($model))
-            <?php $model->present()->evaluate_rate_key; ?>
-              <evaluate-chart test="test1"></evaluate-chart>
+            <?php $evaluates = $model->present()->evaluate_rate_key;
+            ?>
+              <evaluate-chart :chart-data="{{json_encode($model->present()->evaluate_rate)}}"></evaluate-chart>
 <!--             evaluate_exam
             evaluate_report
             evaluate_mintest

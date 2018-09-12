@@ -58145,19 +58145,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    test: String
-  },
+  props: ['chartData'],
+
   data: function data() {
     return {
-      labels: ["Foo", "Bar", "Baz"],
+      labels: [],
       datasets: [{
-        data: [10, 20, 40],
-        backgroundColor: ["#b388ff", "#82b1ff", "#80d8ff"],
-        hoverBackgroundColor: ["#673ab7", "#2196f3", "#03a9f4"]
+        data: [],
+        backgroundColor: ["#b388ff", "#82b1ff", "#80d8ff", "red", "blue"],
+        hoverBackgroundColor: ["#673ab7", "#2196f3", "#03a9f4", "red", "blue"]
       }],
       option: {}
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    console.log(this.chartData);
+    var keys = Object.keys(this.chartData);
+    var labels = [];
+    var data = [];
+    this.datasets[0].data = keys.forEach(function (key) {
+      var value = _this.chartData[key];
+      if (value > 0) {
+        labels.push(key);
+        data.push(value);
+      }
+    });
+    this.labels = labels;
+    this.datasets[0].data = data;
   }
 });
 
@@ -58170,7 +58186,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._v("\n  " + _vm._s(_vm.test) + "\n  "),
     _c(
       "div",
       { staticClass: "card" },

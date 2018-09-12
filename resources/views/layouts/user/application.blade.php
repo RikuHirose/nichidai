@@ -13,7 +13,7 @@
 </head>
 <body class="{!! isset($bodyClasses) ? $bodyClasses : '' !!}">
 @if( isset($noFrame) && $noFrame == true )
-    @yield('content')
+    @include('layouts.user.authFrame')
 @else
     @include('layouts.user.frame')
 @endif

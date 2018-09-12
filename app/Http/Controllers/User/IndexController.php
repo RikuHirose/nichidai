@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\UserServiceInterface;
 
 
+
 class IndexController extends Controller
 {
     /** @var LessonRepositoryInterface */
@@ -50,8 +51,9 @@ class IndexController extends Controller
 
             return view('pages.user.lessons.index', [
                 'models'   => $models,
-                'title'    => '新着',
-                'breadcrumb'    => '「'.$q['q'].'」の検索結果'
+                'title'    => '「'.$q['q'].'」の検索結果',
+                'breadcrumb'    => '「'.$q['q'].'」の検索結果',
+                'searchQuery'   => false,
             ]);
         } else {
 
@@ -59,7 +61,8 @@ class IndexController extends Controller
 
             return view('pages.user.lessons.index', [
                 'models'   => $models,
-                'title'    => '新着'
+                'title'    => '新着',
+                'searchQuery'   => false
             ]);
         }
 
@@ -75,6 +78,8 @@ class IndexController extends Controller
             // }
             $models = $this->lessonRepository->lessonsByTopSearch($q);
 
+
+
             view()->share('authUser', $this->userService->getUser());
 
             $search_result = implode('-', $q);
@@ -87,8 +92,9 @@ class IndexController extends Controller
 
         return view('pages.user.lessons.index', [
             'models'   => $models,
-            'title'    => '新着',
-            'breadcrumb'    => '「'.$search_result.'」の検索結果'
+            'title'    => '「'.$search_result.'」の検索結果',
+            'searchQuery'   => true,
+            'q'  => $q
         ]);
     }
 
