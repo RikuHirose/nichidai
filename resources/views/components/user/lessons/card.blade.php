@@ -25,12 +25,10 @@
           <table class="table table-condensed">
             <tbody>
               <tr>
-                @foreach($model->present()->evaluate_rate as $key => $values)
-                  @foreach($values as $k => $v)
-                    <td class="mw60 success text-success">{{ $k }}</td>
-                    <td class="mw60">{{ $v }}</td>
-                    <td class="hidden-sm hidden-md hidden-lg"></td>
-                  @endforeach
+                @foreach($model->present()->card_evaluate as $k => $v)
+                  <td class="mw60 success text-success">{{ $k }}</td>
+                  <td class="mw60">{{ $v }}</td>
+                  <td class="hidden-sm hidden-md hidden-lg"></td>
                 @endforeach
               </tr>
             </tbody>
