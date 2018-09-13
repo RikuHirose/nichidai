@@ -46,7 +46,11 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
     public function lessonsBySearch($q)
     {
-        $models = $this->getBlankModel()->where('lesson_professor', 'like', "%{$q}%")->orwhere('sub_title', 'like', "%{$q}%")->orwhere('subsub_title', 'like', "%{$q}%")->paginate(15);
+        $models = $this->getBlankModel()
+        ->where('lesson_professor', 'like', "%{$q}%")
+        ->orwhere('sub_title', 'like', "%{$q}%")
+        ->orwhere('subsub_title', 'like', "%{$q}%")
+        ->paginate(15);
 
         return $models;
     }

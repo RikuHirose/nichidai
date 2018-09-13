@@ -34,6 +34,7 @@
     @each('components.user.lessons.card', $models, 'model')
   </div>
 
+<!-- paginate -->
   @if($searchQuery == true)
     {{ $models->appends($q)->links() }}
   @else

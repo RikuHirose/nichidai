@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Http\Requests\SettingRequest;
 use App\Services\UserServiceInterface;
 
 class AuthController extends Controller
@@ -25,6 +26,7 @@ class AuthController extends Controller
     public function postSignIn(SignInRequest $request)
     {
         $user = $this->userService->signIn($request->all());
+
         if (empty($user)) {
             return redirect()->action('User\AuthController@getSignIn');
         }
@@ -53,5 +55,20 @@ class AuthController extends Controller
         $this->userService->signOut();
 
         return \Redirect::action('User\AuthController@getSignIn');
+    }
+
+    public function getSetting()
+    {
+        view()->share('authUser', $this->userService->getUser());
+        return view('pages.user.auth.setting', [
+        ]);
+    }
+
+    public function postSetting(SettingRequest $request)
+    {
+        $user = $this->userService->getUser();
+        $this->userService->setting($request->all(), $user);
+
+        return view('pages.user.auth.setting', ['success' => 'Profile updated!']);
     }
 }

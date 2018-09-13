@@ -109,6 +109,11 @@
         </tbody>
       </table>
     </div>
+
+    <!-- cashe -->
+    <div class="col-sm-12 col-xs-12">
+      
+    </div>
   </div>
 </div>
 @stop

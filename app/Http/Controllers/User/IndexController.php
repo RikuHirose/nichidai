@@ -50,18 +50,19 @@ class IndexController extends Controller
             // \SeoHelper::setJobIndexSeo($title);
 
             return view('pages.user.lessons.index', [
-                'models'   => $models,
-                'title'    => '「'.$q['q'].'」の検索結果',
+                'models'        => $models,
+                'title'         => '「'.$q['q'].'」の検索結果',
                 'breadcrumb'    => '「'.$q['q'].'」の検索結果',
-                'searchQuery'   => false,
+                'searchQuery'   => true,
+                'q'             => $q
             ]);
         } else {
 
             $models = $this->lessonRepository->lessons();
 
             return view('pages.user.lessons.index', [
-                'models'   => $models,
-                'title'    => '新着',
+                'models'        => $models,
+                'title'         => '新着',
                 'searchQuery'   => false
             ]);
         }

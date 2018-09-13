@@ -1,7 +1,9 @@
 <header class="Header">
     <div class="container-fluid">
         <div class="row">
-        <div class="col-md-4 col-xs-2 pull-left"></div>
+        <div class="col-md-4 col-xs-2 pull-left">
+            <a href="/">top</a>
+        </div>
         <div class="col-md-4 col-xs-8"></div>
         <div class="col-md-4 col-xs-2">
             <nav class="pull-right">
@@ -19,6 +21,9 @@
                         @endif
                     </ul>
                 </div> -->
+                @if(!empty($authUser))
+                    <a href="{{ $authUser['id'] }}">{{ $authUser['name'] }}</a>
+                @endif
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropdown button
@@ -29,8 +34,8 @@
                                 <li><a href="{{ action('User\AuthController@getSignIn') }}">Sign In</a></li>
                                 <li><a href="{{ action('User\AuthController@getSignUp') }}">Sign Up</a></li>
                             @else
-                                <li><a href="{{ action('User\AuthController@getSignIn') }}">Setting</a></li>
-                                <li><a href="{{ action('User\AuthController@getSignUp') }}">Sign Out</a></li>
+                                <li><a href="{{ action('User\AuthController@getSetting') }}">Setting</a></li>
+                                <li><a href="{{ action('User\AuthController@postSignOut') }}">Sign Out</a></li>
                             @endif
                         </ul>
                     </div>
