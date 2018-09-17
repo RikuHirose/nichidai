@@ -81,6 +81,25 @@ class LessonPresenter extends BasePresenter
         return $breadcrumb;
     }
 
+    public function breadcrumbReview()
+    {
+        $sub_title = $this->entity->sub_title;
+        $subsub_title = $this->entity->subsub_title;
+        $lesson_title = $this->entity->lesson_title;
+        $lesson_professor = $this->entity->lesson_professor;
+
+        $lesson_title = $lesson_title.'('.$lesson_professor.')';
+
+        if(!$subsub_title == ''){
+            $breadcrumb = array('トップ', $sub_title, $subsub_title, $lesson_title, 'レビュー');
+        } else {
+            $breadcrumb = array('トップ', $sub_title, $lesson_title, 'レビュー');
+        }
+
+
+        return $breadcrumb;
+    }
+
 
     public function evaluate_rate()
     {

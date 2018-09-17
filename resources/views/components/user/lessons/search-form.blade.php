@@ -12,72 +12,84 @@
         <!-- <input name="utf8" type="hidden" value="✓"> -->
         <div class="row">
           <div class="form-group col-sm-6 col-xs-12">
-            <input type="text" name="lesson_title" id="name" placeholder="授業名" class="form-control">
+            {{ Form::text('lesson_title', isset($q['lesson_title']) ? $q['lesson_title'] : '', ['class' => 'form-control', 'placeholder' => '授業名', ]) }}
           </div>
           <div class="form-group col-sm-6 col-xs-12">
-            <input type="text" name="lesson_professor" id="content" placeholder="教授名" class="form-control">
+            {{ Form::text('lesson_professor', isset($q['lesson_professor']) ? $q['lesson_professor'] : '', ['class' => 'form-control', 'placeholder' => '教授名', ]) }}
           </div>
         </div>
         <div class="row">
           <div class="form-group col-sm-3 col-xs-6">
-            <select name="year" id="year" class="form-control">
-              <option value="">年度</option>
-              <option selected="selected" value="2018">2018年度</option>
-            </select>
+            {{ Form::select('year',
+                [
+                  '' => '年度',
+                  '2018' => '2018年度',
+                ], isset($q['year']) ? $q['year'] : '', ['class' => 'form-control'])
+            }}
           </div>
           <div class="form-group col-sm-3 col-xs-4">
-            <select name="lesson_term" id="term" class="form-control">
-              <option selected="selected" value="">学期</option>
-              <option value="前期">前期</option>
-              <option value="後期">後期</option>
-              <option value="通年">通年</option>
-            </select>
+            {{ Form::select('lesson_term',
+                [
+                  '' => '学期',
+                  '前期' => '前期のみ',
+                  '後期' => '後期のみ',
+                  '通年' => '通年',
+                ], isset($q['lesson_term']) ? $q['lesson_term'] : '', ['class' => 'form-control'])
+            }}
           </div>
           <div class="form-group col-sm-3 col-xs-4">
-            <select name="lesson_date" id="day" class="form-control">
-              <option value="">曜日</option>
-              <option value="月">月</option>
-              <option value="火">火</option>
-              <option value="水">水</option>
-              <option value="木">木</option>
-              <option value="金">金</option>
-              <option value="土">土</option>
-            </select>
+            {{ Form::select('lesson_date',
+                [
+                  ''   => '曜日',
+                  '月'  => '月',
+                  '火'  => '火',
+                  '水'  => '水',
+                  '木'  => '木',
+                  '金'  => '金',
+                  '土'  => '土',
+                ], isset($q['lesson_date']) ? $q['lesson_date'] : '', ['class' => 'form-control'])
+            }}
           </div>
           <div class="form-group col-sm-3 col-xs-4">
-            <select name="lesson_hour" id="hour" class="form-control">
-              <option value="">時限</option>
-              <option value="1">１</option>
-              <option value="2">２</option>
-              <option value="3">３</option>
-              <option value="4">４</option>
-              <option value="5">５</option>
-              <option value="6">６</option>
-            </select>
+            {{ Form::select('lesson_hour',
+                [
+                  ''   => '時限',
+                  '1'  => '1',
+                  '2'  => '2',
+                  '3'  => '3',
+                  '4'  => '4',
+                  '5'  => '5',
+                  '6'  => '6',
+                ], isset($q['lesson_hour']) ? $q['lesson_hour'] : '', ['class' => 'form-control'])
+            }}
           </div>
         </div>
 
         <div class="row">
           <div class="form-group col-sm-3 col-xs-12">
-            <select name="evaluate_exam" id="evaluation" class="form-control">
-              <option value="">定期試験の割合</option>
-              <option value="100">100%</option>
-              <option value="75">〜75%</option>
-              <option value="50">〜50%</option>
-              <option value="0">0%</option>
-            </select>
+            {{ Form::select('evaluate_exam',
+                [
+                  ''   => '定期試験の割合',
+                  '100'  => '100%',
+                  '75'  => '〜75%',
+                  '50'  => '〜50%',
+                  '0'  => '0%',
+                ], isset($q['evaluate_exam']) ? $q['evaluate_exam'] : '', ['class' => 'form-control'])
+            }}
           </div>
           <div class="form-group col-sm-3 col-xs-12">
-            <select name="evaluate_report" id="evaluation" class="form-control">
-              <option value="">レポートの割合</option>
-              <option value="100">100%</option>
-              <option value="75">〜75%</option>
-              <option value="50">〜50%</option>
-              <option value="0">0%</option>
-            </select>
+            {{ Form::select('evaluate_report',
+                [
+                  ''   => 'レポートの割合',
+                  '100'  => '100%',
+                  '75'  => '〜75%',
+                  '50'  => '〜50%',
+                  '0'  => '0%',
+                ], isset($q['evaluate_report']) ? $q['evaluate_report'] : '', ['class' => 'form-control'])
+            }}
           </div>
           <div class="form-group col-sm-6 col-xs-12">
-            <input type="text" name="lesson_content" id="content" placeholder="授業内容" class="form-control">
+            {{ Form::text('lesson_content', isset($q['lesson_content']) ? $q['lesson_content'] : '', ['class' => 'form-control', 'placeholder' => '授業内容', ]) }}
           </div>
         </div>
 

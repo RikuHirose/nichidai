@@ -15,5 +15,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('sign-out', 'Admin\AuthController@postSignOut')->name('signOut');
         Route::get('/{any?}', 'Admin\IndexController@index')->name('index')->where('any', '.*');
+
+        Route::resource('lessons', 'Admin\LessonController');
     });
 });

@@ -1,7 +1,7 @@
 <div class="LessonDetail__header">
   <div class="LessonDetail__title">
     <div class="LessonDetail__item pull-left"><h1>{{ $model->lesson_title }}</h1></div>
-    <div class="LessonDetail__nav pull-right"><a class="btn btn-primary btn-go" onclick="gtag('event', 'click', {'event_category': 'lesson', 'event_label': 'to_review'});" href="/lesson/17457/result/new">レビューを書く</a></div>
+    <div class="LessonDetail__nav pull-right"><a class="btn btn-primary btn-go" href="{{ route('lesson.review.get', [$model->id]) }}">レビューを書く</a></div>
     <div class="clearfix"></div>
   </div>
   <div class="table-responsive">

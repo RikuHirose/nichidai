@@ -1,17 +1,26 @@
-@extends('layouts.admin.application')
+
+
+@extends('layouts.admin.application',['menu' => 'dashboard'] )
 
 @section('metadata')
 @stop
 
 @section('styles')
-    @parent
 @stop
 
 @section('scripts')
-    @parent
+@stop
+
+@section('title')
+  {{ config('site.name') }} | Admin | Dashboard
+@stop
+
+@section('header')
+  Dashboard
 @stop
 
 @section('content')
-    <div id="root"></div>
+  <div>
+    <h3>Hi, Welcome to Our Dash Board!</h3>
+  </div>
 @stop
-

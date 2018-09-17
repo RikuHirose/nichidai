@@ -23,8 +23,17 @@ Route::group([], function () {
     Route::group(['middleware' => ['user.auth']], function () {
         Route::get('signout', 'User\AuthController@postSignOut')->name('signOut.post');
 
-        Route::get('setting', 'User\AuthController@getSetting')->name('setting.get');
-        Route::post('setting', 'User\AuthController@postSetting')->name('setting.post');
+        // review
+        Route::group(['prefix' => 'lessons/{lesson}/', 'as' => 'lesson.'], function () {
+            Route::get('review', 'User\LessonController@getReview')->name('review.get');
+            Route::post('review', 'User\LessonController@postReview')->name('review.post');
+        });
+
+        Route::group(['prefix' => 'user/', 'as' => 'user.'], function () {
+            Route::get('index', 'User\UserController@index')->name('index');
+            Route::get('setting', 'User\UserController@getSetting')->name('setting.get');
+            Route::post('setting', 'User\UserController@postSetting')->name('setting.post');
+        });
     });
 
     // Job

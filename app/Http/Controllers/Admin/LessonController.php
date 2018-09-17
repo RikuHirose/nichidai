@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\AdminUserServiceInterface;
 
-class IndexController extends Controller
+class LessonController extends Controller
 {
     /** @var AdminUserServiceInterface */
     protected $adminUserService;

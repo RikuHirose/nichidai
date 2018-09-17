@@ -20,7 +20,7 @@
 @section('content')
 
     <div class="p-auth-box">
-        <form action="{!! action('User\AuthController@postSetting') !!}" method="post">
+        <form action="{!! action('User\UserController@postSetting') !!}" method="post">
             {!! csrf_field() !!}
             <div class="p-auth-box__inner">
                 <h4 class="p-auth-box__header">プロフィール編集</h4>
@@ -46,17 +46,11 @@
                            placeholder="@lang('user.pages.auth.messages.email')" value="{{ $authUser->email }}">
                 </div>
                 <input type="hidden" name="id" value="{{ $authUser->id }}">
-               <!--  <div class="input-group">
-                    <input type="password" name="password" class="p-auth-box__field form-control"
-                           placeholder="@lang('user.pages.auth.messages.password')">
-                </div> -->
-
+                 <button type="submit" class="btn btn-primary">Submit</button>
 
             </div>
-
-            <button class="p-auth-box__button btn btn-primary">@lang('user.pages.auth.buttons.setting')</button>
-            <p class="p-auth-box__link"><a href="{!! action('User\PasswordController@getForgotPassword') !!}">@lang('user.pages.auth.messages.forgot_password')</a></p>
         </form>
+
     </div>
 
 @stop

@@ -1,12 +1,19 @@
 <?php
 namespace App\Http\Requests;
 
-class SettingRequest extends Request
+class ReviewRequest extends Request
 {
     /*
      * Redirect action when validate fail
      * */
-    protected $redirectAction = 'User\AuthController@getSetting';
+    protected function getRedirectUrl()
+    {
+       $url = $this->redirector->getUrlGenerator();
+
+       $lesson = $this->route()->parameter('lesson');
+
+       return $url->route('lesson.review.get', $lesson);
+    }
 
     /**
      * Determine if the user is authorized to make this request.
@@ -27,16 +34,14 @@ class SettingRequest extends Request
     {
 
         return [
-            'name'    => 'string|nullable',
-            'email'    => 'required|email|',
+            'review_content'    => 'string|required|between:5,125',
+            'privacy_check'     => '|accepted'
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required'    => trans('validation.required'),
-            'email.email'       => trans('validation.email'),
 
         ];
     }

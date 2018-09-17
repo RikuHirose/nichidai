@@ -50,6 +50,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         ->where('lesson_professor', 'like', "%{$q}%")
         ->orwhere('sub_title', 'like', "%{$q}%")
         ->orwhere('subsub_title', 'like', "%{$q}%")
+        ->orwhere('lesson_title', 'like', "%{$q}%")
         ->paginate(15);
 
         return $models;
@@ -62,6 +63,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
         if(isset($q['lesson_title'])) {
             $lesson_title  = $q['lesson_title'];
+
             $models = $models->when($lesson_title, function ($query) use ($lesson_title) {
                 return $query->where('lesson_title', 'like', "%{$lesson_title}%");
             });
@@ -126,5 +128,12 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         $models = $models->paginate(15);
 
         return $models;
+    }
+
+    public function show($id)
+    {
+        $model = $this->getBlankModel()->where('id', $id)->get();
+
+        return $model;
     }
 }
