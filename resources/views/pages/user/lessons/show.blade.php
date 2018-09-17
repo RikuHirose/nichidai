@@ -30,12 +30,12 @@
       <div class="card">
           <div class="card-body">
             <h5 class="card-title">授業の目標</h5>
-            <p class="card-text">{{ $model->lesson_objectives }}</p>
+            <p class="card-text">{{ $model->present()->lesson_objectives }}</p>
           </div>
 
           <div class="card-body">
             <h5 class="card-title">授業概要</h5>
-            <p class="card-text">{{ $model->lesson_content }}</p>
+            <p class="card-text">{{ $model->present()->lesson_content }}</p>
           </div>
       </div>
     </div>
@@ -49,17 +49,15 @@
             <?php $evaluates = $model->present()->evaluate_rate_key;
             ?>
               <evaluate-chart :chart-data="{{json_encode($model->present()->evaluate_rate)}}"></evaluate-chart>
-<!--             evaluate_exam
-            evaluate_report
-            evaluate_mintest
-            evaluate_apply
-            evaluate_others
-            evaluate_total -->
             @endif
           </div>
           <div class="card-body">
             <h5 class="card-title">評価の特記事項</h5>
-            {{ $model->lesson_evaluation }}
+            @if(!$model->lesson_evaluation === '')
+              {{ $model->lesson_evaluation }}
+            @else
+              ー
+            @endif
           </div>
       </div>
        <div class="card">
@@ -80,12 +78,12 @@
       <div class="card">
           <div class="card-body">
             <h5 class="card-title">テキスト</h5>
-            <p class="card-text">{{ $model->lesson_textbook }}</p>
+              <p class="card-text">{{ $model->present()->lesson_textbook }}</p>
           </div>
 
           <div class="card-body">
             <h5 class="card-title">参考文献</h5>
-            <p class="card-text">{{ $model->lesson_read }}</p>
+              <p class="card-text">{{ $model->present()->lesson_read }}</p>
           </div>
       </div>
     </div>
@@ -96,23 +94,31 @@
         <tbody>
           <tr>
             <td>授業形式</td>
-            <td>{{ $model->lesson_style }}</td>
+            <td>{{ $model->present()->lesson_style }}</td>
           </tr>
           <tr>
             <td>オフィスアワー(授業相談)</td>
-            <td>{{ $model->lesson_officehour }}</td>
+            <td>{{ $model->present()->lesson_officehour }}</td>
           </tr>
           <tr>
             <td>事前学習の内容など，学生へのメッセージ</td>
-            <td>{{ $model->lesson_info }}</td>
+            <td>{{ $model->present()->lesson_info }}</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- cashe -->
+    <!-- reviews -->
     <div class="col-sm-12 col-xs-12">
-      
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">レビュー</h5>
+            @each('components.user.lessons.review', $reviews, 'review')
+          </div>
+          <p class="text-center">
+            <a href="http://localhost:8000/lessons/2/review" class="btn btn-primary btn-go">レビューを書く</a>
+          </p>
+      </div>
     </div>
   </div>
 </div>

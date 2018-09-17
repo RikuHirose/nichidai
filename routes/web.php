@@ -23,10 +23,15 @@ Route::group([], function () {
     Route::group(['middleware' => ['user.auth']], function () {
         Route::get('signout', 'User\AuthController@postSignOut')->name('signOut.post');
 
-        // review
+
         Route::group(['prefix' => 'lessons/{lesson}/', 'as' => 'lesson.'], function () {
+            // review
             Route::get('review', 'User\LessonController@getReview')->name('review.get');
             Route::post('review', 'User\LessonController@postReview')->name('review.post');
+
+            // favorite
+            Route::post('favorite', 'User\LessonController@postFavorite')->name('favorite.post');
+            
         });
 
         Route::group(['prefix' => 'user/', 'as' => 'user.'], function () {

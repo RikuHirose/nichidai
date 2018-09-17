@@ -3,8 +3,14 @@
     @if($loop->iteration < 4)
       <li class="list-group-item">{{ $v->lesson_round }}  {{ $v->lesson_round_title }}</li>
     @else
-      <li class="list-group-item list-group-item-display">{{ $v->lesson_round }}  {{ $v->lesson_round_title }}sssssss</li>
+      <div class="collapse" id="collapseExample">
+          <li class="list-group-item list-group-item-display">{{ $v->lesson_round }}  {{ $v->lesson_round_title }}</li>
+      </div>
+
     @endif
   @endforeach
-  <p id="" >授業計画を全部見る</p>
+  <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    授業計画を全部見る
+  </a>
 </ul>
+
