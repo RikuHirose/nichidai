@@ -3,6 +3,7 @@
 namespace App\Presenters;
 
 use LaravelRocket\Foundation\Presenters\BasePresenter;
+use \App\Models\User;
 
 /**
  *
@@ -45,6 +46,14 @@ class ReviewPresenter extends BasePresenter
     public function toString()
     {
         return $this->entity->present()->id;
+    }
+
+    public function user_name($user_id)
+    {
+        $name = User::where('id', $user_id)->pluck('name');
+        $name = $name[0];
+
+        return $name;
     }
 
 

@@ -139,4 +139,95 @@ class LessonPresenter extends BasePresenter
     }
 
 
+    public function lesson_objectives(){
+
+        if(!$this->entity->lesson_objectives == null)
+        {
+            $this->entity->lesson_objectives = $this->entity->lesson_objectives;
+        }
+        else
+        {
+            $this->entity->lesson_objectives = 'ー';
+        }
+        return $this->entity->lesson_objectives;
+    }
+
+    public function lesson_content(){
+
+        if(!$this->entity->lesson_content == null)
+        {
+            $this->entity->lesson_content = $this->entity->lesson_content;
+        }
+        else
+        {
+            $this->entity->lesson_content = 'ー';
+        }
+        return $this->entity->lesson_content;
+    }
+
+    public function lesson_textbook(){
+
+        if(!$this->entity->lesson_textbook == null)
+        {
+            $this->entity->lesson_textbook = $this->entity->lesson_textbook;
+        }
+        else
+        {
+            $this->entity->lesson_textbook = 'ー';
+        }
+        return $this->entity->lesson_textbook;
+    }
+
+    public function lesson_read(){
+
+        if(!$this->entity->lesson_read == null)
+        {
+            $this->entity->lesson_read = $this->entity->lesson_read;
+        }
+        else
+        {
+            $this->entity->lesson_read = 'ー';
+        }
+        return $this->entity->lesson_read;
+    }
+
+    public function lesson_style(){
+
+        if(!$this->entity->lesson_style == null)
+        {
+            $this->entity->lesson_style = $this->entity->lesson_style;
+        }
+        else
+        {
+            $this->entity->lesson_style = 'ー';
+        }
+        return $this->entity->lesson_style;
+    }
+
+    public function lesson_officehour(){
+
+        if(!$this->entity->lesson_officehour == null)
+        {
+            $this->entity->lesson_officehour = $this->entity->lesson_officehour;
+        }
+        else
+        {
+            $this->entity->lesson_officehour = 'ー';
+        }
+        return $this->entity->lesson_officehour;
+    }
+
+    public function lesson_info(){
+
+        if(!$this->entity->lesson_info == null)
+        {
+            $this->entity->lesson_info = $this->entity->lesson_info;
+        }
+        else
+        {
+            $this->entity->lesson_info = 'ー';
+        }
+        return $this->entity->lesson_info;
+    }
+
 }

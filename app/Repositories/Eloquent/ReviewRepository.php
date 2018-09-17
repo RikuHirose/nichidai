@@ -35,4 +35,12 @@ class ReviewRepository extends SingleKeyModelRepository implements ReviewReposit
         return parent::buildQueryByFilter($query, $filter);
     }
 
+    public function getReviews($lesson_id)
+    {
+        $review = $this->getBlankModel()->where('lesson_id', $lesson_id)->get();
+
+        return $review;
+    }
+
+
 }

@@ -48,10 +48,12 @@ class LessonController extends Controller
 
         $lesson_schedule = $this->lessonScheduleRepository->getRounds($model->id);
 
+        $reviews = $this->reviewRepository->getReviews($model->id);
 
         return view('pages.user.lessons.show', [
             'model'            => $model,
-            'lesson_schedule'  => $lesson_schedule
+            'lesson_schedule'  => $lesson_schedule,
+            'reviews'          => $reviews
         ]);
     }
 
@@ -85,6 +87,14 @@ class LessonController extends Controller
             'model'   => $lesson,
             'success' => 'レビューを投稿しました'
         ]);
+    }
+
+
+    // favorite
+
+    public function postFavorite(Lesson $lesson, Request $request)
+    {
+        var_dump($request->id);die;
     }
 
 }
