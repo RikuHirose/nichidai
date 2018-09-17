@@ -3,6 +3,12 @@ namespace App\Http\Requests;
 
 class SignInRequest extends Request
 {
+
+    /*
+     * Redirect action when validate fail
+     * */
+    protected $redirectAction = 'User\AuthController@getSignIn';
+
     /**
      * Determine if the user is authorized to make this request.
      *

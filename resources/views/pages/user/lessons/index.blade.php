@@ -22,7 +22,7 @@
 @endif
 <!-- search -->
 <div class="col-xs-12">
-  @include('components.user.lessons.search-form')
+  @include('components.user.lessons.search-form', ['q' => $q])
 </div>
 
 <!-- lessons -->

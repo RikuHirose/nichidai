@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use LaravelRocket\Foundation\Http\Requests\PaginationRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\UserServiceInterface;
+use App\Http\Requests\SearchRequest;
 
 
 
@@ -30,7 +31,7 @@ class IndexController extends Controller
     ) {
         $this->lessonRepository         = $lessonRepository;
         $this->userService           = $userService;
-
+        view()->share('authUser', $this->userService->getUser());
     }
 
 
@@ -43,7 +44,6 @@ class IndexController extends Controller
             $q['q'] = htmlspecialchars($q['q'], ENT_QUOTES, "UTF-8" );
             $models = $this->lessonRepository->lessonsBySearch($q['q']);
 
-            view()->share('authUser', $this->userService->getUser());
 
             // // set SEO information
             // $title = trans('job.JobIndexRec.title');
@@ -63,13 +63,14 @@ class IndexController extends Controller
             return view('pages.user.lessons.index', [
                 'models'        => $models,
                 'title'         => '新着',
-                'searchQuery'   => false
+                'searchQuery'   => false,
+                'q'             => $q
             ]);
         }
 
     }
 
-    public function searchIndex(Request $request)
+    public function searchIndex(SearchRequest $request)
     {
         $q = \Request::query();
 
@@ -80,10 +81,13 @@ class IndexController extends Controller
             $models = $this->lessonRepository->lessonsByTopSearch($q);
 
 
-
-            view()->share('authUser', $this->userService->getUser());
-
-            $search_result = implode('-', $q);
+            $search_result = '';
+            foreach ($q as $key => $value) {
+                if($value != null) {
+                    $search_result .= '-'.$value;
+                }
+            }
+            $search_result = $search_result.'-';
 
             // // set SEO information
             // $title = trans('job.JobIndexRec.title');

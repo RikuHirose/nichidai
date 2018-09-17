@@ -33,4 +33,15 @@ class UserPresenter extends BasePresenter
 
         return $model;
     }
+
+    public function breadcrumb()
+    {
+
+        $user_name = $this->entity->name;
+
+        $breadcrumb = array('トップ', $user_name);
+
+
+        return $breadcrumb;
+    }
 }
