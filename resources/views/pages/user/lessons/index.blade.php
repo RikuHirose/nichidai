@@ -35,11 +35,12 @@
   </div>
 
 <!-- paginate -->
+  <div class="row">
   @if($searchQuery == true)
     {{ $models->appends($q)->links() }}
   @else
     {{ $models->links() }}
   @endif
-
+  </div>
 </div>
 @stop

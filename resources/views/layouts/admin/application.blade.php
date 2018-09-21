@@ -10,7 +10,7 @@
   <meta name="csrf-token" content="{!! csrf_token() !!}">
 </head>
 <body class="{!! isset($bodyClasses) ? $bodyClasses : '' !!}">
-<div id="app">
+<div id="admin">
   @if( isset($noFrame) && $noFrame == true )
     @yield('content')
   @else

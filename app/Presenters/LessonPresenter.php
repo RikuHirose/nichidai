@@ -230,4 +230,25 @@ class LessonPresenter extends BasePresenter
         return $this->entity->lesson_info;
     }
 
+    public function lesson_name_admin() {
+        $sub_title = $this->entity->sub_title;
+        $subsub_title = $this->entity->subsub_title;
+        $lesson_title = $this->entity->lesson_title;
+
+        if(!$subsub_title == ''){
+            $name = $sub_title.'/'.$subsub_title.'/'.$lesson_title;
+        } else {
+            $name = $sub_title.'/'.$lesson_title;
+        }
+
+
+        return $name;
+    }
+
+    public function lesson_date_admin() {
+        $date = $this->entity->lesson_date.'/'.$this->entity->lesson_hour;
+
+        return $date;
+    }
+
 }

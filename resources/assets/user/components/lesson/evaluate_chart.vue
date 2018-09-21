@@ -29,7 +29,7 @@ export default {
   },
 
   created () {
-    console.log(this.chartData)
+
     const keys = Object.keys(this.chartData)
     const labels = []
     const data = []

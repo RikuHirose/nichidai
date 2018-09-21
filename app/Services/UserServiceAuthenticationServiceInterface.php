@@ -5,4 +5,5 @@ use LaravelRocket\ServiceAuthentication\Services\ServiceAuthenticationServiceInt
 
 interface UserServiceAuthenticationServiceInterface extends ServiceAuthenticationServiceInterface
 {
+
 }
