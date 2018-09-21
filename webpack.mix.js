@@ -102,6 +102,7 @@ let mix = require('laravel-mix');
 
 mix
   .js('resources/assets/user/src/app.js', 'public/static/user/js')
+  .js('resources/assets/admin/src/app.js', 'public/static/admin/js')
   .sass('resources/assets/admin/scss/app.scss', 'public/static/admin/css')
   .sass('resources/assets/user/scss/app.scss', 'public/static/user/css')
   // .sourceMaps()

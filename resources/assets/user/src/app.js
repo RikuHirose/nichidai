@@ -2,6 +2,7 @@ import jQuery from "jquery";
 import 'bootstrap';
 import "chart.js";
 import "hchs-vue-charts";
+import axios from 'axios';
 window.$ = window.jQuery = jQuery;
 
 
@@ -27,6 +28,7 @@ Vue.use(window.VueCharts);
 
 
 Vue.component('evaluate-chart', require('../components/lesson/evaluate_chart.vue'));
+Vue.component('favorite-lesson', require('../components/lesson/favorite_lesson.vue'));
 
 const app = new Vue({
     el: '#app'

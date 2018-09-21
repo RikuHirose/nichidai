@@ -6,6 +6,7 @@ use App\Services\UserServiceInterface;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\ForgotPasswordRequest;
 
+
 class PasswordController extends PasswordControllerBase
 {
     /** @var string $emailSetPageView */
@@ -14,10 +15,15 @@ class PasswordController extends PasswordControllerBase
     /** @var string $passwordResetPageView */
     protected $passwordResetPageView = 'pages.user.auth.reset-password';
 
+    /** @var UserServiceAuthenticationServiceInterface */
+    protected $authenticatableService;
+
     /** @var string $returnAction */
     protected $returnAction = 'User\IndexController@index';
 
-    public function __construct(UserServiceInterface $userService)
+    public function __construct(
+        UserServiceInterface $userService
+    )
     {
         parent::__construct($userService);
     }

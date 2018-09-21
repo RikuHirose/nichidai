@@ -31,7 +31,7 @@ Route::group([], function () {
 
             // favorite
             Route::post('favorite', 'User\LessonController@postFavorite')->name('favorite.post');
-            
+
         });
 
         Route::group(['prefix' => 'user/', 'as' => 'user.'], function () {

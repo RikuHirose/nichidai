@@ -16,6 +16,8 @@ class LessonTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('faculty_id')->unsigned();
+            $table->bigInteger('popular_id')->default(0);
+            $table->bigInteger('recommend_id')->default(0);
 
 
             $table->string('sub_title')->nullable();

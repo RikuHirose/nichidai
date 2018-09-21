@@ -8,9 +8,14 @@
           <div class="fl hidden"><p></p></div>
         </div>
       </div>
-      <form action="/q" accept-charset="UTF-8" method="get">
+      <form action="/admin/q" accept-charset="UTF-8" method="get">
+         {{ csrf_field() }}
         <!-- <input name="utf8" type="hidden" value="✓"> -->
-        {{ csrf_field() }}
+        <div class="row">
+          <div class="form-group col-sm-3 col-xs-6">
+            {{ Form::text('id', isset($q['id']) ? $q['id'] : '', ['class' => 'form-control', 'placeholder' => 'ID', ]) }}
+          </div>
+        </div>
         <div class="row">
           <div class="form-group col-sm-6 col-xs-12">
             {{ Form::text('lesson_title', isset($q['lesson_title']) ? $q['lesson_title'] : '', ['class' => 'form-control', 'placeholder' => '授業名', ]) }}
