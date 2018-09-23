@@ -70,5 +70,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\ReviewRepositoryInterface::class,
             \App\Repositories\Eloquent\ReviewRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\AffiliateRepositoryInterface::class,
+            \App\Repositories\Eloquent\AffiliateRepository::class
+        );
+
     }
 }

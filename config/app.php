@@ -245,6 +245,7 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
 
+
         'DateTimeHelper'   => LaravelRocket\Foundation\Facades\DateTimeHelper::class,
         'DataHelper'       => LaravelRocket\Foundation\Facades\DataHelper::class,
         'LocaleHelper'     => LaravelRocket\Foundation\Facades\LocaleHelper::class,

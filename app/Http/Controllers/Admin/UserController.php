@@ -4,33 +4,70 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\AdminUserServiceInterface;
 
-use App\Repositories\LessonRepositoryInterface;
-use App\Repositories\LessonScheduleRepositoryInterface;
-use App\Repositories\ReviewRepositoryInterface;
-use App\Repositories\AffiliateRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 
-use App\Models\Lesson;
-use App\Models\Affiliate;
 use Illuminate\Http\Request;
 
-class LessonController extends Controller
+class UserController extends Controller
 {
     /** @var AdminUserServiceInterface */
     protected $adminUserService;
 
     public function __construct(
         AdminUserServiceInterface          $adminUserService,
-        LessonRepositoryInterface          $lessonRepository,
-        LessonScheduleRepositoryInterface  $lessonScheduleRepository,
-        ReviewRepositoryInterface          $reviewRepository,
-        AffiliateRepositoryInterface       $affiliateRepository
+        UserRepositoryInterface            $userRepository
     ) {
         $this->adminUserService            = $adminUserService;
-        $this->lessonRepository            = $lessonRepository;
-        $this->lessonScheduleRepository    = $lessonScheduleRepository;
-        $this->reviewRepository            = $reviewRepository;
-        $this->affiliateRepository         = $affiliateRepository;
+        $this->userRepository              = $userRepository;
     }
+
+
+    public function index(Request $request)
+    {
+        $q = \Request::query();
+
+        if ($this->adminUserService->isSignedIn()) {
+            /** @var \App\Models\AdminUser $agent */
+            $adminUser = $this->adminUserService->getUser();
+            $users = $this->userRepository->users();
+
+
+            return view('pages.admin.index', [
+                'users'        => $users,
+                'searchQuery'   => false,
+                'q'             => $q
+            ]);
+        }
+
+        return view('pages.admin.index', []);
+    }
+
+
+
+    public function searchIndexAdmin(Request $request)
+    {
+        $q = \Request::query();
+
+        if(isset($q)) {
+
+            $users = $this->userRepository->usersByTopSearchAdmin($q);
+
+            $search_result = '';
+            foreach ($q as $key => $value) {
+                if($value != null) {
+                    $search_result .= '-'.$value;
+                }
+            }
+            $search_result = $search_result.'-';
+        }
+
+        return view('pages.admin.index', [
+            'users'   => $users,
+            'searchQuery'   => true,
+            'q'  => $q
+        ]);
+    }
+
 
     public function edit(Lesson $lesson, Request $request)
     {
@@ -90,39 +127,5 @@ class LessonController extends Controller
             'message-success',
             trans('admin.messages.general.delete_success')
         );
-    }
-
-
-
-    // Affiliate
-    public function affiliateStore(Lesson $lesson, Affiliate $affiliate, Request $request)
-    {
-        $input = $request->only($this->affiliateRepository->getBlankModel()->getFillable());
-
-        $affiliate = $this->affiliateRepository->create($input);
-
-
-
-         return redirect()->action('Admin\LessonController@edit', $input['lesson_id']);
-    }
-
-
-    public function affiliateupdate(Affiliate $affiliate, Request $request)
-    {
-        $input = $request->only($this->affiliateRepository->getBlankModel()->getFillable());
-
-
-        if(!isset($input['lesson_textbook_id'])) {
-            array_set($input, 'lesson_textbook_id', 0);
-        }
-
-        if(!isset($input['lesson_read_id'])) {
-            array_set($input, 'lesson_read_id', 0);
-        }
-
-
-        $affiliate = $this->affiliateRepository->update($affiliate, $input);
-
-        return redirect()->action('Admin\LessonController@edit', $input['lesson_id']);
     }
 }

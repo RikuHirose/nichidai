@@ -1,32 +1,20 @@
 <div class="logo">
   <a href="{{ route('admin.index') }}" class="simple-text logo-normal">
-    GAOGAO Admin
+    Admin
   </a>
 </div>
 <div class="sidebar-wrapper">
   <ul class="nav">
     <li @if(\Request::is('admin'))class="active"@endif>
-      <a href="{{ route('admin.index') }}">
+      <a href="{{ route('admin.user.index') }}">
         <i class="now-ui-icons design_app"></i>
-        <p>Dashboard</p>
+        <p>User</p>
       </a>
     </li>
     <li @if(\Request::is('admin'))class="active"@endif>
-      <a href="{{ route('admin.index') }}">
+      <a href="{{ route('admin.sidebar.index') }}">
         <i class="now-ui-icons design_app"></i>
-        <p>Dashboard</p>
-      </a>
-    </li>
-    <li @if(\Request::is('admin'))class="active"@endif>
-      <a href="{{ route('admin.index') }}">
-        <i class="now-ui-icons design_app"></i>
-        <p>Dashboard</p>
-      </a>
-    </li>
-    <li @if(\Request::is('admin'))class="active"@endif>
-      <a href="{{ route('admin.index') }}">
-        <i class="now-ui-icons design_app"></i>
-        <p>Dashboard</p>
+        <p>Sidebar</p>
       </a>
     </li>
   </ul>

@@ -31,6 +31,8 @@ class Lesson extends Base
     protected $fillable = [
         'id',
         'faculty_id',
+        'popular_id',
+        'recommend_id',
         'sub_title',
         'subsub_title',
         'lesson_title',
@@ -76,6 +78,11 @@ class Lesson extends Base
     public function lessonSchedules()
     {
         return $this->hasMany(\App\Models\LessonSchedule::class, 'lesson_id', 'id');
+    }
+
+    public function affiliates()
+    {
+        return $this->hasMany(\App\Models\Affiliate::class, 'lesson_id', 'id');
     }
 
 
