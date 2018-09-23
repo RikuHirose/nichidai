@@ -2,6 +2,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">検索項目</h3>
     </div>
+
     <div class="panel-body">
       <div class="row">
         <div class="col-xs-12">
@@ -10,10 +11,23 @@
       </div>
       <form action="/admin/q" accept-charset="UTF-8" method="get">
          {{ csrf_field() }}
-        <!-- <input name="utf8" type="hidden" value="✓"> -->
+
         <div class="row">
           <div class="form-group col-sm-3 col-xs-6">
             {{ Form::text('id', isset($q['id']) ? $q['id'] : '', ['class' => 'form-control', 'placeholder' => 'ID', ]) }}
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-6">
+            テキスト、参考文献あり
+            {{Form::checkbox('isText', 1, isset($q['isText']) ? true : null, ['class' => 'form-control'])}}
+          </div>
+          <div class="form-group col-sm-3 col-xs-6">
+            人気のlesson
+            {{Form::checkbox('popular_id', 1, isset($q['popular_id']) ? true : null, ['class' => 'form-control'])}}
+          </div>
+          <div class="form-group col-sm-3 col-xs-6">
+            オススメのlesson
+            {{Form::checkbox('recommend_id', 1, isset($q['recommend_id']) ? true : null, ['class' => 'form-control'])}}
           </div>
         </div>
         <div class="row">

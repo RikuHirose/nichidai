@@ -45,5 +45,10 @@ class ServiceServiceProvider extends ServiceProvider
             \App\Services\UserServiceAuthenticationServiceInterface::class,
             \App\Services\Production\UserServiceAuthenticationService::class
         );
+
+        $this->app->singleton(
+            \App\Services\SlackServiceInterface::class,
+            \App\Services\Production\SlackService::class
+        );
     }
 }

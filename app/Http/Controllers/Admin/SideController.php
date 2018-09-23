@@ -6,7 +6,7 @@ use App\Services\AdminUserServiceInterface;
 use App\Repositories\LessonRepositoryInterface;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class SideController extends Controller
 {
     /** @var AdminUserServiceInterface */
     protected $adminUserService;
@@ -38,29 +38,4 @@ class IndexController extends Controller
         return view('pages.admin.index', []);
     }
 
-
-
-    public function searchIndexAdmin(Request $request)
-    {
-        $q = \Request::query();
-
-
-        if(isset($q)) {
-            $models = $this->lessonRepository->lessonsByTopSearchAdmin($q);
-
-            $search_result = '';
-            foreach ($q as $key => $value) {
-                if($value != null) {
-                    $search_result .= '-'.$value;
-                }
-            }
-            $search_result = $search_result.'-';
-        }
-
-        return view('pages.admin.index', [
-            'models'   => $models,
-            'searchQuery'   => true,
-            'q'  => $q
-        ]);
-    }
 }

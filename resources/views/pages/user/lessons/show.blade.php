@@ -116,7 +116,7 @@
             @each('components.user.lessons.review', $reviews, 'review')
           </div>
           <p class="text-center">
-            <a href="http://localhost:8000/lessons/2/review" class="btn btn-primary btn-go">レビューを書く</a>
+            <a href="{{ route('lesson.review.get', $model->id) }}" class="btn btn-primary btn-go">レビューを書く</a>
           </p>
       </div>
     </div>

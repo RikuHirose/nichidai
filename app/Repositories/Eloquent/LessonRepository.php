@@ -134,11 +134,42 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
     {
         $models = $this->getBlankModel();
 
+
         if(isset($q['id'])) {
             $id  = $q['id'];
 
             $models = $models->when($id, function ($query) use ($id) {
-                return $query->where('id', $id);
+                return $query->where('id', '>=', $id);
+            });
+        }
+
+        if(isset($q['isText'])) {
+            $isText  = $q['isText'];
+
+            $models = $models->when($isText, function ($query) use ($isText) {
+                if($isText == 1) {
+                    return $query->where('lesson_read', '!=', '')->where('lesson_textbook', '!=', '');
+                }
+            });
+        }
+
+        if(isset($q['popular_id'])) {
+            $popular_id  = $q['popular_id'];
+
+            $models = $models->when($popular_id, function ($query) use ($popular_id) {
+                if($popular_id == 1) {
+                    return $query->where('popular_id', $popular_id);
+                }
+            });
+        }
+
+        if(isset($q['recommend_id'])) {
+            $recommend_id  = $q['recommend_id'];
+
+            $models = $models->when($recommend_id, function ($query) use ($recommend_id) {
+                if($recommend_id == 1) {
+                    return $query->where('recommend_id', $recommend_id);
+                }
             });
         }
 

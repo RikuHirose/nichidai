@@ -38,4 +38,30 @@ class UserRepository extends SingleKeyModelRepository implements UserRepositoryI
 
         return parent::buildQueryByFilter($query, $filter);
     }
+
+
+    public function users()
+    {
+        $users = $this->getBlankModel()->paginate(15);
+
+        return $users;
+    }
+
+
+    public function usersByTopSearchAdmin($q)
+    {
+        $models = $this->getBlankModel();
+
+        if(isset($q['id'])) {
+            $id  = $q['id'];
+
+            $models = $models->when($id, function ($query) use ($id) {
+                return $query->where('id', $id);
+            });
+        }
+
+        $models = $models->paginate(15);
+
+        return $models;
+    }
 }

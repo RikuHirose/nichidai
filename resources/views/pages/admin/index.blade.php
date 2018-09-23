@@ -20,7 +20,11 @@
 @section('content')
   <!-- search -->
   <div class="col-xs-12">
-    @include('components.admin.lessons.search-form', ['q' => $q])
+    @if(isset($models))
+      @include('components.admin.lessons.search-form', ['q' => $q])
+    @else
+      @include('components.admin.users.search-form', ['q' => $q])
+    @endif
   </div>
   <div class="col-xs-12">
     <h3>Hi, Welcome to Our Dash Board!</h3>
@@ -28,15 +32,23 @@
 
   <div class="col-xs-12">
     <div class="row">
-      @include('components.admin.lessons.table', ['models' => $models])
+      @if(isset($models))
+        @include('components.admin.lessons.table', ['models' => $models])
+      @elseif(isset($users))
+        @include('components.admin.users.table', ['models' => $users])
+      @endif
     </div>
   </div>
   
 
   <!-- paginate -->
-  @if($searchQuery == true)
-    {{ $models->appends($q)->links() }}
+  @if(isset($models))
+    @if($searchQuery == true)
+      {{ $models->appends($q)->links() }}
+    @else
+      {{ $models->links() }}
+    @endif
   @else
-    {{ $models->links() }}
+    {{ $users->links() }}
   @endif
 @stop

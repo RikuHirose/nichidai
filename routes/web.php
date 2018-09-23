@@ -46,4 +46,9 @@ Route::group([], function () {
 
     // search
     Route::get('/q', 'User\IndexController@searchIndex');
+
+    // footer Cpntact
+    Route::get('/contact', 'User\ContactController@getContact')->name('get.Contact');
+    Route::post('/contact/check', 'User\ContactController@postContactCheck')->name('post.contact.check');
+    Route::post('/contact/submit', 'User\ContactController@postContactSubmit')->name('post.contact.submit');
 });

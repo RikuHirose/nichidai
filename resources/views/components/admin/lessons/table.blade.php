@@ -8,6 +8,7 @@
       <th scope="col">lesson_date</th>
       <th scope="col">lesson_professor</th>
       <th scope="col">url</th>
+      <th scope="col">シラバスurl</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,7 @@
         <td>{{ $model['lesson_term'] }}</td>
         <td>{{ $model->present()->lesson_date_admin }}</td>
         <td>{{ $model->lesson_professor }}</td>
+        <th scope="row"><a href="{{ route('lessons.show', [$model->id]) }}">{{ config('site.name', '') }}へ</a></th>
         <td><a href="{{ $model->url }}">URL</a></td>
     </tr>
     @endforeach

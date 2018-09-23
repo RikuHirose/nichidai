@@ -17,8 +17,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // Route::get('/{any?}', 'Admin\IndexController@index')->name('index')->where('any', '.*');
         Route::get('/', 'Admin\IndexController@index')->name('index');
 
-        Route::resource('lessons', 'Admin\LessonController', ['only' => ['edit', 'store', 'delete']]);
+        Route::resource('lessons', 'Admin\LessonController', ['only' => ['edit', 'update', 'destroy']]);
         // search
-        Route::get('/q', 'Admin\IndexController@searchIndexAdmin')->name('q');;
+        Route::get('/q', 'Admin\IndexController@searchIndexAdmin')->name('q');
+        Route::get('/user/q', 'Admin\UserController@searchIndexAdmin')->name('user.q');
+
+        // affiliates
+        Route::get('/affiliate/store',  'Admin\LessonController@affiliateStore')->name('affiliate.store');
+        Route::put('/affiliate/{affiliate}/update', 'Admin\LessonController@affiliateUpdate')->name('affiliate.update');
+
+        // user
+        Route::resource('/user', 'Admin\UserController', ['only' => ['index', 'show', 'edit', 'update', 'delete']]);
+
+        // sidebar
+        Route::get('/sidebar', 'Admin\SideController@index')->name('sidebar.index');
     });
 });
