@@ -42,5 +42,14 @@ class ReviewRepository extends SingleKeyModelRepository implements ReviewReposit
         return $review;
     }
 
+    public function getReviewedLessons($user_id)
+    {
+
+        $lesson_ids  = $this->getBlankModel()::where('user_id', $user_id)->pluck('lesson_id');
+        $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->get();
+
+        return $lessons;
+    }
+
 
 }

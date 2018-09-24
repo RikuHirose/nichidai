@@ -22,7 +22,7 @@
                     </ul>
                 </div> -->
                 @if(!empty($authUser))
-                    <a href="{{ action('User\UserController@index') }}">{{ $authUser['name'] }}</a>
+                    <a href="{{ route('user.show', $authUser['id']) }}">マイページ</a>
                 @endif
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,7 +34,7 @@
                                 <li><a href="{{ action('User\AuthController@getSignIn') }}">Sign In</a></li>
                                 <li><a href="{{ action('User\AuthController@getSignUp') }}">Sign Up</a></li>
                             @else
-                                <li><a href="{{ action('User\UserController@getSetting') }}">Setting</a></li>
+                                <li><a href="{{ route('user.setting.get', $authUser['id']) }}">Setting</a></li>
                                 <li><a href="{{ action('User\AuthController@postSignOut') }}">Sign Out</a></li>
                             @endif
                         </ul>

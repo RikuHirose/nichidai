@@ -29,7 +29,7 @@ class IndexController extends Controller
         LessonRepositoryInterface $lessonRepository,
         UserServiceInterface $userService
     ) {
-        $this->lessonRepository         = $lessonRepository;
+        $this->lessonRepository      = $lessonRepository;
         $this->userService           = $userService;
         view()->share('authUser', $this->userService->getUser());
     }
@@ -72,7 +72,9 @@ class IndexController extends Controller
 
     public function searchIndex(SearchRequest $request)
     {
-        $q = \Request::query();
+        // $q = \Request::query();
+        $q = $request->only($this->lessonRepository->getBlankModel()->getFillable());
+
 
         if(isset($q)) {
             // foreach($q as $key => $value) {

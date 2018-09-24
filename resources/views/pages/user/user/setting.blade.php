@@ -20,7 +20,7 @@
 @section('content')
 
     <div class="p-auth-box">
-        <form action="{!! action('User\UserController@postSetting') !!}" method="post">
+        <form action="{{ action('User\UserController@postSetting') }}" method="post">
             {!! csrf_field() !!}
             <div class="p-auth-box__inner">
                 <h4 class="p-auth-box__header">プロフィール編集</h4>

@@ -35,8 +35,8 @@ Route::group([], function () {
         });
 
         Route::group(['prefix' => 'user/', 'as' => 'user.'], function () {
-            Route::get('index', 'User\UserController@index')->name('index');
-            Route::get('setting', 'User\UserController@getSetting')->name('setting.get');
+            Route::get('/{user}', 'User\UserController@show')->name('show');
+            Route::get('setting/{user}', 'User\UserController@getSetting')->name('setting.get');
             Route::post('setting', 'User\UserController@postSetting')->name('setting.post');
         });
     });
