@@ -53,6 +53,10 @@ class ReviewPresenter extends BasePresenter
         $name = User::where('id', $user_id)->pluck('name');
         $name = $name[0];
 
+        if($name == null) {
+            $name = '匿名';
+        }
+
         return $name;
     }
 
