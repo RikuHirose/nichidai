@@ -2,7 +2,8 @@
   <div class="LessonDetail__title">
     <div class="LessonDetail__item pull-left"><h1>{{ $model->lesson_title }}</h1></div>
     <div class="LessonDetail__nav pull-right">
-      <favorite-lesson :lesson-id="{{json_encode($model->id)}}"></favorite-lesson>
+
+      @include('components.user.lessons.favorite', ['model' => $model])
       <a class="btn btn-primary btn-go" href="{{ route('lesson.review.get', [$model->id]) }}">レビューを書く</a>
     </div>
     <div class="clearfix"></div>

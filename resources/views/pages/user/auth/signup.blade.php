@@ -20,6 +20,12 @@
 @section('content')
     <form action="{!! action('User\AuthController@postSignUp') !!}" method="post">
         {!! csrf_field() !!}
+        <!-- errors -->
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                @include('shared.flash-message', ['error' => $error])
+            @endforeach
+        @endif
         <input type="email" name="email" placeholder="@lang('user.pages.auth.messages.email')">
         <input type="password" name="password" placeholder="@lang('user.pages.auth.messages.password')">
         <input type="checkbox" name="remember_me" value="1"> @lang('user.pages.auth.messages.remember_me')

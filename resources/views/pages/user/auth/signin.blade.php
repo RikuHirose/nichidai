@@ -20,6 +20,13 @@
 @section('content')
     <div class="p-auth-box">
         <form action="{!! action('User\AuthController@postSignIn') !!}" method="post">
+            <!-- errors -->
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    @include('shared.flash-message', ['error' => $error])
+                @endforeach
+            @endif
+
             {!! csrf_field() !!}
             <div class="p-auth-box__inner">
                 <h4 class="p-auth-box__header">ログイン</h4>
