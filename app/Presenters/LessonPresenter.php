@@ -251,4 +251,10 @@ class LessonPresenter extends BasePresenter
         return $date;
     }
 
+    public function favorited($user_id) {
+        $favorite = $this->entity->favorites()->where('user_id', $user_id)->first();
+
+        return $favorite;
+    }
+
 }

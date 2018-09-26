@@ -12,6 +12,12 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'namespace' => 'Api'], function
 
         Route::group(['middleware' => 'api.auth'], function() {
             Route::post('signout', 'AuthController@postSignOut')->name('signOut');
+
+            // Route::group(['prefix' => 'lessons/{lesson}/', 'as' => 'lesson.'], function () {
+            //   // favorite
+            //   Route::post('favorite', 'FavoriteController@postFavorite')->name('favorite.post');
+
+            // });
         });
     });
 });

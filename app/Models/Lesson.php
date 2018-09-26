@@ -4,6 +4,8 @@ namespace App\Models;
 
 use LaravelRocket\Foundation\Models\Base;
 
+use App\Models\Favorite;
+
 /**
  * App\Models\Lesson.
  *
@@ -85,7 +87,13 @@ class Lesson extends Base
         return $this->hasMany(\App\Models\Affiliate::class, 'lesson_id', 'id');
     }
 
+    public function favorites()
+    {
+        return $this->hasMany(\App\Models\Favorite::class, 'lesson_id', 'id');
+    }
+
 
     // Utility Functions
+
 
 }

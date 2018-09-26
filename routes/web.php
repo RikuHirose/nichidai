@@ -30,7 +30,8 @@ Route::group([], function () {
             Route::post('review', 'User\LessonController@postReview')->name('review.post');
 
             // favorite
-            Route::post('favorite', 'User\LessonController@postFavorite')->name('favorite.post');
+            Route::post('favorite', 'User\FavoriteController@postFavorite')->name('favorite.post');
+            Route::post('delete/favorite', 'User\FavoriteController@deleteFavorite');
 
         });
 
