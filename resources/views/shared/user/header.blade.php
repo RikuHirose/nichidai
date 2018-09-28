@@ -7,20 +7,6 @@
         <div class="col-md-4 col-xs-8"></div>
         <div class="col-md-4 col-xs-2">
             <nav class="pull-right">
-                <!-- <div class="dropdown notice-nav open" id="markasread">
-                    <div class=" " type="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="fas fa-bell  bellpos"></i>
-                                                    </div>
-                    <ul class="dropdown-menu dpd-menu" aria-labelledby="dropdownMenu1">
-                        @if( empty($authUser) )
-                            <li><a href="{{ action('User\AuthController@getSignIn') }}">Sign In</a></li>
-                            <li><a href="{{ action('User\AuthController@getSignUp') }}">Sign Up</a></li>
-                        @else
-                            <li><a href="{{ action('User\AuthController@getSignIn') }}">Setting</a></li>
-                            <li><a href="{{ action('User\AuthController@getSignUp') }}">Sign Out</a></li>
-                        @endif
-                    </ul>
-                </div> -->
                 @if(!empty($authUser))
                     <a href="{{ route('user.show', $authUser['id']) }}">マイページ</a>
                 @endif
