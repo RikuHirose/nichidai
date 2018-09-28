@@ -91,12 +91,4 @@ class LessonController extends Controller
         ]);
     }
 
-
-    // favorite
-
-    public function postFavorite(Lesson $lesson, Request $request)
-    {
-        var_dump($request->id);die;
-    }
-
 }

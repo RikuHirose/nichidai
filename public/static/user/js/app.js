@@ -59863,27 +59863,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-Vue.prototype.$http = axios;
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['lessonId', 'favorited'],
+
+  props: ['lessonId', 'defaultFavorited'],
 
   data: function data() {
     return {
-      url: ''
+      favorited: false
     };
   },
   created: function created() {
     // let url = `/lesson/${this.lessonId}/review`
-
+    this.favorited = this.defaultFavorited;
   },
+
 
   methods: {
     favorite: function favorite(lessonId) {
       var _this = this;
 
       // let url = `/api/v1/lessons/${this.lessonId}/favorite`
+      // const _token = $('meta[name="csrf-token"]').attr('content')
       var url = '/lessons/' + this.lessonId + '/favorite';
-      var _token = $('meta[name="csrf-token"]').attr('content');
 
       axios.post(url).then(function (response) {
         _this.favorited = true;

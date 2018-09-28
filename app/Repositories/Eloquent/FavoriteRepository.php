@@ -42,5 +42,13 @@ class FavoriteRepository extends SingleKeyModelRepository implements FavoriteRep
         return $favorited;
     }
 
+    public function getFavoritedLessons($user_id)
+    {
+        $lesson_ids  = $this->getBlankModel()::where('user_id', $user_id)->pluck('lesson_id');
+        $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->get();
+
+        return $lessons;
+    }
+
 
 }
