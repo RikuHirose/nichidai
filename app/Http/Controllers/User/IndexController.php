@@ -3,13 +3,13 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\LessonRepositoryInterface;
-use Illuminate\Http\Request;
-use LaravelRocket\Foundation\Http\Requests\PaginationRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Services\UserServiceInterface;
+
+use Illuminate\Http\Request;
 use App\Http\Requests\SearchRequest;
+use LaravelRocket\Foundation\Http\Requests\PaginationRequest;
 
-
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -27,7 +27,7 @@ class IndexController extends Controller
      */
     public function __construct(
         LessonRepositoryInterface $lessonRepository,
-        UserServiceInterface $userService
+        UserServiceInterface      $userService
     ) {
         $this->lessonRepository      = $lessonRepository;
         $this->userService           = $userService;
@@ -38,7 +38,9 @@ class IndexController extends Controller
     public function index(Request $request)
     {
 
-        $q = \Request::query();
+        $q                 = \Request::query();
+        $recommend_lessons = $this->lessonRepository->recommended_lessons();
+        $sidebar_content   = $this->lessonRepository->sidebar_content();
 
         if(isset($q['q'])) {
             $q['q'] = htmlspecialchars($q['q'], ENT_QUOTES, "UTF-8" );
@@ -50,21 +52,23 @@ class IndexController extends Controller
             // \SeoHelper::setJobIndexSeo($title);
 
             return view('pages.user.lessons.index', [
-                'models'        => $models,
-                'title'         => '「'.$q['q'].'」の検索結果',
-                'breadcrumb'    => '「'.$q['q'].'」の検索結果',
-                'searchQuery'   => true,
-                'q'             => $q
+                'models'            => $models,
+                'title'             => '「'.$q['q'].'」の検索結果',
+                'breadcrumb'        => '「'.$q['q'].'」の検索結果',
+                'searchQuery'       => true,
+                'q'                 => $q,
+                'sidebar_content' => $sidebar_content
             ]);
         } else {
 
             $models = $this->lessonRepository->lessons();
 
             return view('pages.user.lessons.index', [
-                'models'        => $models,
-                'title'         => '新着',
-                'searchQuery'   => false,
-                'q'             => $q
+                'models'            => $models,
+                'title'             => '新着',
+                'searchQuery'       => false,
+                'q'                 => $q,
+                'sidebar_content' => $sidebar_content
             ]);
         }
 
@@ -73,7 +77,8 @@ class IndexController extends Controller
     public function searchIndex(SearchRequest $request)
     {
         // $q = \Request::query();
-        $q = $request->only($this->lessonRepository->getBlankModel()->getFillable());
+        $q                 = $request->only($this->lessonRepository->getBlankModel()->getFillable());
+        $sidebar_content   = $this->lessonRepository->sidebar_content();
 
 
         if(isset($q)) {
@@ -98,10 +103,11 @@ class IndexController extends Controller
         }
 
         return view('pages.user.lessons.index', [
-            'models'   => $models,
-            'title'    => '「'.$search_result.'」の検索結果',
-            'searchQuery'   => true,
-            'q'  => $q
+            'models'              => $models,
+            'title'               => '「'.$search_result.'」の検索結果',
+            'searchQuery'         => true,
+            'q'                   => $q,
+            'sidebar_content'     => $sidebar_content
         ]);
     }
 

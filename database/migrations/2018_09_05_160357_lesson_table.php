@@ -19,6 +19,9 @@ class LessonTable extends Migration
             $table->bigInteger('popular_id')->default(0);
             $table->bigInteger('recommend_id')->default(0);
 
+            $table->bigInteger('recommend_rank')->nullable();
+            $table->bigInteger('popular_rank')->nullable();
+
 
             $table->string('sub_title')->nullable();
             $table->string('subsub_title')->nullable();

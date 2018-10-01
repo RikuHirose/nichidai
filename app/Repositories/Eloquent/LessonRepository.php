@@ -241,4 +241,44 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
         return $models;
     }
+
+    public function recommended_lessons()
+    {
+        $models = $this->getBlankModel()->where('recommend_id', 1)->orderBy('recommend_rank', 'asc')->get();
+
+        return $models;
+    }
+
+    public function popular_lessons()
+    {
+        $models = $this->getBlankModel()->where('popular_id', 1)->orderBy('popular_rank', 'asc')->get();
+
+        return $models;
+    }
+
+    public function lessonsByIdOrder($ids)
+    {
+        $ids_order = implode(',', $ids);
+        $lessons = Lesson::whereIn('id', $ids)->orderByRaw("FIELD(id, $ids_order)")->get();
+
+        return $lessons;
+    }
+
+
+    // sidebar contentを一つの変数にまとめる
+
+    public function sidebar_content()
+    {
+        $recommend_lessons = self::recommended_lessons();
+        $popular_lessons   = self::popular_lessons();
+
+        $model = array();
+        $model = [
+            'recommend_lessons' => $recommend_lessons,
+            'popular_lessons'   => $popular_lessons
+        ];
+
+        return $model;
+    }
+
 }
