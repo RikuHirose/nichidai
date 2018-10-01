@@ -69,7 +69,7 @@ class LessonController extends Controller
         }
 
         $lesson_schedule = $this->lessonScheduleRepository->getRounds($lesson->id);
-        $reviews = $this->reviewRepository->getReviews($lesson->id);
+        $reviews         = $this->reviewRepository->getReviews($lesson->id);
         $affiliates      = $this->affiliateRepository->getAffiliates($lesson->id);
 
         return view('pages.admin.lessons.edit', [
@@ -97,8 +97,7 @@ class LessonController extends Controller
     // Affiliate
     public function affiliateStore(Lesson $lesson, Affiliate $affiliate, Request $request)
     {
-        $input = $request->only($this->affiliateRepository->getBlankModel()->getFillable());
-
+        $input     = $request->only($this->affiliateRepository->getBlankModel()->getFillable());
         $affiliate = $this->affiliateRepository->create($input);
 
 

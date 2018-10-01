@@ -21,9 +21,19 @@
         </div>
 
         <!-- sidebar -->
-        <div class="col-md-3 col-xs-12">
-          @include('shared.user.sidebar')
-        </div>
+          <div class="col-md-3 col-xs-12">
+            @isset($sidebar_content['recommend_lessons'])
+              <div class="col-md-12 col-xs-12">
+                  @include('shared.user.sidebar', ['recommend_lessons' => $sidebar_content['recommend_lessons']])
+              </div>
+            @endisset
+
+            @isset($sidebar_content['popular_lessons'])
+              <div class="col-md-12 col-xs-12">
+                  @include('shared.user.sidebar', ['recommend_lessons' => $sidebar_content['popular_lessons']])
+              </div>
+            @endisset
+          </div>
 
       </div>
     </div>

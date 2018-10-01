@@ -30,6 +30,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('/user', 'Admin\UserController', ['only' => ['index', 'show', 'edit', 'update', 'delete']]);
 
         // sidebar
-        Route::get('/sidebar', 'Admin\SideController@index')->name('sidebar.index');
+        Route::group(['prefix' => 'sidebar/', 'as' => 'sidebar.'], function () {
+            Route::get('/', 'Admin\SideController@index')->name('index');
+            Route::get('/recommend', 'Admin\SideController@getRecommend')->name('recommend.get');
+            Route::post('/recommend', 'Admin\SideController@postRecommend')->name('recommend.post');
+            Route::post('/recommend/{lesson}/delete', 'Admin\SideController@deleteRecommend')->name('recommend.delete');
+
+            Route::get('/popular', 'Admin\SideController@getPopular')->name('popular.get');
+            Route::post('/popular', 'Admin\SideController@postPopular')->name('popular.post');
+            Route::post('/popular/{lesson}/delete', 'Admin\SideController@deletePopular')->name('popular.delete');
+
+            // Route::get('/other_article', 'Admin\SideController@getOtherArticle')->name('otherArticle.get');
+            // Route::post('/other_article', 'Admin\SideController@postOtherArticle')->name('otherArticle.post');
+            // Route::post('/other_article/{OtherArticle}/delete', 'Admin\SideController@deleteOtherArticle')->name('popular.delete');
+        });
     });
 });
