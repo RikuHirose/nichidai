@@ -19,6 +19,9 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'namespace' => 'Api'], function
 
             // });
         });
+
+        Route::post('/lessons/{lesson}/users/{user}/store', 'HistoryController@postHistory');
+        Route::post('/lessons/{lesson}/users/{user}/delete', 'HistoryController@deleteHistory');
     });
 });
 

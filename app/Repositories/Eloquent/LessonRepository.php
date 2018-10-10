@@ -264,8 +264,35 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         return $lessons;
     }
 
+    public function getHistoryLessons($user_id)
+    {
+        $lesson_ids  = \App\Models\History::where('user_id', $user_id)->pluck('lesson_id')->toArray();
+        $lesson_ids = array_reverse($lesson_ids);
+        $ids_order = implode(',', $lesson_ids);
+
+        $lessons = $this->getBlankModel()::whereIn('id', $lesson_ids)->orderByRaw("FIELD(id, $ids_order)")->take(5)->get();
+
+        return $lessons;
+    }
+
 
     // sidebar contentを一つの変数にまとめる
+
+    public function sidebar_content_Login($user_id)
+    {
+        $recommend_lessons = self::recommended_lessons();
+        $popular_lessons   = self::popular_lessons();
+        $history_lessons   = self::getHistoryLessons($user_id);
+
+        $model = array();
+        $model = [
+            'recommend_lessons' => $recommend_lessons,
+            'popular_lessons'   => $popular_lessons,
+            'history_lessons'   => $history_lessons
+        ];
+
+        return $model;
+    }
 
     public function sidebar_content()
     {

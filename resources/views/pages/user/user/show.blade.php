@@ -74,7 +74,11 @@
             </div>
           </div>
           <div id="tab3" class="tab-pane">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/221808/photo3.jpg" alt="" class="img-fluid">
+            <div class="col-xs-12">
+              <div class="row">
+                @each('components.user.user.parts', $history_lessons, 'model')
+              </div>
+            </div>
           </div>
 
         </div>

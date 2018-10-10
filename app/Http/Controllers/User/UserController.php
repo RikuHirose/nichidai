@@ -13,6 +13,7 @@ use App\Services\UserServiceInterface;
 use App\Repositories\UserRepositoryInterface;
 use App\Repositories\ReviewRepositoryInterface;
 use App\Repositories\FavoriteRepositoryInterface;
+use App\Repositories\HistoryRepositoryInterface;
 
 use App\Models\User;
 
@@ -28,12 +29,14 @@ class UserController extends Controller
         UserServiceInterface        $userService,
         UserRepositoryInterface     $userRepository,
         ReviewRepositoryInterface   $reviewRepository,
-        FavoriteRepositoryInterface $favoriteRepository
+        FavoriteRepositoryInterface $favoriteRepository,
+        HistoryRepositoryInterface  $historyRepository
     ) {
         $this->userService        = $userService;
         $this->userRepository     = $userRepository;
         $this->reviewRepository   = $reviewRepository;
         $this->favoriteRepository = $favoriteRepository;
+        $this->historyRepository  = $historyRepository;
         view()->share('authUser', $this->userService->getUser());
     }
 
@@ -43,12 +46,14 @@ class UserController extends Controller
 
         $reviewed_lessons  = $this->reviewRepository->getReviewedLessons($user->id);
         $favorited_lessons = $this->favoriteRepository->getFavoritedLessons($user->id);
+        $history_lessons   = $this->historyRepository->getHistoryLessons($user->id);
 
         return view('pages.user.user.show', [
             'searchQuery'        => true,
             'user'               => $user,
             'reviewed_lessons'   => $reviewed_lessons,
             'favorited_lessons'  => $favorited_lessons,
+            'history_lessons'    => $history_lessons,
         ]);
     }
 
