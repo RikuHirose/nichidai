@@ -39,8 +39,13 @@ class IndexController extends Controller
     {
 
         $q                 = \Request::query();
-        $recommend_lessons = $this->lessonRepository->recommended_lessons();
-        $sidebar_content   = $this->lessonRepository->sidebar_content();
+        $authUser          = $this->userService->getUser();
+
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
 
         if(isset($q['q'])) {
             $q['q'] = htmlspecialchars($q['q'], ENT_QUOTES, "UTF-8" );

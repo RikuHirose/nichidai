@@ -24,14 +24,22 @@
           <div class="col-md-3 col-xs-12">
             @isset($sidebar_content['recommend_lessons'])
               <div class="col-md-12 col-xs-12">
-                  @include('shared.user.sidebar', ['recommend_lessons' => $sidebar_content['recommend_lessons']])
+                  @include('shared.user.sidebar', ['models' => $sidebar_content['recommend_lessons']])
               </div>
             @endisset
 
             @isset($sidebar_content['popular_lessons'])
               <div class="col-md-12 col-xs-12">
-                  @include('shared.user.sidebar', ['recommend_lessons' => $sidebar_content['popular_lessons']])
+                  @include('shared.user.sidebar', ['models' => $sidebar_content['popular_lessons']])
               </div>
+            @endisset
+
+            @isset($authUser)
+              @isset($sidebar_content['history_lessons'])
+                <div class="col-md-12 col-xs-12">
+                    @include('shared.user.sidebar', ['models' => $sidebar_content['history_lessons']])
+                </div>
+              @endisset
             @endisset
           </div>
 

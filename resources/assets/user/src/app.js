@@ -3,6 +3,8 @@ import 'bootstrap';
 import "chart.js";
 import "hchs-vue-charts";
 import axios from 'axios';
+import VueLocalStorage from 'vue-localstorage'
+
 window.$ = window.jQuery = jQuery;
 
 
@@ -25,6 +27,7 @@ if (token) {
 }
 
 Vue.use(window.VueCharts);
+Vue.use(VueLocalStorage)
 
 
 
@@ -37,6 +40,7 @@ Vue.use(window.VueCharts);
 
 Vue.component('evaluate-chart', require('../components/lesson/evaluate_chart.vue'));
 Vue.component('favorite-lesson', require('../components/lesson/favorite_lesson.vue'));
+Vue.component('store-local-strage', require('../components/lesson/store_local_strage.vue'));
 
 const app = new Vue({
     el: '#app'

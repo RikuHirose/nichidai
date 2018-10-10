@@ -3,7 +3,8 @@
   <div class="sidebar_title">
     <h4></h4>
   </div>
-  @each('components.user.sidebar.card', $recommend_lessons, 'model')
+
+  @each('components.user.sidebar.card', $models, 'model')
 
   <!-- <div class="card" style="height: 200px;">
     <div class="card-body">

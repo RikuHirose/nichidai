@@ -13,8 +13,16 @@
 @stop
 
 
-
 @section('content')
+
+<!-- local-strage -->
+@isset($authUser)
+  <store-local-strage
+  :lesson-id="{{json_encode($model->id)}}"
+  :user-id="{{json_encode($authUser->id)}}"
+  ></store-local-strage>
+@endisset
+
 <!-- breadcrumb -->
 <div class="col-xs-12">
   @include('shared.user.breadcrumb', ['model' => $model->present()->breadcrumb])
