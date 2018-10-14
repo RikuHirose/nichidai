@@ -19,7 +19,7 @@
 
 @section('content')
   <div class="col-xs-12">
-    <h3>オススメ授業設定</h3>
+    <h3>人気授業設定</h3>
   </div>
 
   <div class="col-xs-12">
@@ -53,7 +53,7 @@
     </table>
 
     <div class="col-xs-12">
-      <h3>オススメ授業作成</h3>
+      <h3>人気授業作成</h3>
       <p>IDを半角数字で入力</p>
     </div>
 

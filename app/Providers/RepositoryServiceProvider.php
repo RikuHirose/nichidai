@@ -86,5 +86,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\HistoryRepositoryInterface::class,
             \App\Repositories\Eloquent\HistoryRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\OtherArticleRepositoryInterface::class,
+            \App\Repositories\Eloquent\OtherArticleRepository::class
+        );
     }
 }

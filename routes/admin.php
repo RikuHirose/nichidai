@@ -40,9 +40,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('/popular', 'Admin\SideController@postPopular')->name('popular.post');
             Route::post('/popular/{lesson}/delete', 'Admin\SideController@deletePopular')->name('popular.delete');
 
-            // Route::get('/other_article', 'Admin\SideController@getOtherArticle')->name('otherArticle.get');
-            // Route::post('/other_article', 'Admin\SideController@postOtherArticle')->name('otherArticle.post');
-            // Route::post('/other_article/{OtherArticle}/delete', 'Admin\SideController@deleteOtherArticle')->name('popular.delete');
+            Route::get('/other_article', 'Admin\SideController@getOtherArticle')->name('otherArticle.get');
+            Route::post('/other_article', 'Admin\SideController@postOtherArticle')->name('otherArticle.post');
+            Route::post('/other_article/{otherArticle}/delete', 'Admin\SideController@deleteOtherArticle')->name('otherArticle.delete');
         });
     });
 });
