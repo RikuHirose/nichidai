@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\AdminUserServiceInterface;
 use App\Repositories\LessonRepositoryInterface;
+use App\Repositories\OtherArticleRepositoryInterface;
 
 use App\Models\Lesson;
+use App\Models\OtherArticle;
+
 use Illuminate\Http\Request;
 
 class SideController extends Controller
@@ -14,11 +17,13 @@ class SideController extends Controller
     protected $adminUserService;
 
     public function __construct(
-        AdminUserServiceInterface $adminUserService,
-        LessonRepositoryInterface $lessonRepository
+        AdminUserServiceInterface       $adminUserService,
+        LessonRepositoryInterface       $lessonRepository,
+        OtherArticleRepositoryInterface $otherArticleRepository
     ) {
-        $this->lessonRepository  = $lessonRepository;
-        $this->adminUserService  = $adminUserService;
+        $this->lessonRepository       = $lessonRepository;
+        $this->adminUserService       = $adminUserService;
+        $this->otherArticleRepository = $otherArticleRepository;
     }
 
     public function index(Request $request)
@@ -130,11 +135,42 @@ class SideController extends Controller
 
     public function getOtherArticle()
     {
-        $popular_lessons = $this->lessonRepository->popular_lessons();
+        $other_articles = $this->otherArticleRepository->getBlankModel()->all();
 
         return view('pages.admin.sidebar.otherArticle', [
-
+            'other_articles' => $other_articles
         ]);
+    }
+
+    public function postOtherArticle(Request $request)
+    {
+
+        $input = $request->only($this->otherArticleRepository->getBlankModel()->getFillable());
+
+        if(!isset($input['title'])) {
+            array_set($input, 'title', $request->title);
+        }
+
+        if(!isset($input['link'])) {
+            array_set($input, 'link', $request->link);
+        }
+
+        if(!isset($input['imgURL'])) {
+            array_set($input, 'imgURL', $request->imgURL);
+        }
+
+
+        $this->otherArticleRepository->create($input);
+
+
+        return redirect('/admin/sidebar/other_article/');
+    }
+
+    public function deleteOtherArticle(Request $request, OtherArticle $otherArticle)
+    {
+        $this->otherArticleRepository->delete($otherArticle);
+
+        return redirect('/admin/sidebar/other_article/');
     }
 
 }

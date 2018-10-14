@@ -38,8 +38,8 @@ class IndexController extends Controller
     public function index(Request $request)
     {
 
-        $q                 = \Request::query();
-        $authUser          = $this->userService->getUser();
+        $q        = \Request::query();
+        $authUser = $this->userService->getUser();
 
         if(isset($authUser)) {
             $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
@@ -62,7 +62,7 @@ class IndexController extends Controller
                 'breadcrumb'        => '「'.$q['q'].'」の検索結果',
                 'searchQuery'       => true,
                 'q'                 => $q,
-                'sidebar_content' => $sidebar_content
+                'sidebar_content'   => $sidebar_content
             ]);
         } else {
 
@@ -73,7 +73,7 @@ class IndexController extends Controller
                 'title'             => '新着',
                 'searchQuery'       => false,
                 'q'                 => $q,
-                'sidebar_content' => $sidebar_content
+                'sidebar_content'   => $sidebar_content
             ]);
         }
 

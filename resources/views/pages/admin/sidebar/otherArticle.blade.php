@@ -19,51 +19,51 @@
 
 @section('content')
   <div class="col-xs-12">
-    <h3>オススメ授業設定</h3>
+    <h3>外部記事設定</h3>
   </div>
 
   <div class="col-xs-12">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Rank</th>
-          <th scope="col">ID</th>
-          <th scope="col">{{ config('site.name', '') }}へ</th>
+          <th scope="col">title</th>
+          <th scope="col">link</th>
+          <th scope="col">imgURL</th>
           <th scope="col">削除</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($popular_lessons as $key => $v)
+        @foreach($other_articles as $key => $v)
             <tr>
-                <th scope="row">{{ $v['recommend_rank'] }}</th>
-                <td><input type="text" class="form-control" value="{{ $v['id'] }}" style="width: 50%;" readonly=""></td>
-                <td><a href="{{ route('lessons.show', [$v['id']]) }}">{{ config('site.name', '') }}へ</a></td>
+                <th scope="row">{{ $v['title'] }}</th>
+                <td>{{ $v['link'] }}</td>
+                <td>{{ $v['imgURL'] }}</td>
                 <td>
-                  <form action="{{ route('admin.sidebar.popular.delete', $v['id']) }}" method="post">
+                  <form action="{{ route('admin.sidebar.otherArticle.delete', $v['id']) }}" method="post">
                     {{ csrf_field() }}
                     <!-- {{ method_field('DELETE') }} -->
                     <input type="hidden" name="id" value="{{ $v['id'] }}">
                     <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
                 </td>
             </tr>
-          </form>
 
         @endforeach
       </tbody>
     </table>
 
     <div class="col-xs-12">
-      <h3>オススメ授業作成</h3>
-      <p>IDを半角数字で入力</p>
+      <h3>外部記事設定</h3>
     </div>
 
     <div class="row">
-      <form class="{{ route('admin.sidebar.popular.post') }}" method="post" style="width: 100%;">
+      <form class="{{ route('admin.sidebar.otherArticle.post') }}" method="post" style="width: 100%;">
         {{ csrf_field() }}
 
         <div class="form-group">
-          <input type="text" name="recommend_rank" class="form-control" value="" style="width: 50%;" placeholder="rank">
-          <input type="text" name="id" class="form-control" value="" style="width: 50%;" placeholder="ID">
+          <input type="text" name="title"  class="form-control" value="" style="width: 50%;" placeholder="title">
+          <input type="text" name="link"    class="form-control" value="" style="width: 50%;" placeholder="link">
+          <input type="text" name="imgURL" class="form-control" value="" style="width: 50%;" placeholder="imgURL">
         </div>
         <button type="submit" class="btn btn-primary">submit</button>
       </form>

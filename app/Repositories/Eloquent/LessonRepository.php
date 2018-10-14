@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use LaravelRocket\Foundation\Repositories\Eloquent\SingleKeyModelRepository;
 use App\Repositories\LessonRepositoryInterface;
 use App\Models\Lesson;
+use App\Models\OtherArticle;
 
 
 class LessonRepository extends SingleKeyModelRepository implements LessonRepositoryInterface
@@ -268,27 +269,40 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
     {
         $lesson_ids  = \App\Models\History::where('user_id', $user_id)->pluck('lesson_id')->toArray();
         $lesson_ids = array_reverse($lesson_ids);
-        $ids_order = implode(',', $lesson_ids);
 
-        $lessons = $this->getBlankModel()::whereIn('id', $lesson_ids)->orderByRaw("FIELD(id, $ids_order)")->take(5)->get();
+        // signup後新規userはhistryが無いため、条件分岐
+        if(!empty($lesson_ids)) {
+            $ids_order = implode(',', $lesson_ids);
+            $lessons = $this->getBlankModel()::whereIn('id', $lesson_ids)->orderByRaw("FIELD(id, $ids_order)")->take(5)->get();
 
-        return $lessons;
+            return $lessons;
+        } else {
+            return null;
+        }
+    }
+
+    public function getOtherArticles()
+    {
+        $other_articles = OtherArticle::all();
+
+        return $other_articles;
     }
 
 
     // sidebar contentを一つの変数にまとめる
-
     public function sidebar_content_Login($user_id)
     {
         $recommend_lessons = self::recommended_lessons();
         $popular_lessons   = self::popular_lessons();
         $history_lessons   = self::getHistoryLessons($user_id);
+        $other_articles    = self::getOtherArticles();
 
         $model = array();
         $model = [
             'recommend_lessons' => $recommend_lessons,
             'popular_lessons'   => $popular_lessons,
-            'history_lessons'   => $history_lessons
+            'history_lessons'   => $history_lessons,
+            'other_articles'    => $other_articles
         ];
 
         return $model;
@@ -298,11 +312,13 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
     {
         $recommend_lessons = self::recommended_lessons();
         $popular_lessons   = self::popular_lessons();
+        $other_articles    = self::getOtherArticles();
 
         $model = array();
         $model = [
             'recommend_lessons' => $recommend_lessons,
-            'popular_lessons'   => $popular_lessons
+            'popular_lessons'   => $popular_lessons,
+            'other_articles'    => $other_articles
         ];
 
         return $model;
