@@ -85,13 +85,16 @@
     <div class="col-sm-12 col-xs-12">
       <div class="card">
           <div class="card-body">
-            <h5 class="card-title">テキスト</h5>
-              <p class="card-text">{{ $model->present()->lesson_textbook }}</p>
-          </div>
 
-          <div class="card-body">
-            <h5 class="card-title">参考文献</h5>
-              <p class="card-text">{{ $model->present()->lesson_read }}</p>
+              <h5 class="card-title">テキスト</h5>
+                @foreach($affiliates['getTexts'] as $affiliate)
+                  @include('components.user.lessons.affiliate', ['affiliate' => $affiliate])
+                @endforeach
+
+              <h5 class="card-title">参考文献</h5>
+              @foreach($affiliates['getReads'] as $affiliate)
+                @include('components.user.lessons.affiliate', ['affiliate' => $affiliate])
+              @endforeach
           </div>
       </div>
     </div>

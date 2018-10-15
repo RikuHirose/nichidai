@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\LessonRepositoryInterface;
 use App\Repositories\LessonScheduleRepositoryInterface;
 use App\Repositories\ReviewRepositoryInterface;
+use App\Repositories\AffiliateRepositoryInterface;
+
 use App\Services\UserServiceInterface;
 
 use Illuminate\Http\Request;
@@ -30,15 +32,17 @@ class LessonController extends Controller
      * @param lessonRepositoryInterface $lessonRepository
      */
     public function __construct(
-        LessonRepositoryInterface $lessonRepository,
+        LessonRepositoryInterface         $lessonRepository,
         LessonScheduleRepositoryInterface $lessonScheduleRepository,
-        ReviewRepositoryInterface $reviewRepository,
-        UserServiceInterface $userService
+        ReviewRepositoryInterface         $reviewRepository,
+        AffiliateRepositoryInterface      $affiliateRepository,
+        UserServiceInterface              $userService
 
     ) {
         $this->lessonRepository         = $lessonRepository;
         $this->lessonScheduleRepository = $lessonScheduleRepository;
         $this->reviewRepository         = $reviewRepository;
+        $this->affiliateRepository      = $affiliateRepository;
         $this->userService              = $userService;
         view()->share('authUser', $this->userService->getUser());
     }
@@ -49,13 +53,14 @@ class LessonController extends Controller
         $model = $lesson;
 
         $lesson_schedule = $this->lessonScheduleRepository->getRounds($model->id);
-
-        $reviews = $this->reviewRepository->getReviews($model->id);
+        $reviews         = $this->reviewRepository->getReviews($model->id);
+        $affiliates      = $this->affiliateRepository->getAffiliatesBySort($model->id);
 
         return view('pages.user.lessons.show', [
             'model'            => $model,
             'lesson_schedule'  => $lesson_schedule,
-            'reviews'          => $reviews
+            'reviews'          => $reviews,
+            'affiliates'       => $affiliates
         ]);
     }
 
