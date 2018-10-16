@@ -29,6 +29,12 @@
 </div>
 
 <div class="col-xs-12">
+  <button type="button" class="btn btn-primary">{{ config('site.name') }}
+    <a href="http://twitter.com/share?url=https://www.rep-rikkyo.com/lesson/{{ $model->id }}&text=『{{ $model->lesson_title }}』のシラバス%0D%0A{{ $model->lesson_professor }}%0D%0A{{ $model->sub_title }}/{{ $model->subsub_title }}%0D%0A">Twitter</a>
+  </button>
+  <button type="button" class="btn btn-success">
+    <a href="http://line.me/R/msg/text/?『{{ $model->lesson_title }}』のシラバスです。詳細なシラバスと授業のレビューを見ることができます。%0A{{ $model->sub_title }}/{{ $model->subsub_title }}%0A{{ $model->lesson_professor }}%0A{{ $model->lesson_content }}%0Ahttps://www.rep-rikkyo.com/lesson/{{ $model->id }}">LINE</a>
+  </button>
   @include('components.user.lessons.table', ['model' => $model])
 </div>
 
@@ -54,7 +60,8 @@
             <h5 class="card-title">評価方法</h5>
 
             @if(!empty($model))
-            <?php $evaluates = $model->present()->evaluate_rate_key;
+            <?php
+            $evaluates = $model->present()->evaluate_rate_key;
             ?>
               <evaluate-chart :chart-data="{{json_encode($model->present()->evaluate_rate)}}"></evaluate-chart>
             @endif

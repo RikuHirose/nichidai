@@ -56,11 +56,20 @@ class LessonController extends Controller
         $reviews         = $this->reviewRepository->getReviews($model->id);
         $affiliates      = $this->affiliateRepository->getAffiliatesBySort($model->id);
 
+        $authUser = $this->userService->getUser();
+
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
+
         return view('pages.user.lessons.show', [
             'model'            => $model,
             'lesson_schedule'  => $lesson_schedule,
             'reviews'          => $reviews,
-            'affiliates'       => $affiliates
+            'affiliates'       => $affiliates,
+            'sidebar_content'  => $sidebar_content
         ]);
     }
 
