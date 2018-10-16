@@ -10,7 +10,6 @@
       </div>
       <form action="/q" accept-charset="UTF-8" method="get">
         <!-- <input name="utf8" type="hidden" value="✓"> -->
-        {{ csrf_field() }}
         <div class="row">
           <div class="form-group col-sm-6 col-xs-12">
             {{ Form::text('lesson_title', isset($q['lesson_title']) ? $q['lesson_title'] : '', ['class' => 'form-control', 'placeholder' => '授業名', ]) }}
