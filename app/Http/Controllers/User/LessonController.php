@@ -105,4 +105,38 @@ class LessonController extends Controller
         ]);
     }
 
+    public function getLessons()
+    {
+        $lesson_lists = $this->lessonRepository->group_by_subtitle();
+
+
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
+
+        return view('pages.user.footer.lessons.index', [
+            'lesson_lists'    => $lesson_lists,
+            'sidebar_content' => $sidebar_content
+        ]);
+    }
+
+    public function searchLessons(Request $request)
+    {
+        $q = \Request::query();
+        $lessons = $this->lessonRepository->getBlankModel()->where('lesson_title', $q['lesson_title'])->get();
+
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
+
+        return view('pages.user.footer.lessons.searchLessons', [
+            'lessons'    => $lessons,
+            'sidebar_content' => $sidebar_content
+        ]);
+    }
+
 }

@@ -1,6 +1,6 @@
 <div class="LessonDetail__header">
   <div class="LessonDetail__title">
-    <div class="LessonDetail__item pull-left"><h1>{{ $model->lesson_title }}</h1></div>
+    <div class="LessonDetail__item pull-left"><h1>{{ $model->lesson_title }}<small>({{ $model->year }})</small></h1></div>
     <div class="LessonDetail__nav pull-right">
 
       @include('components.user.lessons.favorite', ['model' => $model])

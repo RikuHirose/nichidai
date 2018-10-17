@@ -324,4 +324,33 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         return $model;
     }
 
+
+    public function group_by_subtitle()
+    {
+        // get subtitle list
+        $subtitles = $this->getBlankModel()->where('year', 2018)->pluck('id', 'sub_title');
+        $subsubtitles = $this->getBlankModel()->where('year', 2018)->pluck('id', 'subsub_title');
+        // $subtitles = $this->getBlankModel()->pluck('sub_title', 'id');
+
+        // group by subtitle
+        $lessons = [];
+        foreach ($subtitles as $key => $value) {
+
+            foreach ($subsubtitles as $k => $v) {
+                $lessons[$key][$k] = [];
+                $lessonBySubtitle = $this->getBlankModel()->where('sub_title', $key)->where('subsub_title', $k)->where('year', 2018)->get();
+
+                if(empty($lessonBySubtitle[1])) {
+                    continue;
+                } else {
+                    array_push($lessons[$key][$k], $lessonBySubtitle);
+                }
+            }
+
+        }
+
+        return $lessons;
+
+    }
+
 }
