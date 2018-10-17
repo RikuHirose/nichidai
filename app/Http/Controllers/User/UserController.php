@@ -42,18 +42,16 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $authUser          = $this->userService->getUser();
-
-        $reviewed_lessons  = $this->reviewRepository->getReviewedLessons($user->id);
-        $favorited_lessons = $this->favoriteRepository->getFavoritedLessons($user->id);
-        $history_lessons   = $this->historyRepository->getHistoryLessons($user->id);
+        $authUser       = $this->userService->getUser();
+        $user_content   = $this->userRepository->user_content($user->id);
+        // $reviewed_lessons  = $this->reviewRepository->getReviewedLessons($user->id);
+        // $favorited_lessons = $this->favoriteRepository->getFavoritedLessons($user->id);
+        // $history_lessons   = $this->historyRepository->getHistoryLessons($user->id);
 
         return view('pages.user.user.show', [
             'searchQuery'        => true,
             'user'               => $user,
-            'reviewed_lessons'   => $reviewed_lessons,
-            'favorited_lessons'  => $favorited_lessons,
-            'history_lessons'    => $history_lessons,
+            'user_content'       => $user_content
         ]);
     }
 
