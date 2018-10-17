@@ -13,13 +13,11 @@ export default {
   },
 
   created () {
-    // store(this.lessonId, this.userId)
+    this.store(this.userId, this.lessonId)
   },
 
   mounted: function () {
-    // this.$emit("store", [this.lessonId, this.userId])
-    this.store(this.userId, this.lessonId)
-    this.delete(this.userId, this.lessonId)
+    // this.delete(this.userId, this.lessonId)
   },
 
   methods: {
@@ -32,7 +30,7 @@ export default {
         user_id: userId
       })
         .then(response => {
-          console.log(response);
+
         })
         .catch(error => {
           alert('fail')
@@ -48,7 +46,7 @@ export default {
         user_id: userId
       })
         .then(response => {
-          console.log(response);
+
         })
         .catch(error => {
           alert('fail')

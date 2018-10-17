@@ -64,4 +64,57 @@ class UserRepository extends SingleKeyModelRepository implements UserRepositoryI
 
         return $models;
     }
+
+    public function getReviewedLessons($user_id)
+    {
+
+        $lesson_ids  = \App\Models\Review::where('user_id', $user_id)->pluck('lesson_id');
+        $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->get();
+
+        return $lessons;
+    }
+
+    public function getFavoritedLessons($user_id)
+    {
+        $lesson_ids  = \App\Models\Favorite::where('user_id', $user_id)->pluck('lesson_id');
+        $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->get();
+
+        return $lessons;
+    }
+
+    public function getHistoryLessons($user_id)
+    {
+        $lesson_ids  = \App\Models\History::where('user_id', $user_id)->pluck('lesson_id')->toArray();
+        $lesson_ids  = array_reverse($lesson_ids);
+
+        $ids_order   = implode(',', $lesson_ids);
+
+        if(empty($ids_order)) {
+            return null;
+        } else {
+            $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->orderByRaw("FIELD(id, $ids_order)")->get();
+
+            return $lessons;
+        }
+
+    }
+
+    public function user_content($user_id){
+
+        $reviewed_lessons  = self::getReviewedLessons($user_id);
+        $favorited_lessons = self::getFavoritedLessons($user_id);
+        $history_lessons   = self::getHistoryLessons($user_id);
+
+
+        $model = array();
+        $model = [
+            'reviewed_lessons'  => $reviewed_lessons,
+            'favorited_lessons' => $favorited_lessons,
+            'history_lessons'   => $history_lessons,
+        ];
+
+        return $model;
+    }
+
+    public function user_content_nohistory($userID){}
 }

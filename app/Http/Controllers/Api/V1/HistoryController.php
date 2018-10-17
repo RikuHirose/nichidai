@@ -43,22 +43,7 @@ class HistoryController extends Controller
   public function postHistory(Lesson $lesson, HistoryRequest $request)
   {
     $input    = $request->only($this->historyRepository->getBlankModel()->getFillable());
-
     $authUser = $this->userService->getUser();
-
-    $history = $this->historyRepository->create($input);
-
-    if (empty($history)) {
-        return response()->json(['success' => false]);
-    }
-
-
-    return response()->json(['success' => true]);
-  }
-
-  public function deleteHistory(Lesson $lesson, HistoryRequest $request)
-  {
-    $input    = $request->only($this->historyRepository->getBlankModel()->getFillable());
 
     $histories = $this->historyRepository->getBlankModel()->where('user_id', $input['user_id'])->get();
 
@@ -66,11 +51,40 @@ class HistoryController extends Controller
       $old = $this->historyRepository->getBlankModel()->oldest()->first();
       $old->delete();
 
+      $history = $this->historyRepository->create($input);
+      if (empty($history)) {
+          return response()->json(['success' => false]);
+      }
+
+      return response()->json(['success' => true, 'delete' => true]);
+
+    } else {
+
+      $history = $this->historyRepository->create($input);
+
+      if (empty($history)) {
+          return response()->json(['success' => false]);
+      }
+
       return response()->json(['success' => true]);
     }
-
-    return response()->json(['success' => false]);
-
   }
+
+  // public function deleteHistory(Lesson $lesson, HistoryRequest $request)
+  // {
+  //   $input    = $request->only($this->historyRepository->getBlankModel()->getFillable());
+
+  //   $histories = $this->historyRepository->getBlankModel()->where('user_id', $input['user_id'])->get();
+
+  //   if(count($histories) >= 31) {
+  //     $old = $this->historyRepository->getBlankModel()->oldest()->first();
+  //     $old->delete();
+
+  //     return response()->json(['success' => true]);
+  //   }
+
+  //   return response()->json(['success' => false]);
+
+  // }
 
 }

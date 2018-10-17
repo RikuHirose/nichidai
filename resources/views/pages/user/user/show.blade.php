@@ -62,21 +62,27 @@
           <div id="tab1" class="tab-pane active">
             <div class="col-xs-12">
               <div class="row">
-                @each('components.user.user.parts', $favorited_lessons, 'model')
+                @isset($user_content['favorited_lessons'])
+                  @each('components.user.user.parts', $user_content['favorited_lessons'], 'model')
+                @endisset
               </div>
             </div>
           </div>
           <div id="tab2" class="tab-pane">
             <div class="col-xs-12">
               <div class="row">
-                @each('components.user.user.parts', $reviewed_lessons, 'model')
+                @isset($user_content['reviewed_lessons'])
+                  @each('components.user.user.parts', $user_content['reviewed_lessons'], 'model')
+                @endisset
               </div>
             </div>
           </div>
           <div id="tab3" class="tab-pane">
             <div class="col-xs-12">
               <div class="row">
-                @each('components.user.user.parts', $history_lessons, 'model')
+                @isset($user_content['history_lessons'])
+                  @each('components.user.user.parts', $user_content['history_lessons'], 'model')
+                @endisset
               </div>
             </div>
           </div>

@@ -21,7 +21,9 @@
         </div>
 
         <!-- sidebar -->
-        @include('shared.user.sidebar', ['models' => $sidebar_content])
+        @isset($sidebar_content)
+          @include('shared.user.sidebar', ['models' => $sidebar_content])
+        @endisset
 
       </div>
     </div>

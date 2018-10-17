@@ -60335,14 +60335,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {};
   },
   created: function created() {
-    // store(this.lessonId, this.userId)
+    this.store(this.userId, this.lessonId);
   },
 
 
   mounted: function mounted() {
-    // this.$emit("store", [this.lessonId, this.userId])
-    this.store(this.userId, this.lessonId);
-    this.delete(this.userId, this.lessonId);
+    // this.delete(this.userId, this.lessonId)
   },
 
   methods: {
@@ -60353,9 +60351,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post(url, {
         lesson_id: lessonId,
         user_id: userId
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
+      }).then(function (response) {}).catch(function (error) {
         alert('fail');
       });
     },
@@ -60366,9 +60362,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post(url, {
         lesson_id: lessonId,
         user_id: userId
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
+      }).then(function (response) {}).catch(function (error) {
         alert('fail');
       });
     }
