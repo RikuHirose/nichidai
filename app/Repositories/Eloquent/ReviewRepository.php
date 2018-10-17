@@ -37,7 +37,7 @@ class ReviewRepository extends SingleKeyModelRepository implements ReviewReposit
 
     public function getReviews($lesson_id)
     {
-        $review = $this->getBlankModel()->where('lesson_id', $lesson_id)->get();
+        $review = $this->getBlankModel()->where('lesson_id', $lesson_id)->latest()->take(3)->get();
 
         return $review;
     }

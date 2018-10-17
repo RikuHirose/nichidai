@@ -66,7 +66,7 @@ class IndexController extends Controller
             ]);
         } else {
 
-            $models = $this->lessonRepository->lessons();
+            $models = $this->lessonRepository->lessonsRandom();
 
             return view('pages.user.lessons.index', [
                 'models'            => $models,
@@ -87,16 +87,44 @@ class IndexController extends Controller
 
 
         if(isset($q)) {
-            // foreach($q as $key => $value) {
-            //   $q[$key] = htmlspecialchars($value, ENT_QUOTES, "UTF-8");
-            // }
+            foreach($q as $key => $value) {
+              $q[$key] = htmlspecialchars($value, ENT_QUOTES, "UTF-8");
+            }
             $models = $this->lessonRepository->lessonsByTopSearch($q);
 
 
             $search_result = '';
             foreach ($q as $key => $value) {
                 if($value != null) {
-                    $search_result .= '-'.$value;
+
+                    switch ($key){
+                        case 'lesson_date':
+                          $search_result .= '-'.$value.'曜日';
+                          break;
+                        case 'lesson_hour':
+                          $search_result .= '-'.$value.'時限';
+                          break;
+                        case 'evaluate_exam':
+                          $search_result .= '-'.'定期試験の割合'.$value.'%';
+                          break;
+                        case 'evaluate_report':
+                          $search_result .= '-'.'レポートの割合'.$value.'%';
+                          break;
+                        case 'year':
+                          $search_result .= '-'.$value.'年度';
+                          break;
+                        case 'lesson_term':
+                          continue;
+                        default:
+                          $search_result .= '-'.$value;
+                    }
+
+                    if($value == '前期' || $value == '後期') {
+                        $search_result .= '-'.$value.'のみ';
+                    } elseif($value == '通年') {
+                        $search_result .= '-'.$value;
+                    }
+
                 }
             }
             $search_result = $search_result.'-';

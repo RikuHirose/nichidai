@@ -66,5 +66,16 @@
   </form>
 </div>
 
+<!-- reviews -->
+<div class="col-sm-12 col-xs-12">
+  <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">レビュー</h5>
+        @each('components.user.lessons.review', $reviews, 'review')
+      </div>
+
+  </div>
+</div>
+
 
 @stop
