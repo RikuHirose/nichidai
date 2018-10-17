@@ -78,8 +78,11 @@ class LessonController extends Controller
 
     public function getReview(Lesson $lesson)
     {
+        $reviews = $this->reviewRepository->getBlankModel()->where('lesson_id', $lesson->id)->latest()->get();
+
         return view('pages.user.lessons.review', [
-            'model'   => $lesson
+            'model'   => $lesson,
+            'reviews' => $reviews
         ]);
     }
 
@@ -99,9 +102,12 @@ class LessonController extends Controller
             return redirect()->back()->withErrors(trans('admin.errors.general.save_failed'));
         }
 
+        $reviews = $this->reviewRepository->getBlankModel()->where('lesson_id', $lesson->id)->latest()->get();
+
         return view('pages.user.lessons.review', [
             'model'   => $lesson,
-            'success' => 'レビューを投稿しました'
+            'success' => 'レビューを投稿しました',
+            'reviews' => $reviews
         ]);
     }
 

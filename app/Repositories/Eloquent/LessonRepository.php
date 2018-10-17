@@ -45,6 +45,14 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         return $models;
     }
 
+
+    public function lessonsRandom()
+    {
+        $models = $this->getBlankModel()->inRandomOrder()->paginate(15);
+
+        return $models;
+    }
+
     public function lessonsBySearch($q)
     {
         $models = $this->getBlankModel()
@@ -52,6 +60,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         ->orwhere('sub_title', 'like', "%{$q}%")
         ->orwhere('subsub_title', 'like', "%{$q}%")
         ->orwhere('lesson_title', 'like', "%{$q}%")
+        ->inRandomOrder()
         ->paginate(15);
 
         return $models;
@@ -126,7 +135,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
             });
         }
 
-        $models = $models->paginate(15);
+        $models = $models->inRandomOrder()->paginate(15);
 
         return $models;
     }
