@@ -34,7 +34,7 @@ class ContactController extends Controller
 
     public function getContact()
     {
-        return view('pages.user.footer.contact', [
+        return view('pages.user.footer.contact.contact', [
 
         ]);
     }
@@ -54,7 +54,7 @@ class ContactController extends Controller
                     ->withInput();
         }
 
-        return view('pages.user.footer.contactCheck', [
+        return view('pages.user.footer.contact.contactCheck', [
             'request' => $request
         ]);
     }
@@ -91,7 +91,7 @@ class ContactController extends Controller
         $slackHook->notify(new Slack($name, $email, $subject, $message));
 
 
-        return view('pages.user.footer.contactComplete', [
+        return view('pages.user.footer.contact.contactComplete', [
 
         ]);
 

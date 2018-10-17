@@ -55,7 +55,7 @@
                 <a href="{{ route('get.Contact') }}">お問い合せ</a>
               </li>
               <li>
-                <a href="#!">Link 2</a>
+                <a href="{{ route('get.lessons') }}">授業情報一覧(2018)</a>
               </li>
               <li>
                 <a href="#!">Link 3</a>

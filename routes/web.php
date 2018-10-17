@@ -42,8 +42,11 @@ Route::group([], function () {
         });
     });
 
-    // Job
+    // lessons
     Route::resource('lessons', 'User\LessonController', ['only' => ['show']]);
+
+    Route::get('/lessons', 'User\LessonController@getLessons')->name('get.lessons');
+    Route::get('/lessons/search/q', 'User\LessonController@searchLessons')->name('search.lessons');
 
     // search
     Route::get('/q', 'User\IndexController@searchIndex');
