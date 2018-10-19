@@ -112,16 +112,18 @@ class LessonPresenter extends BasePresenter
 
     public function card_evaluate()
     {
-        $evaluates = array();
+        $evaluates = [];
         $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
 
-        $str = '0%';
-        foreach ($ary as $key => $value) {
-            if($value !== $str){
-                array_push($evaluates, array($key => $value));
-            }
-        }
-        return $ary;
+        $str = 0;
+
+
+        $newArray = array_filter($ary,function($k) {
+                return $k;
+            });
+
+
+        return $newArray;
     }
 
 

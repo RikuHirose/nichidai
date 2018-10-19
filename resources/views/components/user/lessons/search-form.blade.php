@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel-primary panel" style="border: .5px solid #337ab7;">
     <div class="panel-heading">
       <h3 class="panel-title">検索項目</h3>
     </div>
@@ -27,7 +27,7 @@
                 ], isset($q['year']) ? $q['year'] : '', ['class' => 'form-control'])
             }}
           </div>
-          <div class="form-group col-sm-3 col-xs-4">
+          <div class="form-group col-sm-3 col-xs-6">
             {{ Form::select('lesson_term',
                 [
                   '' => '学期',
@@ -37,7 +37,7 @@
                 ], isset($q['lesson_term']) ? $q['lesson_term'] : '', ['class' => 'form-control'])
             }}
           </div>
-          <div class="form-group col-sm-3 col-xs-4">
+          <div class="form-group col-sm-3 col-xs-6">
             {{ Form::select('lesson_date',
                 [
                   ''   => '曜日',
@@ -50,7 +50,7 @@
                 ], isset($q['lesson_date']) ? $q['lesson_date'] : '', ['class' => 'form-control'])
             }}
           </div>
-          <div class="form-group col-sm-3 col-xs-4">
+          <div class="form-group col-sm-3 col-xs-6">
             {{ Form::select('lesson_hour',
                 [
                   ''   => '時限',
@@ -66,7 +66,7 @@
         </div>
 
         <div class="row">
-          <div class="form-group col-sm-3 col-xs-12">
+          <div class="form-group col-sm-3 col-xs-6">
             {{ Form::select('evaluate_exam',
                 [
                   ''   => '定期試験の割合',
@@ -77,7 +77,7 @@
                 ], isset($q['evaluate_exam']) ? $q['evaluate_exam'] : '', ['class' => 'form-control'])
             }}
           </div>
-          <div class="form-group col-sm-3 col-xs-12">
+          <div class="form-group col-sm-3 col-xs-6">
             {{ Form::select('evaluate_report',
                 [
                   ''   => 'レポートの割合',

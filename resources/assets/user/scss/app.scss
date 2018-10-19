@@ -1,5 +1,22 @@
 @import "~bootstrap/scss/bootstrap";
 
+// Common
+@import "../../common/scss/variables";
+@import "../../common/scss/mixin";
+
+
+// Components
+@import "./components/lessons/search-form";
+@import "./components/lessons/card";
+
+
+
+
+
+h3 {
+    color: #31708f;
+    font-size: 24px;
+}
 
 .clearfix:after {
   content: "";
@@ -86,10 +103,23 @@
 }
 
 .container {
+    margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
 }
+@include max-screen($breakpoint-mobile) {
+    .container {
+        width: 100%;
+    }
+
+    .col-xs-6 {
+        float: left;
+        width: 50%;
+    }
+}
+
+
 
 
