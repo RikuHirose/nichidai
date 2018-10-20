@@ -1,11 +1,13 @@
 <template>
-<div>
+<div id="chartjs-doughnut">
 
   <div class="card">
-    <chartjs-doughnut v-bind:labels="labels"
+    <chartjs-doughnut
+      v-bind:labels="labels"
       v-bind:datasets="datasets"
       v-bind:option="option"
-      v-bind:bind="true" />
+      v-bind:bind="true"/>
+
   </div>
 </div>
 </template>

@@ -59612,8 +59612,8 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(216);
-__webpack_require__(210);
-module.exports = __webpack_require__(228);
+__webpack_require__(227);
+module.exports = __webpack_require__(210);
 
 
 /***/ }),
@@ -60053,6 +60053,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['chartData'],
@@ -60094,7 +60096,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { attrs: { id: "chartjs-doughnut" } }, [
     _c(
       "div",
       { staticClass: "card" },
@@ -60391,8 +60393,7 @@ if (false) {
 }
 
 /***/ }),
-/* 227 */,
-/* 228 */
+/* 227 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

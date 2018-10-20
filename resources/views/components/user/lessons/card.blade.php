@@ -1,8 +1,8 @@
-<div class="col-md-4 col-sm-6 col-xs-12 " style="height: 500px;">
+<div class="col-md-4 col-sm-6 col-xs-12 ">
   <div class="card">
       <div class="card-body">
         @include('components.user.lessons.favorite', ['model' => $model])
-        <h5 class="card-title"><a class="" href="{{ route('lessons.show', [$model->id]) }}">{{ $model->lesson_title }}<small>({{ $model->year }})</small></a></h5>
+        <h5 class="card-title"><a class="" href="{{ route('lessons.show', [$model->id]) }}">{{ $model->lesson_title }}<span class="small">({{ $model->year }})</span class="small"></a></h5>
 
         <h6 class="card-subtitle text-muted">{{ $model->present()->sub_title }}</h6>
         <div>
