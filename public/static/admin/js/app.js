@@ -59499,28 +59499,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* 211 */
 /***/ (function(module, exports) {
 
-module.exports = function escape(url) {
-    if (typeof url !== 'string') {
-        return url
-    }
-    // If url is already wrapped in quotes, remove them
-    if (/^['"].*['"]$/.test(url)) {
-        url = url.slice(1, -1);
-    }
-    // Should url be wrapped?
-    // See https://drafts.csswg.org/css-values-3/#urls
-    if (/["'() \t\n]/.test(url)) {
-        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
-    }
-
-    return url
-}
-
-
-/***/ }),
-/* 212 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -59600,7 +59578,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 213 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -59646,7 +59624,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(227);
+var	fixUrls = __webpack_require__(228);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -59959,6 +59937,28 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
+/* 213 */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
+}
+
+
+/***/ }),
 /* 214 */
 /***/ (function(module, exports) {
 
@@ -59977,7 +59977,8 @@ module.exports = "/fonts/vendor/simple-line-icons/Simple-Line-Icons.eot?f33df365
 /* 224 */,
 /* 225 */,
 /* 226 */,
-/* 227 */
+/* 227 */,
+/* 228 */
 /***/ (function(module, exports) {
 
 
@@ -60072,7 +60073,6 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 228 */,
 /* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -60151,7 +60151,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(213)(content, options);
+var update = __webpack_require__(212)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -60171,8 +60171,8 @@ if(false) {
 /* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(211);
-exports = module.exports = __webpack_require__(212)(false);
+var escape = __webpack_require__(213);
+exports = module.exports = __webpack_require__(211)(false);
 // imports
 
 
@@ -60233,7 +60233,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(213)(content, options);
+var update = __webpack_require__(212)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -60253,8 +60253,8 @@ if(false) {
 /* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(211);
-exports = module.exports = __webpack_require__(212)(false);
+var escape = __webpack_require__(213);
+exports = module.exports = __webpack_require__(211)(false);
 // imports
 
 

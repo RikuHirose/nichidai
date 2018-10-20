@@ -1,0 +1,26 @@
+#lesson-table {
+
+  .LessonDetail__item {
+      color: #f5f5f5;
+      font-size: $small-font-size;
+  }
+  .LessonDetail__nav {
+      padding: 15px 0px;
+
+      .btn {
+        font-size: 14px;
+      }
+  }
+  .pull-right {
+    margin-right: 10px;
+  }
+  .pull-left {
+    margin-left: 10px;
+    width: 50%;
+  }
+  table {
+    th {
+      font-size: $small-font-size;
+    }
+  }
+}

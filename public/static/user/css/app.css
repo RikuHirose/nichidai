@@ -10471,6 +10471,10 @@ a.text-dark:focus {
   }
 }
 
+#shred-breadcrumb li {
+  font-size: 80%;
+}
+
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
@@ -10486,73 +10490,86 @@ a.text-dark:focus {
   font-size: 14px;
 }
 
-.card {
-  border: none;
+#lesson-index .card {
+  height: 500px;
 }
 
-.card table td,
-.card table th {
+#lesson-index .card .evaluate-table td {
+  font-size: 80%;
+  padding: 0.4rem;
+}
+
+#lesson-table .LessonDetail__item {
+  color: #f5f5f5;
+  font-size: 80%;
+}
+
+#lesson-table .LessonDetail__nav {
+  padding: 15px 0px;
+}
+
+#lesson-table .LessonDetail__nav .btn {
   font-size: 14px;
 }
 
-.card .card-body {
+#lesson-table .pull-right {
+  margin-right: 10px;
+}
+
+#lesson-table .pull-left {
+  margin-left: 10px;
+  width: 50%;
+}
+
+#lesson-table table th {
+  font-size: 80%;
+}
+
+#chartjs-doughnut .card canvas {
+  width: 230px !important;
+  height: 230px !important;
+  margin: 0 auto !important;
+}
+
+#lesson-show .card .card-body .card-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #008080;
+  min-height: 0px;
+  margin: .5rem;
+}
+
+#lesson-show .card .card-body .card-text {
+  font-size: 80%;
+}
+
+#lesson-show .card .card-body .list-group li,
+#lesson-show .card .card-body .list-group a {
+  font-size: 80%;
+}
+
+#lesson-show table td {
+  font-size: 80%;
+}
+
+#lesson-show #evaluate-table {
+  margin-top: .5rem;
+}
+
+#lesson-show #evaluate-table td,
+#lesson-show #evaluate-table th {
+  font-size: 80%;
+  padding-right: 5rem;
+}
+
+#lesson-show #text-table {
   padding: 5px 10px 10px;
   margin: 10px 5px 20px;
-  height: 100%;
   border-radius: 8px;
   color: #888;
   position: relative;
   -webkit-box-shadow: 0px 1px 6px 1px #aeaeae;
-          box-shadow: 0px 1px 6px 1px #aeaeae;
-}
-
-.card .card-body .table {
-  width: 100%;
-  margin-bottom: 1rem;
-  background-color: transparent;
-  max-width: 100%;
-  display: block;
-}
-
-.card .card-body .evaluate-table td {
-  font-size: 14px;
-  padding: 0.4rem;
-}
-
-.card .card-title {
-  min-height: 50px;
-  margin-bottom: 0;
-}
-
-.card .card-title a,
-.card .card-subtitle {
-  word-wrap: break-word;
-  font-size: 15px;
-  line-height: 18px;
-  letter-spacing: 0.1em;
-}
-
-.card .card-subtitle {
-  color: #888;
-  font-size: table-font-size;
-  min-height: 20px;
-}
-
-.card .table-header {
-  background: #0cb3d9;
-}
-
-.card .table-header th {
-  color: #fff;
-  font-weight: lighter;
-  letter-spacing: 0.1em;
-  line-height: 18px;
-  font-size: 14px;
-  padding: 0.75rem .5rem;
-}
-
-.card .table-header td {
-  font-size: 14px;
+  box-shadow: 0px 1px 6px 1px #aeaeae;
 }
 
 h3 {
@@ -10612,16 +10629,6 @@ h3 {
   background-color: #008080;
 }
 
-.LessonDetail__item {
-  padding: 1px 15px;
-  color: #f5f5f5;
-}
-
-.LessonDetail__nav {
-  padding: 15px 0px;
-  margin-right: 10px;
-}
-
 .panel-primary {
   border-color: #337ab7;
 }
@@ -10658,6 +10665,70 @@ h3 {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.card {
+  border: none;
+}
+
+.card table td,
+.card table th {
+  font-size: 80%;
+}
+
+.card .card-body {
+  padding: 5px 10px 10px;
+  margin: 10px 5px 20px;
+  height: 100%;
+  border-radius: 8px;
+  color: #888;
+  position: relative;
+  -webkit-box-shadow: 0px 1px 6px 1px #aeaeae;
+          box-shadow: 0px 1px 6px 1px #aeaeae;
+}
+
+.card .card-body .card-title {
+  min-height: 50px;
+  margin-bottom: 0;
+}
+
+.card .card-body .card-title a,
+.card .card-body .card-subtitle {
+  word-wrap: break-word;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.1em;
+}
+
+.card .card-body .card-subtitle {
+  color: #888;
+  font-size: 80%;
+  min-height: 20px;
+}
+
+.card .card-body .table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  max-width: 100%;
+  display: block;
+}
+
+.card .card-body .table .table-header {
+  background: #0cb3d9;
+}
+
+.card .card-body .table .table-header th {
+  color: #fff;
+  font-weight: lighter;
+  letter-spacing: 0.1em;
+  line-height: 18px;
+  font-size: 80%;
+  padding: 0.75rem .5rem;
+}
+
+.card .card-body .table .table-header td {
+  font-size: 80%;
 }
 
 @media screen and (max-width: 640px) {

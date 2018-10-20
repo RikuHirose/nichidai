@@ -5,9 +5,18 @@
 @import "../../common/scss/mixin";
 
 
+// shared
+@import "./shared/breadcrumb/";
+
 // Components
 @import "./components/lessons/search-form";
 @import "./components/lessons/card";
+@import "./components/lessons/table";
+@import "./components/lessons/chart";
+
+
+// Pages
+@import "./pages/lessons/show";
 
 
 
@@ -64,15 +73,6 @@ h3 {
     background-color: #008080;
 }
 
-.LessonDetail__item {
-    padding: 1px 15px;
-    color: #f5f5f5;
-}
-
-.LessonDetail__nav {
-    padding: 15px 0px;
-    margin-right: 10px;
-}
 
 .panel-primary {
     border-color: #337ab7;
@@ -108,6 +108,67 @@ h3 {
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+
+.card {
+  border: none;
+
+  table td, table th {
+    font-size: $small-font-size;
+  }
+  .card-body {
+    padding: 5px 10px 10px;
+    margin: 10px 5px 20px;
+    height: 100%;
+    border-radius: 8px;
+    color: #888;
+    position: relative;
+    box-shadow: 0px 1px 6px 1px #aeaeae;
+
+    .card-title {
+      min-height: 50px;
+      margin-bottom: 0;
+    }
+    .card-title a , .card-subtitle{
+      word-wrap: break-word;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: 0.1em;
+    }
+
+    .card-subtitle {
+      color: #888;
+      font-size: $small-font-size;
+      min-height: 20px;
+    }
+
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      background-color: transparent;
+      max-width: 100%;
+      display: block;
+
+      .table-header {
+        background: #0cb3d9;
+
+        th {
+          color: #fff;
+          font-weight: lighter;
+          letter-spacing: 0.1em;
+          line-height: 18px;
+          font-size: $small-font-size;
+          padding: 0.75rem .5rem;
+        }
+        td {
+          font-size: $small-font-size;
+        }
+      }
+
+    }
+}
+
 }
 @include max-screen($breakpoint-mobile) {
     .container {
