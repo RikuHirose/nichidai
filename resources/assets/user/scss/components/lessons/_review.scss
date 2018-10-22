@@ -1,0 +1,20 @@
+#component-lesson-review {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #dee2e6;
+
+  .card-title {
+    color: $h5-color;
+    margin: .5rem;
+    font-weight: $h5-font-weight;
+
+    a {
+      font-size: $small-title-font-size;
+    }
+    span {
+      font-size: $small-font-size;
+    }
+  }
+  .card-text {
+    font-size: $small-font-size;
+  }
+}

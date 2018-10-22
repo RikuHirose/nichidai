@@ -64,12 +64,19 @@ class LessonController extends Controller
             $sidebar_content   = $this->lessonRepository->sidebar_content();
         }
 
+        if(isset($authUser)) {
+            $footer_content   = $this->lessonRepository->footer_content_Login($authUser->id);
+        } else {
+            $footer_content   = $this->lessonRepository->footer_content();
+        }
+
         return view('pages.user.lessons.show', [
             'model'            => $model,
             'lesson_schedule'  => $lesson_schedule,
             'reviews'          => $reviews,
             'affiliates'       => $affiliates,
-            'sidebar_content'  => $sidebar_content
+            'sidebar_content'  => $sidebar_content,
+            'footer_content'   => $footer_content
         ]);
     }
 

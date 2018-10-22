@@ -34,7 +34,7 @@ class ReviewRequest extends Request
     {
 
         return [
-            'review_content'    => 'string|required|between:5,125',
+            'review_content'    => 'string|required|min: 5',
             'privacy_check'     => '|accepted'
         ];
     }
