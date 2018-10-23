@@ -1,7 +1,7 @@
 <div id="lesson-table">
-  <div class="LessonDetail__header">
+  <div id="lesson_title" class="LessonDetail__header">
     <div class="LessonDetail__title">
-      <div class="LessonDetail__item  LessonDetail__nav pull-left"><h1>{{ $model->lesson_title }}<small>({{ $model->year }})</small></h1></div>
+      <div class="LessonDetail__item  LessonDetail__nav pull-left"><h1>{{ $model->lesson_title }} ({{ $model->lesson_professor }})<small>({{ $model->year }})</small></h1></div>
       <div class="LessonDetail__nav pull-right">
 
         @include('components.user.lessons.favorite', ['model' => $model])

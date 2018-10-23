@@ -10471,6 +10471,43 @@ a.text-dark:focus {
   }
 }
 
+#lesson_title .LessonDetail__item h1 {
+  font-size: 22px;
+}
+
+#lesson_title .LessonDetail__header {
+  border: 2px solid #008080;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 4px 0px #bbbbbb;
+          box-shadow: 1px 1px 4px 0px #bbbbbb;
+}
+
+#lesson_title .LessonDetail__title {
+  background-color: #008080;
+}
+
+#lesson_title .LessonDetail__item {
+  color: #f5f5f5;
+  font-size: 80%;
+}
+
+#lesson_title .LessonDetail__nav {
+  padding: 15px 0px;
+}
+
+#lesson_title .LessonDetail__nav .btn {
+  font-size: 14px;
+}
+
+#lesson_title .pull-right {
+  margin-right: 10px;
+}
+
+#lesson_title .pull-left {
+  margin-left: 10px;
+  width: 50%;
+}
+
 #shred-breadcrumb li {
   font-size: 80%;
 }
@@ -10490,13 +10527,11 @@ a.text-dark:focus {
   font-size: 14px;
 }
 
-#lesson-index .card {
-  height: 500px;
-}
-
 #lesson-index .card .evaluate-table td {
   font-size: 80%;
   padding: 0.4rem;
+  padding-right: 1rem;
+  min-width: 20px;
 }
 
 #lesson-table .LessonDetail__item {
@@ -10531,6 +10566,48 @@ a.text-dark:focus {
   margin: 0 auto !important;
 }
 
+#component-lesson-review {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+#component-lesson-review .card-title {
+  color: #008080;
+  margin: .5rem;
+  font-weight: bold;
+}
+
+#component-lesson-review .card-title a {
+  font-size: 13px;
+}
+
+#component-lesson-review .card-title span {
+  font-size: 80%;
+}
+
+#component-lesson-review .card-text {
+  font-size: 80%;
+}
+
+#component-side-card .card-body {
+  margin: 5px;
+}
+
+.component-side-other-article {
+  margin-bottom: 5px;
+}
+
+.component-side-other-article .card-body {
+  margin: 0 5px 5px 5px !important;
+}
+
+.component-side-other-article .card-img-top {
+  padding: 0 5px !important;
+  height: 90px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 #lesson-show .card .card-body .card-title {
   font-size: 13px;
   font-weight: bold;
@@ -10559,6 +10636,7 @@ a.text-dark:focus {
 #lesson-show #evaluate-table td,
 #lesson-show #evaluate-table th {
   font-size: 80%;
+  padding: 0.4rem;
   padding-right: 5rem;
 }
 
@@ -10570,6 +10648,99 @@ a.text-dark:focus {
   position: relative;
   -webkit-box-shadow: 0px 1px 6px 1px #aeaeae;
   box-shadow: 0px 1px 6px 1px #aeaeae;
+}
+
+#lesson-show #text-table .label {
+  width: 20%;
+  font-size: 13px;
+  font-weight: bold;
+  color: #008080;
+}
+
+#lesson-show .footer_lessons_scroll_wrap {
+  width: 100%;
+  position: relative;
+  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+#lesson-show .footer_lessons_scroll_wrap ol {
+  height: 100%;
+  /* overflow-x: visible; */
+  white-space: nowrap;
+  padding-left: 0px;
+}
+
+#lesson-show .footer_lessons_scroll_wrap li {
+  list-style-type: none;
+  width: 28%;
+  margin-right: 3%;
+  display: inline-block;
+  white-space: normal;
+  vertical-align: top;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+#lesson-show .footer_lessons_scroll_wrap .lesson-list {
+  padding: 5px 10px 10px;
+  margin: 10px 5px 20px;
+  height: 100%;
+  border-radius: 8px;
+  color: #888;
+  position: relative;
+  -webkit-box-shadow: 0px 1px 6px 1px #aeaeae;
+          box-shadow: 0px 1px 6px 1px #aeaeae;
+}
+
+#lesson-show #sns-btn-wrap {
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+#lesson-show #sns-btn-wrap .twitter-btn a,
+#lesson-show #sns-btn-wrap .line-btn a {
+  color: #fff;
+}
+
+#lesson-show #affiliate-table .affi-btn {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#lesson-show #affiliate-table .affi-btn span {
+  color: #8a6d3b;
+  font-weight: normal;
+}
+
+#lesson-show #affiliate-table th {
+  padding: 0.75rem 30px;
+}
+
+#footer-lessons-wrap .card-title {
+  font-weight: normal !important;
+}
+
+#lesson-review .LessonDetail__item {
+  float: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
 }
 
 h3 {
@@ -10614,19 +10785,11 @@ h3 {
           box-shadow: 1px 1px 3px 3px #b8b8b8;
 }
 
-.LessonDetail__item h1 {
-  font-size: 22px;
-}
-
 .LessonDetail__header {
   border: 2px solid #008080;
   border-radius: 5px;
   -webkit-box-shadow: 1px 1px 4px 0px #bbbbbb;
           box-shadow: 1px 1px 4px 0px #bbbbbb;
-}
-
-.LessonDetail__title {
-  background-color: #008080;
 }
 
 .panel-primary {
@@ -10687,9 +10850,17 @@ h3 {
           box-shadow: 0px 1px 6px 1px #aeaeae;
 }
 
+.card .card-body h5.card-title {
+  font-size: 13px;
+  color: #008080;
+  margin: .5rem;
+}
+
 .card .card-body .card-title {
   min-height: 50px;
   margin-bottom: 0;
+  font-size: 13px;
+  min-height: 0px;
 }
 
 .card .card-body .card-title a,
@@ -10698,6 +10869,10 @@ h3 {
   font-size: 15px;
   line-height: 18px;
   letter-spacing: 0.1em;
+}
+
+.card .card-body .card-text {
+  font-size: 80%;
 }
 
 .card .card-body .card-subtitle {
@@ -10729,6 +10904,25 @@ h3 {
 
 .card .card-body .table .table-header td {
   font-size: 80%;
+}
+
+.side-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.side-card-body {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.card-title-success {
+  color: #008080;
+  margin-top: 1rem;
+}
+
+.card-text {
+  font-size: 80%;
+  margin: 0.5rem;
 }
 
 @media screen and (max-width: 640px) {

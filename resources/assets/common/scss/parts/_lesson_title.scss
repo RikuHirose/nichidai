@@ -1,0 +1,32 @@
+#lesson_title {
+  .LessonDetail__item h1 {
+    font-size: 22px;
+  }
+  .LessonDetail__header {
+      border: 2px solid #008080;
+      border-radius: 5px;
+      box-shadow: 1px 1px 4px 0px #bbbbbb;
+  }
+  .LessonDetail__title {
+      background-color: #008080;
+  }
+
+  .LessonDetail__item {
+      color: #f5f5f5;
+      font-size: $small-font-size;
+  }
+    .LessonDetail__nav {
+        padding: 15px 0px;
+
+        .btn {
+          font-size: 14px;
+        }
+    }
+    .pull-right {
+      margin-right: 10px;
+    }
+    .pull-left {
+      margin-left: 10px;
+      width: 50%;
+    }
+}

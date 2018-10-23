@@ -28,13 +28,16 @@
     @include('shared.user.breadcrumb', ['model' => $model->present()->breadcrumb])
   </div>
 
-  <div class="col-xs-12">
-    <button type="button" class="btn btn-primary">{{ config('site.name') }}
+  <div id="sns-btn-wrap" class="col-xs-12">
+    <button type="button" class="btn btn-primary twitter-btn">
       <a href="http://twitter.com/share?url={{ config('site.name') }}/lesson/{{ $model->id }}&text=『{{ $model->lesson_title }}』のシラバス%0D%0A{{ $model->lesson_professor }}%0D%0A{{ $model->sub_title }}/{{ $model->subsub_title }}%0D%0A">Twitter</a>
     </button>
-    <button type="button" class="btn btn-success">
+    <button type="button" class="btn btn-success line-btn">
       <a href="http://line.me/R/msg/text/?『{{ $model->lesson_title }}』のシラバスです。詳細なシラバスと授業のレビューを見ることができます。%0A{{ $model->sub_title }}/{{ $model->subsub_title }}%0A{{ $model->lesson_professor }}%0A{{ $model->lesson_content }}%0A{{ config('site.name') }}/lesson/{{ $model->id }}">LINE</a>
     </button>
+  </div>
+
+  <div class="col-xs-12">
     @include('components.user.lessons.table', ['model' => $model])
   </div>
 
@@ -112,14 +115,30 @@
             <div class="card-body">
 
                 <h5 class="card-title">テキスト</h5>
-                  @foreach($affiliates['getTexts'] as $affiliate)
-                    @include('components.user.lessons.affiliate', ['affiliate' => $affiliate])
-                  @endforeach
+                  @empty($affiliates['getTexts'])
+                    @if($model->lesson_textbook != '')
+                      <p class="card-text">{{ $model->lesson_textbook }}</p>
+                    @else
+                      <p style="margin: .5rem;">ー</p>
+                    @endif
+                  @endempty
+
+                  @if(!empty($affiliates['getTexts']))
+                    @include('components.user.lessons.affiliate', ['affiliates' => $affiliates['getTexts']])
+                  @endif
 
                 <h5 class="card-title">参考文献</h5>
-                @foreach($affiliates['getReads'] as $affiliate)
-                  @include('components.user.lessons.affiliate', ['affiliate' => $affiliate])
-                @endforeach
+                @empty($affiliates['getReads'])
+                  @if($model->lesson_read != '')
+                    <p class="card-text">{{ $model->lesson_read }}</p>
+                  @else
+                    <p style="margin: .5rem;">ー</p>
+                  @endif
+                @endempty
+
+                @if(!empty($affiliates['getReads']))
+                  @include('components.user.lessons.affiliate', ['affiliates' => $affiliates['getReads']])
+                @endif
             </div>
         </div>
       </div>
@@ -129,15 +148,15 @@
         <table id="text-table" class="table table-bordered">
           <tbody>
             <tr>
-              <td>授業形式</td>
+              <td class="label">授業形式</td>
               <td>{{ $model->present()->lesson_style }}</td>
             </tr>
             <tr>
-              <td>オフィスアワー(授業相談)</td>
+              <td class="label">オフィスアワー(授業相談)</td>
               <td>{{ $model->present()->lesson_officehour }}</td>
             </tr>
             <tr>
-              <td>事前学習の内容など，学生へのメッセージ</td>
+              <td class="label">事前学習の内容など，学生へのメッセージ</td>
               <td>{{ $model->present()->lesson_info }}</td>
             </tr>
           </tbody>
@@ -146,9 +165,9 @@
 
       <!-- reviews -->
       <div class="col-sm-12 col-xs-12">
+        <h5 class="card-title-success">レビュー</h5>
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">レビュー</h5>
               @each('components.user.lessons.review', $reviews, 'review')
             </div>
             <p class="text-center">
@@ -157,6 +176,19 @@
         </div>
       </div>
 
+      <!-- footer content -->
+      <div id="footer-lessons-wrap" class="col-sm-12 col-xs-12">
+        @isset($footer_content['recommend_lessons'])
+          <h5 class="card-title-success">あなたにオススメの授業</h5>
+          @include('components.user.footer.footerContent', ['models' => $footer_content['recommend_lessons']])
+        @endisset
+
+        @isset($footer_content['history_lessons'])
+          <h5 class="card-title-success">あなたが閲覧した授業</h5>
+          @include('components.user.footer.footerContent', ['models' => $footer_content['history_lessons']])
+        @endisset
+
+      </div>
     </div>
   </div>
 </div>

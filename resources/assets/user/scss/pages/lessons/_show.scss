@@ -1,8 +1,10 @@
+
+
 #lesson-show {
   .card {
     .card-body {
       .card-title {
-        font-size:   13px;
+        font-size:   $small-title-font-size;
         font-weight: $h5-font-weight;
         color:       $h5-color;
         min-height: 0px;
@@ -35,6 +37,7 @@
     margin-top: .5rem;
     td , th{
       font-size: $small-font-size;
+      padding: 0.4rem;
       padding-right: 5rem;
     }
   }
@@ -47,5 +50,86 @@
     position: relative;
     -webkit-box-shadow: 0px 1px 6px 1px #aeaeae;
     box-shadow: 0px 1px 6px 1px #aeaeae;
+
+    .label {
+      width: 20%;
+      font-size:   $small-title-font-size;
+      font-weight: $h5-font-weight;
+      color:       $h5-color;
+    }
+  }
+
+  .footer_lessons_scroll_wrap {
+    width: 100%;
+    position: relative;
+    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+
+    ol {
+      height: 100%;
+      /* overflow-x: visible; */
+      white-space: nowrap;
+      padding-left: 0px;
+    }
+
+    li {
+      list-style-type: none;
+      width: 28%;
+      margin-right: 3%;
+      display: inline-block;
+      white-space: normal;
+      vertical-align: top;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .lesson-list {
+      padding: 5px 10px 10px;
+      margin: 10px 5px 20px;
+      height: 100%;
+      border-radius: 8px;
+      color: #888;
+      position: relative;
+      box-shadow: 0px 1px 6px 1px #aeaeae;
+    }
+  }
+
+  #sns-btn-wrap {
+    text-align: right;
+    margin-bottom: 5px;
+
+    .twitter-btn a, .line-btn a{
+      color: #fff;
+    }
+  }
+
+  #affiliate-table {
+    .affi-btn {
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+      font-weight: bold;
+      text-decoration: none;
+
+      span {
+        color: #8a6d3b;
+        font-weight: normal;
+      }
+    }
+
+    th {
+      padding: 0.75rem 30px;
+    }
+  }
+}
+
+#footer-lessons-wrap {
+  .card-title {
+    font-weight: normal !important;
   }
 }

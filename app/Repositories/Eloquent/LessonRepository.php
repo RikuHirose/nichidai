@@ -308,10 +308,10 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
         $model = array();
         $model = [
-            'recommend_lessons' => $recommend_lessons,
+            'other_articles'    => $other_articles,
             'popular_lessons'   => $popular_lessons,
-            'history_lessons'   => $history_lessons,
-            'other_articles'    => $other_articles
+            // 'recommend_lessons' => $recommend_lessons,
+            // 'history_lessons'   => $history_lessons,
         ];
 
         return $model;
@@ -325,9 +325,44 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
         $model = array();
         $model = [
-            'recommend_lessons' => $recommend_lessons,
+            'other_articles'    => $other_articles,
             'popular_lessons'   => $popular_lessons,
-            'other_articles'    => $other_articles
+            // 'recommend_lessons' => $recommend_lessons,
+        ];
+
+        return $model;
+    }
+
+     // footer contentを一つの変数にまとめる
+    public function footer_content_Login($user_id)
+    {
+        $recommend_lessons = self::recommended_lessons();
+        $popular_lessons   = self::popular_lessons();
+        $history_lessons   = self::getHistoryLessons($user_id);
+        $other_articles    = self::getOtherArticles();
+
+        $model = array();
+        $model = [
+            // 'other_articles'    => $other_articles,
+            // 'popular_lessons'   => $popular_lessons,
+            'recommend_lessons' => $recommend_lessons,
+            'history_lessons'   => $history_lessons,
+        ];
+
+        return $model;
+    }
+
+    public function footer_content()
+    {
+        $recommend_lessons = self::recommended_lessons();
+        $popular_lessons   = self::popular_lessons();
+        $other_articles    = self::getOtherArticles();
+
+        $model = array();
+        $model = [
+            // 'other_articles'    => $other_articles,
+            // 'popular_lessons'   => $popular_lessons,
+            'recommend_lessons' => $recommend_lessons,
         ];
 
         return $model;

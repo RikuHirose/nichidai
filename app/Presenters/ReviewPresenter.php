@@ -60,5 +60,13 @@ class ReviewPresenter extends BasePresenter
         return $name;
     }
 
+    public function createdAt()
+    {
+      $time = $this->entity->created_at;
+      $time =  date( "Y-m-d" , strtotime($time));
+
+      return $time;
+    }
+
 
 }

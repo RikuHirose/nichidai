@@ -63,10 +63,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function postSetting(SettingRequest $request)
+    public function postSetting(SettingRequest $request, User $user)
     {
-        $user = $this->userService->getUser();
-        $this->userService->setting($request->all(), $user);
+        $input = $request->only($this->userRepository->getBlankModel()->getFillable());
+        // $user  = $this->userService->getUser();
+        // $this->userService->setting($request->all(), $user);
+        $user = $this->userRepository->update($user, $input);
 
         return view('pages.user.user.setting', ['success' => 'Profile updated!']);
     }

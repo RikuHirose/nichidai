@@ -4,23 +4,37 @@
 @import "../../common/scss/variables";
 @import "../../common/scss/mixin";
 
+// Common parts
+@import "../../common/scss/parts/lesson_title";
 
 // shared
 @import "./shared/breadcrumb/";
 
-// Components
+// Components/lessons
 @import "./components/lessons/search-form";
 @import "./components/lessons/card";
 @import "./components/lessons/table";
 @import "./components/lessons/chart";
+@import "./components/lessons/review";
 
+// Components/sidebar
+@import "./components/sidebar";
 
 // Pages
 @import "./pages/lessons/show";
+@import "./pages/lessons/review";
 
 
 
+a {
+  text-decoration: none;
+}
 
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
 
 h3 {
     color: #31708f;
@@ -61,18 +75,11 @@ h3 {
         box-shadow: 1px 1px 3px 3px #b8b8b8;
     }
 }
-.LessonDetail__item h1 {
-    font-size: 22px;
-}
 .LessonDetail__header {
-    border: 2px solid #008080;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px 0px #bbbbbb;
-}
-.LessonDetail__title {
-    background-color: #008080;
-}
-
+      border: 2px solid #008080;
+      border-radius: 5px;
+      box-shadow: 1px 1px 4px 0px #bbbbbb;
+  }
 
 .panel-primary {
     border-color: #337ab7;
@@ -126,15 +133,26 @@ h3 {
     position: relative;
     box-shadow: 0px 1px 6px 1px #aeaeae;
 
+    h5.card-title {
+      font-size: $small-title-font-size;
+      color: $h5-color;
+      margin: .5rem;
+    }
     .card-title {
       min-height: 50px;
       margin-bottom: 0;
+      font-size:   $small-title-font-size;
+      min-height: 0px;
     }
     .card-title a , .card-subtitle{
       word-wrap: break-word;
       font-size: 15px;
       line-height: 18px;
       letter-spacing: 0.1em;
+    }
+
+    .card-text {
+      font-size: $small-font-size;
     }
 
     .card-subtitle {
@@ -167,9 +185,27 @@ h3 {
       }
 
     }
+  }
 }
 
+.side-wrap {
+  margin-bottom: 1.5rem;
 }
+.side-card-body {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.card-title-success {
+  color: $h5-color;
+  margin-top: 1rem;
+}
+
+.card-text {
+  font-size: $small-font-size;
+  margin: 0.5rem;
+}
+
 @include max-screen($breakpoint-mobile) {
     .container {
         width: 100%;
