@@ -5,6 +5,14 @@ return [
         ],
     'faculty_id' => [
         ],
+    'popular_id' => [
+        ],
+    'recommend_id' => [
+        ],
+    'recommend_rank' => [
+        ],
+    'popular_rank' => [
+        ],
     'sub_title' => [
         ],
     'subsub_title' => [
@@ -14,6 +22,8 @@ return [
     'lesson_term' => [
         ],
     'lesson_date' => [
+        ],
+    'lesson_hour' => [
         ],
     'lesson_credit' => [
         ],
