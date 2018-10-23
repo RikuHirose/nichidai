@@ -7,6 +7,18 @@ return [
     'faculty_id' => [
         'name' => 'Faculty',
     ],
+    'popular_id' => [
+        'name' => 'Popular',
+    ],
+    'recommend_id' => [
+        'name' => 'Recommend',
+    ],
+    'recommend_rank' => [
+        'name' => 'Recommend Rank',
+    ],
+    'popular_rank' => [
+        'name' => 'Popular Rank',
+    ],
     'sub_title' => [
         'name' => 'Sub Title',
     ],
@@ -21,6 +33,9 @@ return [
     ],
     'lesson_date' => [
         'name' => 'Lesson Date',
+    ],
+    'lesson_hour' => [
+        'name' => 'Lesson Hour',
     ],
     'lesson_credit' => [
         'name' => 'Lesson Credit',

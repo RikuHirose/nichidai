@@ -4,8 +4,6 @@ namespace App\Models;
 
 use LaravelRocket\Foundation\Models\Base;
 
-use App\Models\Favorite;
-
 /**
  * App\Models\Lesson.
  *
@@ -31,7 +29,6 @@ class Lesson extends Base
      * @var  array
      */
     protected $fillable = [
-        'id',
         'faculty_id',
         'popular_id',
         'recommend_id',
@@ -79,15 +76,12 @@ class Lesson extends Base
     protected $presenter = \App\Presenters\LessonPresenter::class;
 
     // Relations
-    public function lessonSchedules()
-    {
-        return $this->hasMany(\App\Models\LessonSchedule::class, 'lesson_id', 'id');
-    }
-
     public function affiliates()
     {
         return $this->hasMany(\App\Models\Affiliate::class, 'lesson_id', 'id');
     }
+
+
 
     public function favorites()
     {
@@ -95,7 +89,29 @@ class Lesson extends Base
     }
 
 
-    // Utility Functions
 
+    public function histories()
+    {
+        return $this->hasMany(\App\Models\History::class, 'lesson_id', 'id');
+    }
+
+
+
+    public function lessonSchedules()
+    {
+        return $this->hasMany(\App\Models\LessonSchedule::class, 'lesson_id', 'id');
+    }
+
+
+
+    public function reviews()
+    {
+        return $this->hasMany(\App\Models\Review::class, 'lesson_id', 'id');
+    }
+
+
+
+
+    // Utility Functions
 
 }

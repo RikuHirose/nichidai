@@ -1,4 +1,4 @@
-<div class="panel-primary panel" style="border: .5px solid #337ab7;">
+<div id="search-form" class="panel-primary panel" style="border: .5px solid #337ab7;">
     <div class="panel-heading">
       <h3 class="panel-title">検索項目</h3>
     </div>

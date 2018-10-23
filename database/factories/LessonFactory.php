@@ -5,11 +5,16 @@ $factory->define(App\Models\Lesson::class, function (Faker\Generator $faker) {
 
     return [
         'faculty_id' => 0,
+        'popular_id' => 0,
+        'recommend_id' => 0,
+        'recommend_rank' => null,
+        'popular_rank' => null,
         'sub_title' => null,
         'subsub_title' => null,
         'lesson_title' => null,
         'lesson_term' => null,
         'lesson_date' => null,
+        'lesson_hour' => null,
         'lesson_credit' => null,
         'lesson_professor' => null,
         'lesson_objectives' => null,

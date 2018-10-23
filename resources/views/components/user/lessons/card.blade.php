@@ -18,7 +18,7 @@
                 <td>{{ $model->lesson_term }}</td>
                 <td>{{ $model->lesson_date }}{{ $model->lesson_hour }}</td>
                 <td>{{ $model->lesson_credit }}<br></td>
-                <td>{{ $model->lesson_professor }}</td>
+                <td><a href="{{ route('index',['q' => $model->lesson_professor]) }}">{{ $model->lesson_professor }}</a></td>
               </tr>
             </tbody>
           </table>

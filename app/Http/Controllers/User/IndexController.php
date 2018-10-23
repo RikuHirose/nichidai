@@ -51,7 +51,6 @@ class IndexController extends Controller
             $q['q'] = htmlspecialchars($q['q'], ENT_QUOTES, "UTF-8" );
             $models = $this->lessonRepository->lessonsBySearch($q['q']);
 
-
             // // set SEO information
             // $title = trans('job.JobIndexRec.title');
             // \SeoHelper::setJobIndexSeo($title);
@@ -64,13 +63,14 @@ class IndexController extends Controller
                 'q'                 => $q,
                 'sidebar_content'   => $sidebar_content
             ]);
+
         } else {
 
             $models = $this->lessonRepository->lessonsRandom();
 
             return view('pages.user.lessons.index', [
                 'models'            => $models,
-                'title'             => '新着',
+                'title'             => '新着レビュー',
                 'searchQuery'       => false,
                 'q'                 => $q,
                 'sidebar_content'   => $sidebar_content
