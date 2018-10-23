@@ -1,0 +1,51 @@
+/*!
+
+ =========================================================
+ * Now UI Dashboard - v1.1.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/now-ui-dashboard
+ * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+@import 'variables';
+@import 'mixins';
+
+// Plugins CSS
+@import "plugins/plugin-animate-bootstrap-notify";
+@import "plugins/plugin-perfect-scrollbar";
+
+// Core CSS
+@import "buttons";
+@import "inputs";
+@import "typography";
+@import "misc";
+@import "checkboxes-radio";
+
+// components
+@import "navbar";
+@import "page-header";
+@import "dropdown";
+@import "alerts";
+@import "images";
+@import "nucleo-outline";
+@import "tables";
+@import "sidebar-and-main-panel";
+@import "footers";
+@import "fixed-plugin";
+
+// cards
+@import "cards";
+@import "cards/card-plain";
+@import "cards/card-chart";
+@import "cards/card-user";
+@import "cards/card-map";
+
+@import "responsive";
