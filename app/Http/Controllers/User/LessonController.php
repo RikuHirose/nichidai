@@ -87,9 +87,16 @@ class LessonController extends Controller
     {
         $reviews = $this->reviewRepository->getBlankModel()->where('lesson_id', $lesson->id)->latest()->get();
 
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
+
         return view('pages.user.lessons.review', [
-            'model'   => $lesson,
-            'reviews' => $reviews
+            'model'            => $lesson,
+            'reviews'          => $reviews,
+            'sidebar_content'  => $sidebar_content,
         ]);
     }
 

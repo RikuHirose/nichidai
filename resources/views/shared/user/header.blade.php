@@ -9,9 +9,8 @@
             <div class="col-md-4 col-xs-2">
                 <nav class="pull-right">
                     @if(empty($authUser))
-                        <a href="{{ action('User\AuthController@getSignIn') }}">Sign In</a>
-                        <span class="sign">|</span>
-                        <a href="{{ action('User\AuthController@getSignUp') }}">Sign Up</a>
+                        <a href="{{ action('User\AuthController@getSignIn') }}" class="auth-link">ログイン</a>
+                        <a href="{{ action('User\AuthController@getSignUp') }}" class="auth-link">会員登録</a>
                     @endif
 
                     @if(!empty($authUser))

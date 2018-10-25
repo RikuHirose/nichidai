@@ -10524,6 +10524,13 @@ a.text-dark:focus {
   float: right !important;
 }
 
+#header .pull-right .auth-link {
+  font-size: .8125rem;
+  color: #929496;
+  text-decoration: none;
+  margin-left: 25px;
+}
+
 #header .pull-left {
   float: left !important;
 }
@@ -10574,6 +10581,10 @@ a.text-dark:focus {
   font-size: 80%;
 }
 
+#paginate {
+  margin: 1rem auto 0;
+}
+
 #search-form .panel-title {
   margin-top: 0;
   margin-bottom: 0;
@@ -10594,6 +10605,10 @@ a.text-dark:focus {
   padding: 0.4rem;
   padding-right: 1rem;
   min-width: 20px;
+}
+
+#lesson-table {
+  margin-bottom: 10px;
 }
 
 #lesson-table .LessonDetail__item {
@@ -10674,6 +10689,58 @@ a.text-dark:focus {
   height: 90px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+#login-register .auth-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+#login-register .navigation-tab {
+  display: table;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+#login-register .navigation-tab > .tab {
+  display: table-cell;
+  width: 50%;
+  text-align: center;
+}
+
+#login-register .navigation-tab > .tab > .item {
+  display: block;
+  height: 50px;
+  line-height: 13px;
+  padding-top: 19px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eceef0;
+  font-size: .8125rem;
+  color: #929496;
+  text-decoration: none;
+}
+
+#login-register .navigation-tab > .tab.-active > .item {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+  font-weight: bold;
+}
+
+#footer-lessons .taglist-description {
+  line-height: 1.6em;
+  padding-bottom: 10px;
+}
+
+#footer-lessons li {
+  float: left;
+  width: 180px;
+  margin: 0 5px 20px;
+  padding: 0 0 0 10px;
+  font-size: .9rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #lesson-show .card .card-body .card-title {
@@ -10962,6 +11029,10 @@ h3 {
 .card-text {
   font-size: 80%;
   margin: 0.5rem;
+}
+
+#wrapper {
+  min-height: 600px;
 }
 
 @media screen and (max-width: 640px) {

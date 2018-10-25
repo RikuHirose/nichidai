@@ -1,0 +1,36 @@
+#login-register {
+
+  .auth-container {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .navigation-tab {
+    display: table;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  .navigation-tab>.tab {
+    display: table-cell;
+    width: 50%;
+    text-align: center;
+  }
+  .navigation-tab>.tab>.item {
+    display: block;
+    height: 50px;
+    line-height: 13px;
+    padding-top: 19px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eceef0;
+    font-size: .8125rem;
+    color: #929496;
+    text-decoration: none;
+  }
+
+  .navigation-tab>.tab.-active>.item {
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+}
