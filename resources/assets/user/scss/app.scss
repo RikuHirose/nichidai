@@ -1,5 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 
+// now-ui-kit
+// @import "../../lib/now-ui-dashboard/index";
+
 // Common
 @import "../../common/scss/variables";
 @import "../../common/scss/mixin";
@@ -10,6 +13,7 @@
 // shared
 @import "./shared/breadcrumb/";
 @import "./shared/header/";
+@import "./shared/paginate/";
 
 // Components/lessons
 @import "./components/lessons/search-form";
@@ -18,8 +22,10 @@
 @import "./components/lessons/chart";
 @import "./components/lessons/review";
 
-// Components/sidebar
+// Components
 @import "./components/sidebar";
+@import "./components/auth";
+@import "./components/footer";
 
 // Pages
 @import "./pages/lessons/show";
@@ -182,6 +188,12 @@ h3 {
   font-size: $small-font-size;
   margin: 0.5rem;
 }
+
+#wrapper {
+    min-height: 600px;
+}
+
+
 
 @include max-screen($breakpoint-mobile) {
     .container {

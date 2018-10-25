@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Services\UserServiceInterface;
 use App\Repositories\UserRepositoryInterface;
+use App\Repositories\LessonRepositoryInterface;
+
 use App\Repositories\ReviewRepositoryInterface;
 use App\Repositories\FavoriteRepositoryInterface;
 use App\Repositories\HistoryRepositoryInterface;
@@ -28,12 +30,14 @@ class UserController extends Controller
     public function __construct(
         UserServiceInterface        $userService,
         UserRepositoryInterface     $userRepository,
+        LessonRepositoryInterface   $lessonRepository,
         ReviewRepositoryInterface   $reviewRepository,
         FavoriteRepositoryInterface $favoriteRepository,
         HistoryRepositoryInterface  $historyRepository
     ) {
         $this->userService        = $userService;
         $this->userRepository     = $userRepository;
+        $this->lessonRepository     = $lessonRepository;
         $this->reviewRepository   = $reviewRepository;
         $this->favoriteRepository = $favoriteRepository;
         $this->historyRepository  = $historyRepository;
@@ -44,14 +48,18 @@ class UserController extends Controller
     {
         $authUser       = $this->userService->getUser();
         $user_content   = $this->userRepository->user_content($user->id);
-        // $reviewed_lessons  = $this->reviewRepository->getReviewedLessons($user->id);
-        // $favorited_lessons = $this->favoriteRepository->getFavoritedLessons($user->id);
-        // $history_lessons   = $this->historyRepository->getHistoryLessons($user->id);
+
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
 
         return view('pages.user.user.show', [
             'searchQuery'        => true,
             'user'               => $user,
-            'user_content'       => $user_content
+            'user_content'       => $user_content,
+            'sidebar_content'    => $sidebar_content,
         ]);
     }
 

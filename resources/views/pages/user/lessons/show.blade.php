@@ -32,6 +32,7 @@
     <button type="button" class="btn btn-primary twitter-btn">
       <a href="http://twitter.com/share?url={{ config('site.name') }}/lesson/{{ $model->id }}&text=『{{ $model->lesson_title }}』のシラバス%0D%0A{{ $model->lesson_professor }}%0D%0A{{ $model->sub_title }}/{{ $model->subsub_title }}%0D%0A">Twitter</a>
     </button>
+
     <button type="button" class="btn btn-success line-btn">
       <a href="http://line.me/R/msg/text/?『{{ $model->lesson_title }}』のシラバスです。詳細なシラバスと授業のレビューを見ることができます。%0A{{ $model->sub_title }}/{{ $model->subsub_title }}%0A{{ $model->lesson_professor }}%0A{{ $model->lesson_content }}%0A{{ config('site.name') }}/lesson/{{ $model->id }}">LINE</a>
     </button>
@@ -168,7 +169,11 @@
         <h5 class="card-title-success">レビュー</h5>
         <div class="card">
             <div class="card-body">
-              @each('components.user.lessons.review', $reviews, 'review')
+              @if($reviews->isEmpty())
+                aa
+              @else
+                @each('components.user.lessons.review', $reviews, 'review')
+              @endif
             </div>
             <p class="text-center">
               <a href="{{ route('lesson.review.get', $model->id) }}" class="btn btn-primary btn-go">レビューを書く・もっと見る</a>

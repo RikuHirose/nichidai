@@ -8,6 +8,13 @@
 
   .pull-right {
     float: right !important;
+
+    .auth-link {
+      font-size: .8125rem;
+      color: #929496;
+      text-decoration: none;
+      margin-left: 25px;
+    }
   }
   .pull-left {
       float: left !important;
