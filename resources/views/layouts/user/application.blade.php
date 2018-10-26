@@ -10,6 +10,7 @@
     @section('styles')
     @show
     <meta name="csrf-token" content="{!! csrf_token() !!}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
 </head>
 <body class="{!! isset($bodyClasses) ? $bodyClasses : '' !!}">
 @if( isset($noFrame) && $noFrame == true )

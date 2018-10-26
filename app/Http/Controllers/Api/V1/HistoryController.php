@@ -47,8 +47,8 @@ class HistoryController extends Controller
 
     $histories = $this->historyRepository->getBlankModel()->where('user_id', $input['user_id'])->get();
 
-    if(count($histories) >= 31) {
-      $old = $this->historyRepository->getBlankModel()->oldest()->first();
+    if(count($histories) >= 30) {
+      $old = $this->historyRepository->getBlankModel()->where('user_id', $input['user_id'])->oldest()->first();
       $old->delete();
 
       $history = $this->historyRepository->create($input);

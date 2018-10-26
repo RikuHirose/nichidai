@@ -1,6 +1,7 @@
 @extends('layouts.user.application')
 
 @section('metadata')
+<meta name="description" content="『{{ $model->lesson_title }}』のシラバスです。詳細なシラバスと授業のレビューを見ることができます。/日本大学経済学部/{{ $model->sub_title }}/{{ $model->subsub_title }}/{{ $model->lesson_professor }}/{{ $model->lesson_title }}">
 @stop
 
 @section('scripts')
@@ -10,6 +11,7 @@
 @stop
 
 @section('title')
+{{ $model->lesson_title }}のシラバス
 @stop
 
 
@@ -60,7 +62,7 @@
               <div class="card-body">
                 <h5 class="card-title">授業計画</h5>
                 @if(empty($lesson_schedule[0]['id']))
-                  ー
+                  <p style="margin: .5rem;">ー</p>
                 @else
                   @include('components.user.lessons.schedule', ['lesson_schedule' => $lesson_schedule])
                 @endif
@@ -73,38 +75,38 @@
         <div class="card">
             <div class="card-body">
               <h5 class="card-title">評価方法</h5>
-
-              @if(!empty($model))
-              <?php
-              $evaluates = $model->present()->evaluate_rate_key;
-              ?>
+              @if($model->present()->evaluate_rate_total != 0)
                 <evaluate-chart :chart-data="{{json_encode($model->present()->evaluate_rate)}}"></evaluate-chart>
-              @endif
 
-              <table id="evaluate-table" class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">種類</th>
-                    <th scope="col">割合</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($model->present()->card_evaluate as $k => $v)
+                <table id="evaluate-table" class="table">
+                  <thead>
                     <tr>
-                      <td class="mw60 success text-success">{{ $k }}</td>
-                      <td class="mw60">{{ $v }}%</td>
+                      <th scope="col">種類</th>
+                      <th scope="col">割合</th>
                     </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    @foreach($model->present()->card_evaluate as $k => $v)
+                      <tr>
+                        <td class="mw60 success text-success">{{ $k }}</td>
+                        <td class="mw60">{{ $v }}%</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              @else
+                <p style="margin: .5rem;">ー</p>
+              @endif
 
             </div>
             <div class="card-body">
               <h5 class="card-title">評価の特記事項</h5>
-              @if(!$model->lesson_evaluation === '')
-                {{ $model->lesson_evaluation }}
+              @if(!$model->lesson_evaluation == '')
+                <p class="card-text">
+                  {{ $model->lesson_evaluation }}
+                </p>
               @else
-                ー
+                <p style="margin: .5rem;">ー</p>
               @endif
             </div>
         </div>
@@ -168,16 +170,29 @@
       <div class="col-sm-12 col-xs-12">
         <h5 class="card-title-success">レビュー</h5>
         <div class="card">
-            <div class="card-body">
-              @if($reviews->isEmpty())
-                aa
-              @else
+          @if(!isset($authUser))
+          <div class="alert alert-warning" style="font-size: 80%;">
+            レビューを書く・見るためには会員登録が必要です。
+          </div>
+            <img src="{{ asset('/static/user/images/review.png') }}" class="reviews-img">
+          @else
+
+            @if($reviews->isEmpty())
+              <div class="alert alert-warning" style="font-size: 80%;">
+                この授業のレビューはまだありません
+              </div>
+              <div class="card-body" style="min-height: 200px;">
                 @each('components.user.lessons.review', $reviews, 'review')
-              @endif
-            </div>
-            <p class="text-center">
-              <a href="{{ route('lesson.review.get', $model->id) }}" class="btn btn-primary btn-go">レビューを書く・もっと見る</a>
-            </p>
+              </div>
+            @else
+              <div class="card-body" style="min-height: 200px;">
+                @each('components.user.lessons.review', $reviews, 'review')
+              </div>
+            @endif
+          @endif
+          <p class="text-center">
+            <a href="{{ route('lesson.review.get', $model->id) }}" class="btn btn-primary btn-go">レビューを書く・もっと見る</a>
+          </p>
         </div>
       </div>
 

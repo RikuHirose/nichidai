@@ -75,9 +75,20 @@
   <!-- reviews -->
   <h5 class="card-title-success">レビュー</h5>
   <div class="card">
-      <div class="card-body">
+      <!-- <div class="card-body">
         @each('components.user.lessons.review', $reviews, 'review')
-      </div>
+      </div> -->
+      @if($reviews->isEmpty())
+        <div class="alert alert-warning" style="font-size: 80%;">
+          この授業のレビューはまだありません。
+        </div>
+        <div class="card-body" style="min-height: 200px;">
+        </div>
+      @else
+        <div class="card-body" style="min-height: 200px;">
+          @each('components.user.lessons.review', $reviews, 'review')
+        </div>
+      @endif
 
   </div>
 </div>

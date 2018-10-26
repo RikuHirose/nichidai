@@ -64,8 +64,48 @@ class UserController extends Controller
     }
 
 
+    public function showReviewed(User $user)
+    {
+        $authUser       = $this->userService->getUser();
+        $user_content   = $this->userRepository->user_content($user->id);
+
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
+
+        return view('pages.user.user.showReviewed', [
+            'searchQuery'        => true,
+            'user'               => $user,
+            'user_content'       => $user_content,
+            'sidebar_content'    => $sidebar_content,
+        ]);
+    }
+
+    public function showHistory(User $user)
+    {
+        $authUser       = $this->userService->getUser();
+        $user_content   = $this->userRepository->user_content($user->id);
+
+        if(isset($authUser)) {
+            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+        } else {
+            $sidebar_content   = $this->lessonRepository->sidebar_content();
+        }
+
+        return view('pages.user.user.showHistory', [
+            'searchQuery'        => true,
+            'user'               => $user,
+            'user_content'       => $user_content,
+            'sidebar_content'    => $sidebar_content,
+        ]);
+    }
+
+
     public function getSetting(User $user)
     {
+
         return view('pages.user.user.setting', [
             'user'       => $user
         ]);
@@ -78,7 +118,7 @@ class UserController extends Controller
         // $this->userService->setting($request->all(), $user);
         $user = $this->userRepository->update($user, $input);
 
-        return view('pages.user.user.setting', ['success' => 'Profile updated!']);
+        return view('pages.user.user.setting', ['success' => 'Profile updated!', 'user' => $user]);
     }
 
 }

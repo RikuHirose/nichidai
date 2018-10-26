@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 col-xs-12 lesson-index-card-wrap">
+<div class="col-md-4 col-sm-6 col-xs-12">
   <div class="card">
       <div class="card-body">
         <!-- @include('components.user.lessons.favorite', ['model' => $model]) -->

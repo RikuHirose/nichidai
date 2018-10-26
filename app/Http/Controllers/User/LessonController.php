@@ -59,9 +59,9 @@ class LessonController extends Controller
         $authUser = $this->userService->getUser();
 
         if(isset($authUser)) {
-            $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
+            $sidebar_content   = $this->lessonRepository->sidebar_show_content_Login($authUser->id, $lesson->id);
         } else {
-            $sidebar_content   = $this->lessonRepository->sidebar_content();
+            $sidebar_content   = $this->lessonRepository->sidebar_show_content($lesson->id);
         }
 
         if(isset($authUser)) {

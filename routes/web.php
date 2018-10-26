@@ -37,6 +37,9 @@ Route::group([], function () {
 
         Route::group(['prefix' => 'user/', 'as' => 'user.'], function () {
             Route::get('/{user}', 'User\UserController@show')->name('show');
+            Route::get('/{user}/reviewed', 'User\UserController@showReviewed')->name('show.reviewed');
+            Route::get('/{user}/history', 'User\UserController@showHistory')->name('show.history');
+
             Route::get('setting/{user}', 'User\UserController@getSetting')->name('setting.get');
             Route::post('setting/{user}', 'User\UserController@postSetting')->name('setting.post');
         });
@@ -55,4 +58,7 @@ Route::group([], function () {
     Route::get('/contact', 'User\ContactController@getContact')->name('get.Contact');
     Route::post('/contact/check', 'User\ContactController@postContactCheck')->name('post.contact.check');
     Route::post('/contact/submit', 'User\ContactController@postContactSubmit')->name('post.contact.submit');
+
+    Route::get('/term', 'User\FooterController@getTerm')->name('term');
+    Route::get('/privacy', 'User\FooterController@getPrivacy')->name('privacy');
 });

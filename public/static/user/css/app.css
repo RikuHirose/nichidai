@@ -10581,6 +10581,15 @@ a.text-dark:focus {
   font-size: 80%;
 }
 
+@media screen and (max-width: 640px) {
+  #header .mobile-header-wrap {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 #paginate {
   margin: 1rem auto 0;
 }
@@ -10600,15 +10609,47 @@ a.text-dark:focus {
   font-size: 14px;
 }
 
-#lesson-index .card .evaluate-table td {
-  font-size: 80%;
-  padding: 0.4rem;
-  padding-right: 1rem;
-  min-width: 20px;
-}
-
 #lesson-table {
   margin-bottom: 10px;
+}
+
+#lesson-table .btn-wrap {
+  display: inline-block;
+}
+
+#lesson-table .add_fav {
+  color: #333;
+  background-color: #eee;
+  font-size: 65% !important;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+#lesson-table .add_fav .fav-btn-star {
+  color: #999;
+  font-size: 14px;
+}
+
+#lesson-table .remove_fav {
+  color: #008080;
+  background: #fff;
+  font-weight: bold;
+  font-size: 65% !important;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#lesson-table .remove_fav .fav-btn-star {
+  color: #ffda00;
+  font-size: 14px;
+}
+
+#lesson-table .review-btn {
+  font-size: 65% !important;
+  font-weight: bold;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 #lesson-table .LessonDetail__item {
@@ -10635,6 +10676,20 @@ a.text-dark:focus {
 
 #lesson-table table th {
   font-size: 80%;
+}
+
+@media screen and (max-width: 640px) {
+  #lesson-table #lesson_title .LessonDetail__item h1 {
+    font-size: 20px !important;
+  }
+
+  #lesson-table .pull-left {
+    width: 80% !important;
+  }
+
+  #lesson-table .LessonDetail__nav {
+    padding: 5px 0px !important;
+  }
 }
 
 #chartjs-doughnut .card canvas {
@@ -10743,12 +10798,46 @@ a.text-dark:focus {
   text-overflow: ellipsis;
 }
 
+#lesson-index .lesson-index-card-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+#lesson-index .card .evaluate-table td {
+  font-size: 80%;
+  padding: 0.4rem;
+  padding-right: 1rem;
+  min-width: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  #lesson-index .card .table th {
+    padding: 0.75rem .5rem 0 .5rem !important;
+    width: 25%;
+  }
+
+  #lesson-index .card .evaluate-table td {
+    width: 50%;
+  }
+
+  .paginate-wrap #paginate .pagination {
+    max-width: 100%;
+  }
+}
+
 #lesson-show .card .card-body .card-title {
   font-size: 13px;
   font-weight: bold;
   color: #008080;
   min-height: 0px;
-  margin: .5rem;
 }
 
 #lesson-show .card .card-body .card-text {
@@ -10860,12 +10949,74 @@ a.text-dark:focus {
   padding: 0.75rem 30px;
 }
 
+#lesson-show .reviews-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 200px;
+}
+
 #footer-lessons-wrap .card-title {
   font-weight: normal !important;
 }
 
+#footer-lessons-wrap .card-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+@media screen and (max-width: 640px) {
+  #lesson-show .footer_lessons_scroll_wrap li {
+    width: 100%;
+  }
+
+  #lesson-show .footer_lessons_scroll_wrap .card .card-body .table .table-header th {
+    width: 25%;
+  }
+}
+
 #lesson-review .LessonDetail__item {
   float: none;
+}
+
+#user-show .img-thumbnail {
+  width: 100px;
+}
+
+#user-show #tab li {
+  list-style-type: none;
+  width: 28%;
+  margin-right: 3%;
+  display: inline-block;
+  white-space: normal;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+#user-show #tab .lesson-show-card-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+@media screen and (max-width: 640px) {
+  #user-show #tab table th {
+    width: 25%;
+  }
 }
 
 a {
@@ -11043,6 +11194,10 @@ h3 {
   .col-xs-6 {
     float: left;
     width: 50%;
+  }
+
+  .card .card-title a {
+    font-size: 17px !important;
   }
 }
 

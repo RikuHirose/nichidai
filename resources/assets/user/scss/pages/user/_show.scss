@@ -1,0 +1,40 @@
+#user-show {
+  .img-thumbnail {
+    width: 100px;
+  }
+
+  #tab {
+    // ol {
+    //   height: 100%;
+    //   /* overflow-x: visible; */
+    //   white-space: nowrap;
+    //   padding-left: 0px;
+    // }
+    li {
+      list-style-type: none;
+      width: 28%;
+      margin-right: 3%;
+      display: inline-block;
+      white-space: normal;
+      vertical-align: top;
+      overflow: hidden;
+    }
+    .lesson-show-card-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: stretch;
+    }
+  }
+}
+
+
+@include max-screen($breakpoint-mobile) {
+  #user-show {
+    #tab {
+      table th {
+        width: 25%;
+      }
+    }
+  }
+}

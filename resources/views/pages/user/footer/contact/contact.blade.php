@@ -10,11 +10,10 @@
 @stop
 
 @section('title')
-    Setting
+    お問い合わせ
 @stop
 
 @section('header')
-    Setting
 @stop
 
 @section('content')
@@ -36,8 +35,9 @@
     <!--Section heading-->
     <h2 class="h1-responsive font-weight-bold text-center my-5">Contact us</h2>
     <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
-        matter of hours to help you.</p>
+    <p class="text-center w-responsive mx-auto mb-5">
+        ご意見やご要望はこちらへ。
+    </p>
 
     <div class="row">
 
@@ -47,6 +47,15 @@
                 <div class="card-body">
                         <form id="contact-form" name="contact-form" action="{{ route('post.contact.check') }}" method="POST">
                             {{ csrf_field() }}
+                             <!-- errors -->
+                              @if ($errors->any())
+                                  @foreach ($errors->all() as $error)
+                                      @include('shared.flash-message', ['error' => $error])
+                                  @endforeach
+                              @endif
+                              @if(isset($success))
+                                  @include('shared.flash-message', ['success' => $success])
+                              @endif
                             <!--Grid row-->
                             <div class="row">
                                 <!--Grid column-->
