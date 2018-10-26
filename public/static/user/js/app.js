@@ -60182,6 +60182,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -60235,31 +60241,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return !_vm.favorited
-    ? _c(
-        "a",
-        {
-          staticClass: "btn btn-primary btn-go",
-          on: {
-            click: function($event) {
-              _vm.favorite(_vm.lessonId)
+  return _c("p", { staticClass: "btn-wrap" }, [
+    !_vm.favorited
+      ? _c(
+          "a",
+          {
+            staticClass: "btn btn-go add_fav",
+            on: {
+              click: function($event) {
+                _vm.favorite(_vm.lessonId)
+              }
             }
-          }
-        },
-        [_vm._v("お気入りに追加する")]
-      )
-    : _c(
-        "a",
-        {
-          staticClass: "btn btn-primary btn-go",
-          on: {
-            click: function($event) {
-              _vm.unFavorite(_vm.lessonId)
+          },
+          [
+            _c("span", { staticClass: "fas fa-star fav-btn-star" }),
+            _vm._v("お気入りに追加する\n  ")
+          ]
+        )
+      : _c(
+          "a",
+          {
+            staticClass: "btn btn-go remove_fav",
+            on: {
+              click: function($event) {
+                _vm.unFavorite(_vm.lessonId)
+              }
             }
-          }
-        },
-        [_vm._v("お気入りに追加しました")]
-      )
+          },
+          [
+            _c("span", { staticClass: "fas fa-star fav-btn-star" }),
+            _vm._v("お気入りに追加しました\n  ")
+          ]
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

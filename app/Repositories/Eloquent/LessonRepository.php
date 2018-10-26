@@ -53,6 +53,13 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         return $models;
     }
 
+    public function mobileLessonsRandom()
+    {
+        $models = $this->getBlankModel()->inRandomOrder()->simplePaginate(15);
+
+        return $models;
+    }
+
     public function lessonsBySearch($q)
     {
         $models = $this->getBlankModel()
@@ -62,6 +69,19 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         ->orwhere('lesson_title', 'like', "%{$q}%")
         ->inRandomOrder()
         ->paginate(15);
+
+        return $models;
+    }
+
+    public function mobileLessonsBySearch($q)
+    {
+        $models = $this->getBlankModel()
+        ->where('lesson_professor', 'like', "%{$q}%")
+        ->orwhere('sub_title', 'like', "%{$q}%")
+        ->orwhere('subsub_title', 'like', "%{$q}%")
+        ->orwhere('lesson_title', 'like', "%{$q}%")
+        ->inRandomOrder()
+        ->simplePaginate(15);
 
         return $models;
     }
@@ -136,6 +156,80 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         }
 
         $models = $models->inRandomOrder()->paginate(15);
+
+        return $models;
+    }
+
+    public function mobileLessonsByTopSearch($q)
+    {
+        $models = $this->getBlankModel();
+
+
+        if(isset($q['lesson_title'])) {
+            $lesson_title  = $q['lesson_title'];
+
+            $models = $models->when($lesson_title, function ($query) use ($lesson_title) {
+                return $query->where('lesson_title', 'like', "%{$lesson_title}%");
+            });
+        }
+
+        if(isset($q['lesson_professor'])) {
+            $lesson_professor  = $q['lesson_professor'];
+            $models = $models->when($lesson_professor, function ($query) use ($lesson_professor) {
+                return $query->where('lesson_professor', 'like', "%{$lesson_professor}%");
+            });
+        }
+
+        if(isset($q['year'])) {
+            $year              = $q['year'];
+            $models = $models->when($year, function ($query) use ($year) {
+                return $query->where('year', $year);
+            });
+        }
+
+        if(isset($q['lesson_term'])) {
+            $lesson_term       = $q['lesson_term'];
+            $models = $models->when($lesson_term, function ($query) use ($lesson_term) {
+                return $query->where('lesson_term', $lesson_term);
+            });
+        }
+
+        if(isset($q['lesson_date'])) {
+            $lesson_date       = $q['lesson_date'];
+            $models = $models->when($lesson_date, function ($query) use ($lesson_date) {
+                return $query->where('lesson_date', $lesson_date);
+            });
+        }
+
+        if(isset($q['lesson_hour'])) {
+            $lesson_hour       = $q['lesson_hour'];
+            $models = $models->when($lesson_hour, function ($query) use ($lesson_hour) {
+                return $query->where('lesson_hour', $lesson_hour);
+            });
+        }
+
+        if(isset($q['evaluate_exam'])) {
+            $evaluate_exam     = $q['evaluate_exam'];
+            $models = $models->when($evaluate_exam, function ($query) use ($evaluate_exam) {
+                return $query->where('evaluate_exam', '<' , $evaluate_exam);
+            });
+        }
+
+        if(isset($q['evaluate_report'])) {
+            $evaluate_report   = $q['evaluate_report'];
+            $models = $models->when($evaluate_report, function ($query) use ($evaluate_report) {
+                return $query->where('evaluate_report', '<', $evaluate_report);
+            });
+        }
+
+        if(isset($q['lesson_content'])) {
+            $lesson_content       = $q['lesson_content'];
+            $models = $models->when($lesson_content, function ($query) use ($lesson_content) {
+                return $query->where('lesson_content', 'like', "%{$lesson_content}%");
+            });
+        }
+
+        $models = $models->inRandomOrder()->simplePaginate(15);
 
         return $models;
     }
@@ -290,6 +384,25 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         }
     }
 
+    public function getSimilarLessons($lesson_id)
+    {
+        $lesson_ids = [];
+        for ($i=1; $i < 20; $i++) {
+            $id = $lesson_id + $i;
+            array_push($lesson_ids, $id);
+        }
+
+        // signup後新規userはhistryが無いため、条件分岐
+        if(!empty($lesson_ids)) {
+            // $ids_order = implode(',', $lesson_ids);
+            $lessons = $this->getBlankModel()::whereIn('id', $lesson_ids)->inRandomOrder()->take(5)->get();
+
+            return $lessons;
+        } else {
+            return null;
+        }
+    }
+
     public function getOtherArticles()
     {
         $other_articles = OtherArticle::all();
@@ -301,7 +414,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
     // sidebar contentを一つの変数にまとめる
     public function sidebar_content_Login($user_id)
     {
-        $recommend_lessons = self::recommended_lessons();
+        // $recommend_lessons = self::recommended_lessons();
         $popular_lessons   = self::popular_lessons();
         $history_lessons   = self::getHistoryLessons($user_id);
         $other_articles    = self::getOtherArticles();
@@ -319,7 +432,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
     public function sidebar_content()
     {
-        $recommend_lessons = self::recommended_lessons();
+        // $recommend_lessons = self::recommended_lessons();
         $popular_lessons   = self::popular_lessons();
         $other_articles    = self::getOtherArticles();
 
@@ -327,6 +440,44 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         $model = [
             'other_articles'    => $other_articles,
             'popular_lessons'   => $popular_lessons,
+            // 'recommend_lessons' => $recommend_lessons,
+        ];
+
+        return $model;
+    }
+
+    public function sidebar_show_content_Login($user_id, $lesson_id)
+    {
+        // $recommend_lessons = self::recommended_lessons();
+        $popular_lessons   = self::popular_lessons();
+        $history_lessons   = self::getHistoryLessons($user_id);
+        $other_articles    = self::getOtherArticles();
+        $similar_lessons   = self::getSimilarLessons($lesson_id);
+
+        $model = array();
+        $model = [
+            'other_articles'    => $other_articles,
+            'popular_lessons'   => $popular_lessons,
+            'similar_lessons'   => $similar_lessons
+            // 'recommend_lessons' => $recommend_lessons,
+            // 'history_lessons'   => $history_lessons,
+        ];
+
+        return $model;
+    }
+
+    public function sidebar_show_content($lesson_id)
+    {
+        // $recommend_lessons = self::recommended_lessons();
+        $popular_lessons   = self::popular_lessons();
+        $other_articles    = self::getOtherArticles();
+        $similar_lessons   = self::getSimilarLessons($lesson_id);
+
+        $model = array();
+        $model = [
+            'other_articles'    => $other_articles,
+            'popular_lessons'   => $popular_lessons,
+            'similar_lessons'   => $similar_lessons
             // 'recommend_lessons' => $recommend_lessons,
         ];
 

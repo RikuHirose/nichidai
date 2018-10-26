@@ -5,5 +5,8 @@
   >
   </favorite-lesson>
 @else
-  <a class="btn btn-primary btn-go" href="/signin">お気入りに追加</a>
+  <a class="btn btn-go add_fav" href="/signin">
+    <span class="fas fa-star fav-btn-star"></span>
+    お気入りに追加
+  </a>
 @endisset

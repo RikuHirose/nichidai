@@ -3,12 +3,16 @@
   <div class="sidebar_title">
     <h4></h4>
   </div>
+  
+  @isset($popular_lessons)
+    @each('components.user.sidebar.card', $popular_lessons, 'popular_lesson')
+  @endisset
 
-  @each('components.user.sidebar.card', $models, 'model')
+  @isset($similar_lessons)
+    <!-- @each('components.user.sidebar.card', $similar_lessons, 'similar_lesson') -->
+    @foreach($similar_lessons as $model)
+      @include('components._card', ['model' => $model])
+    @endforeach
+  @endisset
 
-  <!-- <div class="card" style="height: 200px;">
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div> -->
 </div>

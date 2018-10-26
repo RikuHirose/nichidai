@@ -52,75 +52,80 @@ class LessonPresenter extends BasePresenter
 
 
     public function sub_title()
-{
-    if (isset($this->entity->sub_title)) {
-        $subtitle = $this->entity->sub_title . '/' . $this->entity->subsub_title;
+    {
+        if (isset($this->entity->sub_title)) {
+            $subtitle = $this->entity->sub_title . '/' . $this->entity->subsub_title;
+        }
+        return $subtitle;
     }
-    return $subtitle;
-}
     public function lesson_objectives()
-{
-    if (!$this->entity->lesson_objectives == null) {
-        $this->entity->lesson_objectives = $this->entity->lesson_objectives;
-    } else {
-        $this->entity->lesson_objectives = 'ー';
+    {
+        if (!$this->entity->lesson_objectives == null) {
+            $this->entity->lesson_objectives = $this->entity->lesson_objectives;
+        } else {
+            $this->entity->lesson_objectives = 'ー';
+        }
+        return $this->entity->lesson_objectives;
     }
-    return $this->entity->lesson_objectives;
-}
+
     public function lesson_content()
-{
-    if (!$this->entity->lesson_content == null) {
-        $this->entity->lesson_content = $this->entity->lesson_content;
-    } else {
-        $this->entity->lesson_content = 'ー';
+    {
+        if (!$this->entity->lesson_content == null) {
+            $this->entity->lesson_content = $this->entity->lesson_content;
+        } else {
+            $this->entity->lesson_content = 'ー';
+        }
+        return $this->entity->lesson_content;
     }
-    return $this->entity->lesson_content;
-}
+
     public function lesson_style()
-{
-    if (!$this->entity->lesson_style == null) {
-        $this->entity->lesson_style = $this->entity->lesson_style;
-    } else {
-        $this->entity->lesson_style = 'ー';
+    {
+        if (!$this->entity->lesson_style == null) {
+            $this->entity->lesson_style = $this->entity->lesson_style;
+        } else {
+            $this->entity->lesson_style = 'ー';
+        }
+        return $this->entity->lesson_style;
     }
-    return $this->entity->lesson_style;
-}
+
     public function lesson_textbook()
-{
-    if (!$this->entity->lesson_textbook == null) {
-        $this->entity->lesson_textbook = $this->entity->lesson_textbook;
-    } else {
-        $this->entity->lesson_textbook = 'ー';
+    {
+        if (!$this->entity->lesson_textbook == null) {
+            $this->entity->lesson_textbook = $this->entity->lesson_textbook;
+        } else {
+            $this->entity->lesson_textbook = 'ー';
+        }
+        return $this->entity->lesson_textbook;
     }
-    return $this->entity->lesson_textbook;
-}
+
     public function lesson_read()
-{
-    if (!$this->entity->lesson_read == null) {
-        $this->entity->lesson_read = $this->entity->lesson_read;
-    } else {
-        $this->entity->lesson_read = 'ー';
+    {
+        if (!$this->entity->lesson_read == null) {
+            $this->entity->lesson_read = $this->entity->lesson_read;
+        } else {
+            $this->entity->lesson_read = 'ー';
+        }
+        return $this->entity->lesson_read;
     }
-    return $this->entity->lesson_read;
-}
     public function lesson_officehour()
-{
-    if (!$this->entity->lesson_officehour == null) {
-        $this->entity->lesson_officehour = $this->entity->lesson_officehour;
-    } else {
-        $this->entity->lesson_officehour = 'ー';
+    {
+        if (!$this->entity->lesson_officehour == null) {
+            $this->entity->lesson_officehour = $this->entity->lesson_officehour;
+        } else {
+            $this->entity->lesson_officehour = 'ー';
+        }
+        return $this->entity->lesson_officehour;
     }
-    return $this->entity->lesson_officehour;
-}
+
     public function lesson_info()
-{
-    if (!$this->entity->lesson_info == null) {
-        $this->entity->lesson_info = $this->entity->lesson_info;
-    } else {
-        $this->entity->lesson_info = 'ー';
+    {
+        if (!$this->entity->lesson_info == null) {
+            $this->entity->lesson_info = $this->entity->lesson_info;
+        } else {
+            $this->entity->lesson_info = 'ー';
+        }
+        return $this->entity->lesson_info;
     }
-    return $this->entity->lesson_info;
-}
 
     public function toString()
     {
@@ -128,87 +133,113 @@ class LessonPresenter extends BasePresenter
     }
 
     public function id()
-{
-    return $this->entity->id;
-}
+    {
+        return $this->entity->id;
+    }
+
     public function title()
-{
-    return $this->entity->title;
-}
+    {
+        return $this->entity->title;
+    }
+
+
     public function breadcrumb()
-{
-    $sub_title = $this->entity->sub_title;
-    $subsub_title = $this->entity->subsub_title;
-    $lesson_title = $this->entity->lesson_title;
-    if (!$subsub_title == '') {
-        $breadcrumb = array('トップ', $sub_title, $subsub_title, $lesson_title);
-    } else {
-        $breadcrumb = array('トップ', $sub_title, $lesson_title);
-    }
-    return $breadcrumb;
-}
-    public function breadcrumbReview()
-{
-    $sub_title = $this->entity->sub_title;
-    $subsub_title = $this->entity->subsub_title;
-    $lesson_title = $this->entity->lesson_title;
-    $lesson_professor = $this->entity->lesson_professor;
-    $lesson_title = $lesson_title . '(' . $lesson_professor . ')';
-    if (!$subsub_title == '') {
-        $breadcrumb = array('トップ', $sub_title, $subsub_title, $lesson_title, 'レビュー');
-    } else {
-        $breadcrumb = array('トップ', $sub_title, $lesson_title, 'レビュー');
-    }
-    return $breadcrumb;
-}
-    public function evaluate_rate()
-{
-    $evaluates = array();
-    $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
-    return $ary;
-}
-    public function card_evaluate()
-{
-    $evaluates = [];
-    $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
-    $str = 0;
-    $newArray = array_filter($ary, function ($k) {
-        return $k;
-    });
-    return $newArray;
-}
-    public function evaluate_rate_key()
-{
-    $evaluates = array();
-    $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
-    foreach ($ary as $key => $value) {
-        if (strpos($value, '0%') === false) {
-            array_push($evaluates, $key);
+    {
+        $sub_title = $this->entity->sub_title;
+        $subsub_title = $this->entity->subsub_title;
+        $lesson_title = $this->entity->lesson_title;
+        if (!$subsub_title == '') {
+            $breadcrumb = array('トップ', $sub_title, $subsub_title, $lesson_title);
+        } else {
+            $breadcrumb = array('トップ', $sub_title, $lesson_title);
         }
+        return $breadcrumb;
     }
-    return $evaluates;
-}
+
+    public function breadcrumbReview()
+    {
+        $sub_title = $this->entity->sub_title;
+        $subsub_title = $this->entity->subsub_title;
+        $lesson_title = $this->entity->lesson_title;
+        $lesson_professor = $this->entity->lesson_professor;
+        $lesson_title = $lesson_title . '(' . $lesson_professor . ')';
+        if (!$subsub_title == '') {
+            $breadcrumb = array('トップ', $sub_title, $subsub_title, $lesson_title, 'レビュー');
+        } else {
+            $breadcrumb = array('トップ', $sub_title, $lesson_title, 'レビュー');
+        }
+        return $breadcrumb;
+    }
+
+    public function evaluate_rate()
+    {
+        $evaluates = array();
+        $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
+
+        return $ary;
+    }
+
+    public function evaluate_rate_total()
+    {
+        $evaluates = array();
+        $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
+
+        $total = 0;
+        foreach ($ary as $key => $value) {
+            $total += $value;
+        }
+
+        return $total;
+    }
+
+    public function card_evaluate()
+    {
+        $evaluates = [];
+        $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
+        $str = 0;
+        $newArray = array_filter($ary, function ($k) {
+            return $k;
+        });
+        return $newArray;
+    }
+
+    public function evaluate_rate_key()
+    {
+        $evaluates = array();
+        $ary = array('定期試験' => $this->entity->evaluate_exam, 'レポート' => $this->entity->evaluate_report, '小テスト' => $this->entity->evaluate_mintest, '授業への参画度' => $this->entity->evaluate_apply, 'その他' => $this->entity->evaluate_others);
+        foreach ($ary as $key => $value) {
+            if (strpos($value, '0%') === false) {
+                array_push($evaluates, $key);
+            }
+        }
+        return $evaluates;
+    }
+
+
     public function lesson_name_admin()
-{
-    $sub_title = $this->entity->sub_title;
-    $subsub_title = $this->entity->subsub_title;
-    $lesson_title = $this->entity->lesson_title;
-    if (!$subsub_title == '') {
-        $name = $sub_title . '/' . $subsub_title . '/' . $lesson_title;
-    } else {
-        $name = $sub_title . '/' . $lesson_title;
+    {
+        $sub_title = $this->entity->sub_title;
+        $subsub_title = $this->entity->subsub_title;
+        $lesson_title = $this->entity->lesson_title;
+        if (!$subsub_title == '') {
+            $name = $sub_title . '/' . $subsub_title . '/' . $lesson_title;
+        } else {
+            $name = $sub_title . '/' . $lesson_title;
+        }
+        return $name;
     }
-    return $name;
-}
+
     public function lesson_date_admin()
-{
-    $date = $this->entity->lesson_date . '/' . $this->entity->lesson_hour;
-    return $date;
-}
+    {
+        $date = $this->entity->lesson_date . '/' . $this->entity->lesson_hour;
+        return $date;
+    }
+
+
     public function favorited($user_id)
-{
-    $favorite = $this->entity->favorites()->where('user_id', $user_id)->first();
-    return $favorite;
-}
+    {
+        $favorite = $this->entity->favorites()->where('user_id', $user_id)->first();
+        return $favorite;
+    }
 
 }

@@ -28,9 +28,11 @@
 @import "./components/footer";
 
 // Pages
+@import "./pages/lessons/index";
 @import "./pages/lessons/show";
 @import "./pages/lessons/review";
 
+@import "./pages/user/show";
 
 
 a {
@@ -203,6 +205,12 @@ h3 {
     .col-xs-6 {
         float: left;
         width: 50%;
+    }
+
+    .card {
+      .card-title a{
+        font-size: 17px !important;
+      }
     }
 }
 

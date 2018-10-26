@@ -1,6 +1,12 @@
 <template>
-    <a v-if="!favorited" class="btn btn-primary btn-go" @click="favorite(lessonId)">お気入りに追加する</a>
-    <a v-else class="btn btn-primary btn-go" @click="unFavorite(lessonId)">お気入りに追加しました</a>
+  <p class="btn-wrap">
+    <a v-if="!favorited" class="btn btn-go add_fav" @click="favorite(lessonId)">
+      <span class="fas fa-star fav-btn-star"></span>お気入りに追加する
+    </a>
+    <a v-else class="btn btn-go remove_fav" @click="unFavorite(lessonId)">
+      <span class="fas fa-star fav-btn-star"></span>お気入りに追加しました
+    </a>
+  </p>
 </template>
 
 <script>

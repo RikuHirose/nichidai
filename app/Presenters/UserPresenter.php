@@ -39,7 +39,7 @@ class UserPresenter extends BasePresenter
 
         $user_name = $this->entity->name;
 
-        $breadcrumb = array('トップ', $user_name);
+        $breadcrumb = array('トップ', 'マイページ');
 
 
         return $breadcrumb;

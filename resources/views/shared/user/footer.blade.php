@@ -1,6 +1,6 @@
 
 <!-- Footer -->
-<footer id="footer" class="page-footer font-small blue pt-4" style="background-color: gray;">
+<footer id="footer" class="page-footer font-small blue pt-4" style="background-color: #aeaeae;">
   <div class="container">
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -43,10 +43,10 @@
                   <a href="{{ route('get.lessons') }}">授業情報一覧(2018)</a>
                 </li>
                 <li>
-                  <a href="#!">利用規約</a>
+                  <a href="{{ route('term') }}">利用規約</a>
                 </li>
                 <li>
-                  <a href="#!">プライバシーポリシー</a>
+                  <a href="{{ route('privacy') }}">プライバシーポリシー</a>
                 </li>
               </ul>
 

@@ -5,7 +5,7 @@
       <div class="LessonDetail__nav pull-right">
 
         @include('components.user.lessons.favorite', ['model' => $model])
-        <a class="btn btn-primary btn-go" href="{{ route('lesson.review.get', [$model->id]) }}">レビューを書く</a>
+        <a class="btn btn-primary btn-go review-btn" href="{{ route('lesson.review.get', [$model->id]) }}">レビューを書く</a>
       </div>
       <div class="clearfix"></div>
     </div>

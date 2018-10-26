@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\UserServiceInterface;
-use App\Http\Requests\SearchRequest;
+use App\Http\Requests\ContactRequest;
 use Illuminate\Support\Facades\Validator;
 
 use App\Notifications\Slack;
@@ -49,9 +49,7 @@ class ContactController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/contact')
-                    ->withErrors($validator)
-                    ->withInput();
+            return redirect('/contact');
         }
 
         return view('pages.user.footer.contact.contactCheck', [
