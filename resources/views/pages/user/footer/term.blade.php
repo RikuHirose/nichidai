@@ -1,6 +1,7 @@
 @extends('layouts.user.application', ['noFrame' => true, 'bodyClasses' => ''])
 
 @section('metadata')
+<meta name="description" content="利用規約です。">
 @stop
 
 @section('styles')
@@ -10,11 +11,10 @@
 @stop
 
 @section('title')
-    Setting
+    利用規約
 @stop
 
 @section('header')
-    Setting
 @stop
 
 @section('content')

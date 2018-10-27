@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'name' => 'Nichidai',
+    'name' => '日本大学経済学部シラバス検索システム ',
 ];

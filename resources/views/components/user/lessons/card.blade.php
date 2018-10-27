@@ -6,7 +6,7 @@
 
         <h6 class="card-subtitle text-muted">{{ $model->present()->sub_title }}</h6>
         <div>
-          <table class="table table-condensed">
+<!--           <table class="table table-condensed">
             <tbody>
               <tr class="table-header">
                 <th>開講</th>
@@ -18,6 +18,30 @@
                 <td>{{ $model->lesson_term }}</td>
                 <td>{{ $model->lesson_date }}{{ $model->lesson_hour }}</td>
                 <td>{{ $model->lesson_credit }}<br></td>
+                <td><a href="{{ route('index',['q' => $model->lesson_professor]) }}">{{ $model->lesson_professor }}</a></td>
+              </tr>
+            </tbody>
+          </table> -->
+
+          <table class="table table-condensed">
+            <tbody>
+              <tr class="table-header">
+                <th>開講</th>
+                <td>{{ $model->lesson_term }}</td>
+              </tr>
+
+              <tr class="table-header">
+                <th>曜日･時限</th>
+                <td>{{ $model->lesson_date }}{{ $model->lesson_hour }}</td>
+              </tr>
+
+              <tr class="table-header">
+                <th>単位</th>
+                <td>{{ $model->lesson_credit }}<br></td>
+              </tr>
+
+              <tr class="table-header">
+                <th>担当</th>
                 <td><a href="{{ route('index',['q' => $model->lesson_professor]) }}">{{ $model->lesson_professor }}</a></td>
               </tr>
             </tbody>
