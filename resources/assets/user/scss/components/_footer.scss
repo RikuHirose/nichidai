@@ -14,3 +14,11 @@
     text-overflow: ellipsis;
   }
 }
+
+
+#footer {
+  p, a {
+    color: #fff;
+    font-size: $small-font-size;
+  }
+}

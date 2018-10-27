@@ -69,17 +69,34 @@ class UserRepository extends SingleKeyModelRepository implements UserRepositoryI
     {
 
         $lesson_ids  = \App\Models\Review::where('user_id', $user_id)->pluck('lesson_id');
-        $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->get();
+        $lesson_ids = array_reverse($lesson_ids->toArray());
 
-        return $lessons;
+        $ids_order   = implode(',', $lesson_ids);
+
+        if(empty($ids_order)) {
+            return null;
+        } else {
+            $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->orderByRaw("FIELD(id, $ids_order)")->get();
+
+            return $lessons;
+        }
+
     }
 
     public function getFavoritedLessons($user_id)
     {
         $lesson_ids  = \App\Models\Favorite::where('user_id', $user_id)->pluck('lesson_id');
-        $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->get();
+        $lesson_ids = array_reverse($lesson_ids->toArray());
 
-        return $lessons;
+        $ids_order   = implode(',', $lesson_ids);
+
+        if(empty($ids_order)) {
+            return null;
+        } else {
+            $lessons = \App\Models\Lesson::whereIn('id', $lesson_ids)->orderByRaw("FIELD(id, $ids_order)")->get();
+
+            return $lessons;
+        }
     }
 
     public function getHistoryLessons($user_id)

@@ -1,6 +1,7 @@
 @extends('layouts.user.application')
 
 @section('metadata')
+<meta name="description" content="日大経済学部のシラバスです。詳細なシラバスと授業のレビューを見ることができます。">
 @stop
 
 @section('scripts')

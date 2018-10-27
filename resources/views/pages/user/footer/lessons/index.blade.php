@@ -1,6 +1,7 @@
 @extends('layouts.user.application')
 
 @section('metadata')
+<meta name="description" content="日大経済学部のカテゴリーごとの授業一覧です。気になる授業を探せます。">
 @stop
 
 @section('scripts')
@@ -10,6 +11,7 @@
 @stop
 
 @section('title')
+授業一覧ページ
 @stop
 
 @section('content')
@@ -18,12 +20,12 @@
     <h2>授業一覧ページ</h2>
     <p class="taglist-description">カテゴリーごとの授業一覧です。気になる授業を探せます。</p>
     @foreach($lesson_lists as $subtitle => $lessons_by_subtitle)
-      <h2>{{ $subtitle }}</h2>
+      <h3>{{ $subtitle }}</h3>
 
         @foreach($lessons_by_subtitle as $subsubtitle => $lessons)
           @if(!empty($lessons))
             <ul class="clearfix">
-              <h3>{{ $subsubtitle }}</h3>
+              <h4>{{ $subsubtitle }}</h4>
               @php
                   $title = '';
               @endphp

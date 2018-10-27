@@ -12,7 +12,7 @@
           <div class="col-md-6 mt-md-0 mt-3">
 
             <!-- Content -->
-            <h5 class="text-uppercase">Footer Content</h5>
+            <!-- <h5 class="text-uppercase">Footer Content</h5> -->
             <p>Here you can use rows and columns here to organize your footer content.</p>
 
           </div>
@@ -33,7 +33,7 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
               <!-- Links -->
-              <h5 class="text-uppercase">Links</h5>
+              <!-- <h5 class="text-uppercase">Links</h5> -->
 
               <ul class="list-unstyled">
                 <li>
@@ -59,8 +59,10 @@
       <!-- Footer Links -->
 
       <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a href="/"> MDBootstrap.com</a>
+      <div class="footer-copyright text-center py-3">
+       <!--  <p>© 2018 Copyright:
+          <a href="/"> MDBootstrap.com</a>
+        </p> -->
       </div>
       <!-- Copyright -->
   </div>
