@@ -7,6 +7,9 @@
     color: #fff;
     border-radius: 60%;
   }
+  .card-subtitle {
+    margin-left: 1rem
+  }
 }
 
 .component-side-other-article {
@@ -15,8 +18,28 @@
     margin: 0 5px 5px 5px !important;
   }
   .card-img-top {
-    padding: 0 5px !important;
-    height: 90px;
+    height: 115px;
     object-fit: cover;
+  }
+}
+
+@include max-screen($breakpoint-mobile) {
+#component-side-card {
+  .card-subtitle {
+    margin-left: 1.7rem
+  }
+}
+
+  .card-img-top {
+    height: 170px !important;
+    object-fit: cover;
+  }
+
+  .side-wrap {
+    .sidebar {
+      .card {
+        
+      }
+    }
   }
 }

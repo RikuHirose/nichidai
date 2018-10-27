@@ -113,7 +113,7 @@
       </div>
 
       <!-- lesson read -->
-      <div class="col-sm-12 col-xs-12">
+      <div class="col-sm-12 col-xs-12" id="lesson_read_text_table">
         <div class="card">
             <div class="card-body">
 

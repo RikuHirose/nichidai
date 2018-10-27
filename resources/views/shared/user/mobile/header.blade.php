@@ -1,12 +1,14 @@
 <header id="header" class="Header">
     <!-- <div class="container-fluid"> -->
-    <div class="mobile-header-wrap">
-        <div class="row">
-            <div class="col-md-4 col-xs-2 pull-left">
+    <!-- <div class="mobile-header-wrap"> -->
+    <div class="container">
+        <div class="row" style="padding-left: 15px;padding-right: 15px;">
+            <div class="col-xs-2" style="width: 16.6666666667%;">
+            </div>
+            <div class="col-xs-8" style="width: 66.6666666667%;">
                 <a href="/">top</a>
             </div>
-            <div class="col-md-4 col-xs-8"></div>
-            <div class="col-md-4 col-xs-2">
+            <!-- <div class="col-md-4 col-xs-2">
                 <nav class="pull-right">
                     @if(empty($authUser))
                         <a href="{{ action('User\AuthController@getSignIn') }}" class="auth-link">ログイン</a>
@@ -30,7 +32,62 @@
                         </div>
                     @endif
                 </nav>
+            </div> -->
+            <div class="col-xs-2" style="width: 16.6666666667%;">
+                <div id="nav-drawer">
+                    <input id="nav-input" type="checkbox" class="nav-unshown">
+                    <label id="nav-open" for="nav-input"><span></span></label>
+                    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+                    <div id="nav-content">
+                        @if(empty($authUser))
+                        <div class="container">
+                            <a class="" href="{{ action('User\AuthController@getSignUp') }}">
+                                <div class="LinkToMyPage">
+                                    <span class="authlogsign">
+                                        無料会員登録
+                                    </span>
+                                </div>
+                            </a>
+                            <a href="{{ action('User\AuthController@getSignIn') }}">
+                                <div class="LinkToMyPage">
+                                    <span class="authlogsign">
+                                        ログイン
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        @endif
+
+                        @if(!empty($authUser))
+                            <div class="container">
+                                <a href="{{ route('user.show', $authUser['id']) }}">
+                                    <div class="LinkToMyPage">
+                                        <span class="authlogsign">
+                                            <img src="{{ asset('/static/user/images/user.png') }}" class="avatar rounded-circle img-circle img-thumbnail">マイページへ
+                                        </span>
+                                    </div>
+                                </a>
+                                <a href="{{ route('user.setting.get', $authUser['id']) }}">
+                                    <div class="LinkToMyPage">
+                                        <span class="authlogsign">
+                                            プロフィール編集
+                                        </span>
+                                    </div>
+                                </a>
+                                <a class="" href="{{ action('User\AuthController@postSignOut') }}">
+                                    <div class="LinkToMyPage">
+                                        <span class="authlogsign">
+                                            ログアウト
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </header>
+<div style="height: 60px;"></div>

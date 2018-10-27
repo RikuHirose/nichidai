@@ -46,6 +46,8 @@
     border-radius: 8px;
     color: #888;
     position: relative;
+    // -webkit-box-shadow: 0px 1px 6px 1px $point-color-lower;
+    // box-shadow: 0px 1px 6px 1px $point-color-lower;
     -webkit-box-shadow: 0px 1px 6px 1px #aeaeae;
     box-shadow: 0px 1px 6px 1px #aeaeae;
 
@@ -129,6 +131,14 @@
     object-fit: cover;
     height: 200px;
   }
+
+  #lesson_read_text_table {
+    table {
+      td {
+        width: 33%;
+      }
+    }
+  }
 }
 
 #footer-lessons-wrap {
@@ -148,13 +158,48 @@
   #lesson-show {
     .footer_lessons_scroll_wrap {
       li {
-        width: 100%;
+        width: 75%;
       }
 
       .card .card-body .table .table-header th {
           width: 25%;
       }
+    }
 
+    #lesson_read_text_table {
+      table {
+        td {
+          width: 0%;
+        }
+      }
+    }
+  }
+
+
+  .sidebar {
+    .footer_lessons_scroll_wrap {
+      width: 100%;
+      position: relative;
+      overflow: scroll;
+      overflow-x: scroll;
+      overflow-y: visible;
+      -webkit-overflow-scrolling: touch;
+    }
+    ol {
+      height: 100%;
+      overflow-x: visible;
+      white-space: nowrap;
+      padding-left: 0px;
+    }
+    .card-wrap {
+      list-style-type: none;
+      width: 75%;
+      margin-right: 3%;
+      display: inline-block;
+      white-space: normal;
+      vertical-align: top;
+      overflow: hidden;
+      min-height: 100%;
     }
   }
 }

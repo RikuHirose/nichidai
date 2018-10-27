@@ -60064,8 +60064,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       labels: [],
       datasets: [{
         data: [],
-        backgroundColor: ["#b388ff", "#82b1ff", "#80d8ff", "red", "blue"],
-        hoverBackgroundColor: ["#673ab7", "#2196f3", "#03a9f4", "red", "blue"]
+        backgroundColor: ["#b388ff", "#82b1ff", "#80d8ff", "#93ffc9", "#c4ff89"],
+        hoverBackgroundColor: ["#673ab7", "#2196f3", "#03a9f4", "#7fffbf", "#bfff7f"]
       }],
       option: {}
     };
