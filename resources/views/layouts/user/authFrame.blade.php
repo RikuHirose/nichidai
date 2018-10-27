@@ -1,5 +1,9 @@
 <div id="app" class="wrapper">
-    @include('shared.user.header')
+    @if(\App\Helpers\Production\IsMobileHelper::isMobile() == false)
+      @include('shared.user.header')
+    @else
+      @include('shared.user.mobile.header')
+    @endif
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-xs-12">

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -10582,11 +10584,167 @@ a.text-dark:focus {
 }
 
 @media screen and (max-width: 640px) {
+  #header {
+    position: fixed;
+    z-index: 1000;
+    /*チェックボックス等は非表示に*/
+    /*アイコンのスペース*/
+    /*ハンバーガーアイコンをCSSだけで表現*/
+    /*閉じる用の薄黒カバー*/
+    /*中身*/
+    /*チェックが入ったらもろもろ表示*/
+  }
+
   #header .mobile-header-wrap {
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  #header .humbarger-menu {
+    display: block;
+  }
+
+  #header #nav-drawer {
+    position: relative;
+  }
+
+  #header .top-icon {
+    margin: 0 auto;
+    width: 110px;
+    text-align: justify;
+  }
+
+  #header .search-icon {
+    position: absolute;
+    top: 1px;
+    right: 1rem;
+  }
+
+  #header .nav-unshown {
+    display: none;
+  }
+
+  #header #nav-open {
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  #header #nav-open span,
+  #header #nav-open span:before,
+  #header #nav-open span:after {
+    position: absolute;
+    height: 3px;
+    /*線の太さ*/
+    width: 25px;
+    /*長さ*/
+    border-radius: 3px;
+    background: #555;
+    display: block;
+    content: '';
+    cursor: pointer;
+  }
+
+  #header #nav-open span:before {
+    bottom: -8px;
+  }
+
+  #header #nav-open span:after {
+    bottom: -16px;
+  }
+
+  #header #nav-close {
+    display: none;
+    /*はじめは隠しておく*/
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    /*全体に広がるように*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+
+  #header #nav-content {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 50rem;
+    z-index: 9999;
+    /*最前面に*/
+    width: 80%;
+    /*右側に隙間を作る（閉じるカバーを表示）*/
+    max-width: 330px;
+    /*最大幅（調整してください）*/
+    height: 90%;
+    background: #fff;
+    /*背景色*/
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    /*滑らかに表示*/
+    -webkit-transform: translateX(240%);
+    transform: translateX(240%);
+    /*左に隠しておく*/
+  }
+
+  #header #nav-input:checked ~ #nav-close {
+    display: block;
+    /*カバーを表示*/
+    opacity: .5;
+  }
+
+  #header #nav-input:checked ~ #nav-content {
+    -webkit-transform: translateX(-240%);
+    transform: translateX(-240%);
+    /*中身を表示（右へスライド）*/
+    -webkit-box-shadow: 6px 0 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 6px 0 25px rgba(0, 0, 0, 0.15);
+  }
+
+  #header .LinkToLog {
+    background-color: #ED7A8E;
+    background-size: 20px 20px;
+    background-position: left;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+  }
+
+  #header .LinkToLog .authlogsign {
+    display: inline-block;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin: 0px;
+  }
+
+  #header .LinkToMyPage {
+    border-bottom: solid 1px #e7e7e7;
+    background-size: 20px 20px;
+    background-position: left;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+  }
+
+  #header .LinkToMyPage .authlogsign {
+    color: #6c757d;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin: 0px;
   }
 }
 
@@ -10755,6 +10913,10 @@ a.text-dark:focus {
   border-radius: 60%;
 }
 
+#component-side-card .card-subtitle {
+  margin-left: 1rem;
+}
+
 .component-side-other-article {
   margin-bottom: 5px;
 }
@@ -10764,10 +10926,26 @@ a.text-dark:focus {
 }
 
 .component-side-other-article .card-img-top {
-  padding: 0 5px !important;
-  height: 90px;
+  height: 115px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media screen and (max-width: 640px) {
+  #component-side-card .card-subtitle {
+    margin-left: 1.7rem;
+  }
+
+  .card-img-top {
+    height: 170px !important;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+#login-register p,
+#login-register label {
+  font-size: 80%;
 }
 
 #login-register .auth-container {
@@ -10804,6 +10982,13 @@ a.text-dark:focus {
   border-bottom: 2px solid #007bff;
   color: #007bff;
   font-weight: bold;
+}
+
+@media screen and (max-width: 640px) {
+  #login-register .auth-container {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 #footer-lessons .taglist-description {
@@ -10985,6 +11170,10 @@ a.text-dark:focus {
   height: 200px;
 }
 
+#lesson-show #lesson_read_text_table table td {
+  width: 33%;
+}
+
 #footer-lessons-wrap .card-title {
   font-weight: normal !important;
 }
@@ -11004,11 +11193,42 @@ a.text-dark:focus {
 
 @media screen and (max-width: 640px) {
   #lesson-show .footer_lessons_scroll_wrap li {
-    width: 100%;
+    width: 75%;
   }
 
   #lesson-show .footer_lessons_scroll_wrap .card .card-body .table .table-header th {
     width: 25%;
+  }
+
+  #lesson-show #lesson_read_text_table table td {
+    width: 0%;
+  }
+
+  .sidebar .footer_lessons_scroll_wrap {
+    width: 100%;
+    position: relative;
+    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebar ol {
+    height: 100%;
+    overflow-x: visible;
+    white-space: nowrap;
+    padding-left: 0px;
+  }
+
+  .sidebar .card-wrap {
+    list-style-type: none;
+    width: 75%;
+    margin-right: 3%;
+    display: inline-block;
+    white-space: normal;
+    vertical-align: top;
+    overflow: hidden;
+    min-height: 100%;
   }
 }
 

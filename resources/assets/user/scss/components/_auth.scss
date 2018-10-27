@@ -1,5 +1,7 @@
 #login-register {
-
+  p , label{
+    font-size: $small-font-size;
+  }
   .auth-container {
     width: 600px;
     margin: 0 auto;
@@ -33,4 +35,13 @@
     font-weight: bold;
   }
 
+}
+
+@include max-screen($breakpoint-mobile) {
+  #login-register {
+    .auth-container {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
 }
