@@ -26,7 +26,7 @@
             <div class="card-body">
                 <div class="container">
                     <h2 class="”hh">個人情報保護方針</h2>
-                    「https://rikulog.com/」（以下、当サイト）を利用される方は、以下に記載する諸条件に同意したものとみなします。
+                    「<a href="{{ config('site.url') }}">{{ config('site.name') }}</a>」（以下、当サイト）を利用される方は、以下に記載する諸条件に同意したものとみなします。
                     <h3 class="”hh">個人情報の取得について</h3>
                     利用者は匿名のままで、当サイトを自由に閲覧する事ができます。
 
