@@ -10522,6 +10522,30 @@ a.text-dark:focus {
   background-color: #fafafa;
 }
 
+#header .logo-wrap {
+  position: relative;
+  top: -18px;
+}
+
+#header .logo-block {
+  text-decoration: none;
+}
+
+#header .logo-block .logo-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 33px;
+  color: #3f3f3f;
+}
+
+#header .logo-block .sub-title {
+  color: #888888;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  padding-left: .5rem;
+  padding-top: 1.3rem;
+  font-weight: normal;
+}
+
 #header .pull-right {
   float: right !important;
 }
@@ -10593,6 +10617,16 @@ a.text-dark:focus {
     /*閉じる用の薄黒カバー*/
     /*中身*/
     /*チェックが入ったらもろもろ表示*/
+  }
+
+  #header .logo-wrap-mobile {
+    text-align: center;
+    position: relative;
+    top: -1rem;
+  }
+
+  #header .logo-block .logo-title {
+    font-size: 30px;
   }
 
   #header .mobile-header-wrap {
@@ -10929,6 +10963,10 @@ a.text-dark:focus {
   height: 115px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.component-side-other-article .card-title a {
+  font-size: .8rem !important;
 }
 
 @media screen and (max-width: 640px) {

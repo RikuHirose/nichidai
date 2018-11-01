@@ -21,6 +21,12 @@
     height: 115px;
     object-fit: cover;
   }
+  .card-title {
+    a {
+      font-size: .8rem !important;
+
+    }
+  }
 }
 
 @include max-screen($breakpoint-mobile) {
@@ -28,6 +34,7 @@
   .card-subtitle {
     margin-left: 1.7rem
   }
+
 }
 
   .card-img-top {
@@ -37,9 +44,7 @@
 
   .side-wrap {
     .sidebar {
-      .card {
-        
-      }
+      .card {}
     }
   }
 }

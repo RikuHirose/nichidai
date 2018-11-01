@@ -2,10 +2,17 @@
     <!-- <div class="container-fluid"> -->
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-xs-2 pull-left">
-                <a href="/">top</a>
+            <div class="col-md-6 col-xs-2 pull-left">
+                <div class="pull-left logo-wrap">
+                    <a href="/" class="logo-block">
+                        <span class="logo-title">
+                            Eco Hack
+                        </span>
+                        <span class="pull-right sub-title">日本大学経済学部シラバス検索システム</span>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-4 col-xs-8"></div>
+            <div class="col-md-2 col-xs-8"></div>
             <div class="col-md-4 col-xs-2">
                 <nav class="pull-right">
                     @if(empty($authUser))

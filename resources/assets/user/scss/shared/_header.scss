@@ -6,6 +6,29 @@
   border-bottom: 2px solid #d5d5d5;
   background-color: #fafafa;
 
+  .logo-wrap {
+    position: relative;
+    top: -18px;
+  }
+  .logo-block {
+    text-decoration: none;
+
+    .logo-title {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 33px;
+      color: #3f3f3f;
+    }
+    .sub-title {
+      color: rgb(136, 136, 136);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      padding-left: .5rem;
+      padding-top: 1.3rem;
+      font-weight: normal;
+    }
+  }
+
+
   .pull-right {
     float: right !important;
 
@@ -72,8 +95,22 @@
   #header {
     position: fixed;
     z-index: 1000;
-    .avatar {
+
+    .logo-wrap-mobile {
+      text-align: center;
+      position: relative;
+      top: -1rem;
+    }
+    .logo-block {
       
+
+      .logo-title {
+        font-size: 30px;
+
+      }
+    }
+    .avatar {
+
     }
 
     .mobile-header-wrap {
