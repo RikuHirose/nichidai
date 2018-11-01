@@ -5,8 +5,12 @@
         <div class="row" style="padding-left: 15px;padding-right: 15px;">
             <div class="col-xs-2" style="width: 16.6666666667%;">
             </div>
-            <div class="col-xs-8" style="width: 66.6666666667%;">
-                <a href="/">top</a>
+            <div class="col-xs-8 logo-wrap-mobile" style="width: 66.6666666667%;">
+                <a href="/" class="logo-block">
+                    <span class="logo-title">
+                        Eco Hack
+                    </span>
+                </a>
             </div>
             <!-- <div class="col-md-4 col-xs-2">
                 <nav class="pull-right">

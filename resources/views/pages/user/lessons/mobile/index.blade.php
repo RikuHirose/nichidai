@@ -1,4 +1,4 @@
-@extends('layouts.user.application')
+@extends('layouts.user.application', ['top' => true])
 
 @section('metadata')
 @stop

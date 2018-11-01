@@ -12,8 +12,8 @@
           <div class="col-md-6 mt-md-0 mt-3">
 
             <!-- Content -->
-            <!-- <h5 class="text-uppercase">Footer Content</h5> -->
-            <p>Here you can use rows and columns here to organize your footer content.</p>
+            <!-- <h5 class="text-uppercase" style="color: #fff;">Eco Hack  日本大学経済学部シラバス検索システム</h5> -->
+            <p style="font-size: 1.1rem;">Eco Hack  日本大学経済学部シラバス検索システム</p>
 
           </div>
           <!-- Grid column -->
@@ -60,9 +60,8 @@
 
       <!-- Copyright -->
       <div class="footer-copyright text-center py-3">
-       <!--  <p>© 2018 Copyright:
-          <a href="/"> MDBootstrap.com</a>
-        </p> -->
+        <p>© 2018  Riku Hirose
+        </p>
       </div>
       <!-- Copyright -->
   </div>

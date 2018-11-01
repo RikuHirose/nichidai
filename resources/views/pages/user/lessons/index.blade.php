@@ -1,4 +1,4 @@
-@extends('layouts.user.application')
+@extends('layouts.user.application', ['top' => true])
 
 @section('metadata')
 <meta name="description" content="日大経済学部のシラバスです。詳細なシラバスと授業のレビューを見ることができます。">
