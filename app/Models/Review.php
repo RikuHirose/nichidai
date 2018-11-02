@@ -31,6 +31,7 @@ class Review extends Base
     protected $fillable = [
         'lesson_id',
         'user_id',
+        'ban_flag',
         'review_content',
     ];
 
