@@ -1,6 +1,8 @@
 @extends('layouts.user.application')
 
 @section('metadata')
+<meta property="og:title" content="『{{ $model->lesson_title }}』のシラバスです。授業のレビューを書くことができます。/日本大学経済学部/{{ $model->sub_title }}/{{ $model->subsub_title }}/{{ $model->lesson_professor }}/{{ $model->lesson_title }}({{ $model->year }})" />
+
 @stop
 
 @section('scripts')
@@ -10,6 +12,7 @@
 @stop
 
 @section('title')
+{{ $model->lesson_title }} ( {{ $model->lesson_professor }} )のレビューを書く
 @stop
 
 
@@ -25,7 +28,7 @@
 
     <div id="lesson_title" class="LessonDetail__header">
       <div class="LessonDetail__title">
-        <div class="LessonDetail__item  LessonDetail__nav pull-left">
+        <div class="LessonDetail__item  LessonDetail__nav" style="padding: 15px 10px;">
           <h1>{{ $model->lesson_title }} ({{ $model->lesson_professor }})<small>({{ $model->year }})</small></h1>
         </div>
       </div>

@@ -39,6 +39,11 @@
           <input type="checkbox" name="recommend_id" value="1"
               @if($model->recommend_id == 1) checked @endif>
           </td>
+          <td>
+            reviewがあるか
+          <input type="checkbox" name="review_flag" value="1"
+              @if($model->review_flag == 1) checked @endif>
+          </td>
         </tr>
       </tbody>
     </table>

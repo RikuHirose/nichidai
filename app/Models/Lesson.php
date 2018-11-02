@@ -32,6 +32,7 @@ class Lesson extends Base
         'faculty_id',
         'popular_id',
         'recommend_id',
+        'review_flag',
         'recommend_rank',
         'popular_rank',
         'sub_title',

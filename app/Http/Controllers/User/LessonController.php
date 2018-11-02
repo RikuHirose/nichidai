@@ -85,7 +85,7 @@ class LessonController extends Controller
 
     public function getReview(Lesson $lesson)
     {
-        $reviews = $this->reviewRepository->getBlankModel()->where('lesson_id', $lesson->id)->latest()->get();
+        $reviews = $this->reviewRepository->getBlankModel()->where('lesson_id', $lesson->id)->where('ban_flag', 0)->latest()->get();
 
         if(isset($authUser)) {
             $sidebar_content   = $this->lessonRepository->sidebar_content_Login($authUser->id);
@@ -118,11 +118,11 @@ class LessonController extends Controller
 
         $reviews = $this->reviewRepository->getBlankModel()->where('lesson_id', $lesson->id)->latest()->get();
 
-        return view('pages.user.lessons.review', [
-            'model'   => $lesson,
-            'success' => 'レビューを投稿しました',
-            'reviews' => $reviews
-        ]);
+        $lesson->review_flag = 1;
+        $lesson->update();
+
+
+       return redirect()->route('lesson.review.get', $lesson->id);
     }
 
     public function getLessons()

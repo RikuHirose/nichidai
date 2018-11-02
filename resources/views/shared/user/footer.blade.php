@@ -13,7 +13,7 @@
 
             <!-- Content -->
             <!-- <h5 class="text-uppercase" style="color: #fff;">Eco Hack  日本大学経済学部シラバス検索システム</h5> -->
-            <p style="font-size: 1.1rem;">Eco Hack  日本大学経済学部シラバス検索システム</p>
+            <p style="font-size: 1.1rem;">{{ config('site.name') }}</p>
 
           </div>
           <!-- Grid column -->

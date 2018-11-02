@@ -1,7 +1,26 @@
 @extends('layouts.user.application')
 
 @section('metadata')
-<meta name="description" content="『{{ $model->lesson_title }}』のシラバスです。詳細なシラバスと授業のレビューを見ることができます。/日本大学経済学部/{{ $model->sub_title }}/{{ $model->subsub_title }}/{{ $model->lesson_professor }}/{{ $model->lesson_title }}">
+
+<meta property="og:title" content="『{{ $model->lesson_title }}』のシラバスです。詳細なシラバスと授業のレビューを見ることができます。/日本大学経済学部/{{ $model->sub_title }}/{{ $model->subsub_title }}/{{ $model->lesson_professor }}/{{ $model->lesson_title }}({{ $model->year }})" />
+
+ <meta property="og:type" content="article" />
+ <meta property="og:url" content="{{ config('site.domain') }}/lessons/{{ $model->id }}" />
+ <meta property="og:image" content="" />
+ <meta property="og:site_name" content="{{ config('site.name') }}" />
+ <meta property="og:description" content="" />
+
+ <meta property="article:published_time" content="$model->created_at)" />
+ <meta property="article:modified_time" content="$model->updated_at)" />
+
+ <meta name="twitter:card" content="summary" />
+ <meta name="twitter:site" content="@rikuhirose" />
+ <meta name="twitter:domain" content="{{ config('site.domain') }}" />
+ <meta name="twitter:title" content="『{{ $model->lesson_title }}』のシラバスです。詳細なシラバスと授業のレビューを見ることができます。/日本大学経済学部/{{ $model->sub_title }}/{{ $model->subsub_title }}/{{ $model->lesson_professor }}/{{ $model->lesson_title }}({{ $model->year }})" />
+ <meta name="twitter:description" content="" />
+
+ <meta name="twitter:image" content="" />
+ <meta itemprop="image" content="" />
 @stop
 
 @section('scripts')

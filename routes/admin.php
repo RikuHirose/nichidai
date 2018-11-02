@@ -44,5 +44,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('/other_article', 'Admin\SideController@postOtherArticle')->name('otherArticle.post');
             Route::post('/other_article/{otherArticle}/delete', 'Admin\SideController@deleteOtherArticle')->name('otherArticle.delete');
         });
+
+        // reviews
+        Route::group(['prefix' => 'reviews/', 'as' => 'reviews.'], function () {
+            Route::get('/', 'Admin\ReviewController@index')->name('index');
+            Route::get('/lessons', 'Admin\ReviewController@reviewedLessons')->name('reviewedLessons');
+
+            Route::post('/{review}/ban',   'Admin\ReviewController@ban');
+            Route::post('/{review}/unBan', 'Admin\ReviewController@unBan');
+        });
     });
 });

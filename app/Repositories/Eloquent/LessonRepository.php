@@ -48,14 +48,15 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
     public function lessonsRandom()
     {
-        $models = $this->getBlankModel()->inRandomOrder()->paginate(15);
+        // $models = $this->getBlankModel()->inRandomOrder()->paginate(15);
+        $models = $this->getBlankModel()->where('review_flag', 1)->latest()->paginate(15);
 
         return $models;
     }
 
     public function mobileLessonsRandom()
     {
-        $models = $this->getBlankModel()->inRandomOrder()->simplePaginate(15);
+        $models = $this->getBlankModel()->where('review_flag', 1)->latest()->simplePaginate(15);
 
         return $models;
     }
@@ -67,7 +68,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         ->orwhere('sub_title', 'like', "%{$q}%")
         ->orwhere('subsub_title', 'like', "%{$q}%")
         ->orwhere('lesson_title', 'like', "%{$q}%")
-        ->inRandomOrder()
+        ->latest()
         ->paginate(15);
 
         return $models;
@@ -80,7 +81,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
         ->orwhere('sub_title', 'like', "%{$q}%")
         ->orwhere('subsub_title', 'like', "%{$q}%")
         ->orwhere('lesson_title', 'like', "%{$q}%")
-        ->inRandomOrder()
+        ->latest()
         ->simplePaginate(15);
 
         return $models;
@@ -155,7 +156,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
             });
         }
 
-        $models = $models->inRandomOrder()->paginate(15);
+        $models = $models->latest()->paginate(15);
 
         return $models;
     }
@@ -229,7 +230,7 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
             });
         }
 
-        $models = $models->inRandomOrder()->simplePaginate(15);
+        $models = $models->latest()->simplePaginate(15);
 
         return $models;
     }
@@ -546,6 +547,11 @@ class LessonRepository extends SingleKeyModelRepository implements LessonReposit
 
         return $lessons;
 
+    }
+
+    public function reviewedLesson()
+    {
+        return $this->getBlankModel()->where('review_flag', 1)->paginate(15);
     }
 
 }

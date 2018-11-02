@@ -68,5 +68,11 @@ class ReviewPresenter extends BasePresenter
       return $time;
     }
 
+    public function baned($review) {
+        $baned = $this->entity->where('id', $review->id)->where('ban_flag', 1)->first();
+
+        return $baned;
+    }
+
 
 }

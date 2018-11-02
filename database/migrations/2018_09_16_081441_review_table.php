@@ -18,6 +18,8 @@ class ReviewTable extends Migration
             $table->bigInteger('lesson_id')->unsigned()->index();
             $table->bigInteger('user_id')->unsigned()->index();
 
+            $table->bigInteger('ban_flag')->default(0);
+
             $table->mediumText('review_content')->nullable();
 
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
